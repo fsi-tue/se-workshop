@@ -3,6 +3,7 @@ A workshop for mainly cognitive science students to soften their crash into the 
 
 # 4 Slots
 ## Git
+- [Nice and simple tutorial for learning git branches](https://learngitbranching.js.org/)
 
 ## GitHub & CI
 
