@@ -77,8 +77,36 @@ src (tree)
 +- datei.txt (blob, contents = ...)
 ```
 
-Aber wie sollen wir beide in relation setzten? Unser bisheriges Modell hat sich an die zeitliche Reihenfolge gehalten. Der der Commit mit der leeren Datei kommt somit zuerst, aber was ist mit den anderen beiden? Wenn Bob nach Alice seine Commit erstellt, wird Alice ihre Arbeit überschrieben. Wenn Alice nach Bob commited ist es genau anders herum. Paralleles Arbeiten ist somit noch nicht möglich.
+Aber wie sollen wir beide in Relation setzten? Unser bisheriges Modell hat sich an die zeitliche Reihenfolge gehalten. Der der Commit mit der leeren Datei kommt somit zuerst, aber was ist mit den anderen beiden? Wenn Bob nach Alice seine Commit erstellt, wird Alice ihre Arbeit überschrieben. Wenn Alice nach Bob commited ist es genau anders herum. Paralleles Arbeiten ist somit noch nicht möglich.
 
 ### Paralleles Modell
 
-Die Zeit war bis jetzt unsere x-Achse und wenn wir eine sinnvolle version history behalten wollen, sollten wir das auch nicht ändern.
+Die Zeit war bis jetzt unsere x-Achse und wenn wir eine sinnvolle version history behalten wollen, sollten wir das auch nicht ändern. Alice und Bob arbeiten aber parallel an ihren Features. Wir wollen also wenn möglich eine zeitlich Äquivalente Einordnung von beiden Commits. Warum nicht einfach übereinander?
+
+```
+o <--- o (Alice)
+  ^
+   \
+    -- o (Bob)
+```
+
+Der erste Commit bleibt unverändert. Alice und Bobs Commits werden aber nicht mehr in eine Parent-Child Relation gebracht, sondern sind vielmehr in einer Sibling Relation. Beide haben als Parent den gleichen ersten Commit.
+
+Die Struktur unseres Modells ändert sich also von einer reinen linearen Aneinanderreihung zu einem **Baum**. Paralleles Arbeiten wird somit möglich und Alice und Bob kommen sich nicht mehr in die Quere. Diese unterschiedlichen Stränge werden in git als **Branches** bezeichnet.
+
+> Wen du schon Algorithmen gehört hast, wird dir das bekannt vorkommen. Falls nicht ist auch nicht schlimm. Ein **Baum** besteht aus lauter **Knoten** (hier: Commits) die genau einen **Parent** haben. Ein **Knoten** kann aber mehrere **Kinder** haben. Also wie ein Baum in der Natur, nur dass wir ihn meistens um 180° gedreht darstellen.
+
+Aktuell haben wir unsere **Branches** nach den Namen der Personen benannt, aber in der Praxis benennen wir sie nach den Features an denen wir arbeiten. Also lass uns die Namen ändern:
+
+```
+o-1 <--- o-2 (feature_a)
+  ^
+   \
+    -- o-3 (feature_a)
+```
+
+Damit wir einfacher Commits referenzieren können, haben wir ihnen eine Nummer gegeben. Die Reihenfolge der Nummern spielt dabei keine Rolle, sondern ist nur zur Unterscheidung gedacht. Git verwendet statt Nummern Hashes mehr dazu aber später.
+
+Aus Perspektive von Branch `feature_a` existieren nur zwei Commits o-1 und o-2. Von Branch `feature_b` existier Commit o-1 und o-3.
+
+> Branch Namen müssen eindeutig sein und dürfen keine Leerzeichen enthalten. Die Namen müssen keinen Konventionen folgen, es ist aber ratsam sich auf eine gemeinsame Konvention im Team zu einigen.
