@@ -128,3 +128,39 @@ Unser Modell müssen wir somit erweitern. Ein Knoten / Commit in einem Baum kann
 So schön das Merging in der Theorie klingt, ist es in der Praxis leider nicht.
 Auch wenn git recht intelligent mit dem Zusammenführen von Änderungen umgeht, kann es immer noch zu Konflikten kommen, die dann manuell gelöst werden müssen.
 Hier fokusieren wir uns erstmal auf die Theorie und lernen später wie wir mit Konflikten umgehen.
+
+# Rebasing Branches
+
+Das einfache Zusammenführen von Branches ist nicht die einzige Möglichkeit Änderungen von der einen Branch mit der andern zu kombinieren. Git erlaubt uns auch das einfache "anhängen" von Commits aus einem Branch an einen anderen. Der Vorgang wird als **Rebase** bezeichnet.
+
+Wenn wir nun also die Commits von Branch `feature_b` an Branch `feature_a` anhängen wollen, verändert sich unser Commit-Graph wie folgt:
+
+```
+o-1 <--- o-2 (feature_a)
+  ^
+   \
+    -- o-3 (feature_b)
+
+== (rebase feature_a feature_b) ==
+
+o-1 <--- o-2 (feature_a)
+           ^
+            \
+             -- o-3 (feature_b)
+```
+
+`feature_a` besteht nun aus den Commits o-1 und o-2, während `feature_b` nun aus o-1, o-2 und o-3 besteht. `feature_a` verändert sich somit nicht.
+Auch hier kann es selbstverständlich zu Konflikten kommen, die manuell gelöst werden müssen. Dazu später mehr.
+
+# Commits
+
+Du hast Commits bereits als "Snapshots" deiner Datein kennengelernt, dass ist nicht falsch, aber auch nicht ganz vollständig. Zusätzlich zu dem Zustand deiner Datein, speichert ein Commit noch Metainformationen wie:
+
+- Autor
+- Nachricht
+- Zeitstempel
+- ...
+
+Commits sind immutable. Das bedeutet, dass Änderungen an alten Commits immer zwangsweise einen neuen Commit erstellen. Ohne diese Eigenschaft hätten wir keine klar nachfolziehbare Version History.
+
+> Jedes Mal den vollständingen Datei-Tree zu speichern ist nicht nur ineffizient, sondern auch unnötig. Um das zu verhindern, werden gleiche Dateien und Verzeichnissse nur einmal gespeichert und sind dann von mehreren Commits referenzierbar. Eine einfache Implementierung dieser Optimierung ist durch die Immutablilty der Commits möglich.
