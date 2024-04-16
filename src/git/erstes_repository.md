@@ -48,23 +48,21 @@ Jetzt haben wir genügend Theorie für den Anfang. Lass uns ein Repository erste
 
 Ein neues Repository erstellen ist oftmals hilfreich, ist aber nicht der normalfall. Meistens arbeiten wir an Projekten die von anderen bereits begonnen wurden. Um ein Repository von einem Remote zu kopieren, verwenden wir die `git clone` Funktion. Was genau ein Remote ist, lernst du später. Hier sei nur gesagt, dass ein Remote ein anderes Repository ist, das auf einem anderen Server liegt. Das kann z.B. Github sein.
 
-Wir klonen nun ein bereits bestehendes Repository von Github. Dazu suchen wir uns erst ein passendes Repository raus. Ich nehme hier das Repository vom [rust-analyzer](https://github.com/rust-lang/rust-analyzer). Wir haben immer die wahl zwischen einen SSH und einem HTTP clone. Solltest du selber an einem Projekt arbeiten wollen, empfehle ich dir den SSH clone. Ansonsten wird es später schwierig, wenn du deine Änderungen wieder zurück an den Server schicken möchstet.
+Wir klonen nun ein bereits bestehendes Repository von Github. Dazu suchen wir uns erst ein passendes Repository raus. Ich nehme hier ein für unseren Workshop erstelltes [Repository](https://github.com/leonfuss/se_workshop_example). Wir haben immer die wahl zwischen einen SSH und einem HTTP clone. Solltest du selber an einem Projekt arbeiten wollen, empfehle ich dir den SSH clone. Ansonsten wird es später schwierig, wenn du deine Änderungen wieder zurück an den Server schicken möchstet.
 
 ```bash
- $ git clone git@github.com:rust-lang/rust-analyzer.git
- > Cloning into 'rust-analyzer'...
- remote: Enumerating objects: 241212, done.
- remote: Counting objects: 100% (5583/5583), done.
- remote: Compressing objects: 100% (1805/1805), done.
- remote: Total 241212 (delta 4411), reused 4653 (delta 3671), pack-reused 235629
- Receiving objects: 100% (241212/241212), 69.32 MiB | 15.63 MiB/s, done.
- Resolving deltas: 100% (158407/158407), done.
+ $ git clone git@github.com:leonfuss/se_workshop_example.git
+ > Cloning into 'se_workshop_example'...
+ remote: Enumerating objects: 25, done.
+ remote: Counting objects: 100% (25/25), done.
+ remote: Compressing objects: 100% (13/13), done.
+ Receiving objects: 100% (25/25), 6.34 KiB | 6.34 MiB/s, done.
+ Resolving deltas: 100% (6/6), done.
+ remote: Total 25 (delta 6), reused 22 (delta 6), pack-reused 0
 ```
 
-Danach haben wir einen Ordner `rust-analyzer` erstellt, der das Repository enthält. Solltest du das Repository woanders haben wollen, kannst du alternativ auch den Pfad angeben.
+Danach haben wir einen Ordner `se_workshop_example` erstellt, der das Repository enthält. Solltest du das Repository woanders haben wollen, kannst du alternativ auch den Pfad angeben.
 
 ```bash
- $ git clone git@github.com:rust-lang/rust-analyzer.git /pfad/zu/deinem/ordner
+ $ git clone git@github.com:leonfuss/se_workshop_example.git /pfad/zu/deinem/ordner
 ```
-
-Du kannst nun Repositories erstellen und clonen. Im nächsten Kapitel lernst du, wie wir unser Repository verwalten können.
