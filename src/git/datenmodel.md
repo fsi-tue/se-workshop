@@ -108,6 +108,8 @@ Damit wir einfacher Commits referenzieren können, haben wir ihnen eine Nummer g
 
 Aus Perspektive von Branch `feature_a` existieren nur zwei Commits o-1 und o-2. Von Branch `feature_b` existier Commit o-1 und o-3.
 
+> ‼️ Commits können nur existieren, wenn sie von einem Branch direkt oder indirekt referenziert werden. Ein Commit der von keinem Branch referenziert wird, wird von git als **unreachable** bezeichnet und nach einer gewissen Zeit gelöscht.
+
 > Branch Namen müssen eindeutig sein und dürfen keine Leerzeichen enthalten. Die Namen müssen keinen Konventionen folgen, es ist aber ratsam sich auf eine gemeinsame Konvention im Team zu einigen.
 
 # Merging Branches
@@ -125,9 +127,7 @@ Hier erstellen wir einen neuen Commit (o-4) der zwei Parents besitzt: o-2 und o-
 
 Unser Modell müssen wir somit erweitern. Ein Knoten / Commit in einem Baum kann immer nur ein Parent erhalten. Unser Merge-Commit o-4 hat aber zwei Parents. In der Graphentheorie nennen wir diese neue Struktur einen **DAG** (Directed Asyclic Graph). Es hat nur eine wichtige Eigenschaft: Es gibt keine Zyklen. Das bedeutet, wenn wir den Verbindungen (Relations / Pointern) folgen, werden wir nie wieder an den selben Knoten zurückkommen.
 
-So schön und unkompliziert das Merging in der Theorie klingt, ist es in der Praxis leider nicht immer.
-Auch wenn git recht intelligent mit dem Zusammenführen von Änderungen umgeht, kann es immer noch zu Konflikten kommen, die dann manuell gelöst werden müssen.
-Hier fokusieren wir uns erstmal auf die Theorie und lernen später wie wir mit Konflikten umgehen.
+So schön und unkompliziert das Merging in der Theorie klingt, ist es in der Praxis leider nicht immer. Auch wenn git recht intelligent mit dem Zusammenführen von Änderungen umgeht, kann es immer noch zu Konflikten kommen, die dann manuell gelöst werden müssen. Hier fokusieren wir uns erstmal auf die Theorie und lernen später wie wir mit Konflikten umgehen.
 
 # Rebasing Branches
 
