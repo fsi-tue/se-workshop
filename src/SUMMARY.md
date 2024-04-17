@@ -15,10 +15,8 @@
 - [Das Datenmodel](./git/datenmodel.md)
 - [Datenmodell in Git](./git/datenmodell_git.md)
 - [Dein erstes Repository](./git/erstes_repository.md)
-- [Switch und Checkout](./git/switch_und_checkout.md)
 - [Staging und Working Area](./git/staging_working_area.md)
-
----
+- [Checkout und Reset](./git/checkout_und_reset.md)
 
 - [Git im Einsatz](./git/git_im_einsatz.md)
 - [Konflikte Lösen](./git/konflikte_loesen.md)
@@ -28,7 +26,7 @@
 
 ---
 
-- [Cheatcheat](./git/cheatcheat.md)
+- [Cheatsheet](./git/cheatsheet.md)
 
 # Softwareentwicklung
 
