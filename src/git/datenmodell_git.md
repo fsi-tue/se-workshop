@@ -63,14 +63,3 @@ Der Berg selber sind die Commits. Berge wachsen über die Zeit und werden immer 
 # Tags
 
 Schauen wir uns nochmal unsere Wanderung an. Wir folgen unserem Weg und kommen an einem besonders schönen Aussichtspunkt vorbei. Hier machen wir ein Foto mit unserem Handy. Die Geodaten von dem Punkt werden gleich mitgespeichert. Wenn wir also später das Foto anschauen, können wir genau sehen wo wir waren und mit einer Karte auch einfach wieder zurückfinden. **Tags** in git sind äquivalent zu diesem Foto. Sie sind ein Pointer auf einen bestimmten Commit damit wir diesen später einfach wieder finden können. Wir markieren damit zum Beispiel wichtige Releases oder Meilensteine. Da Tags namen besitzten können sind sie deutlich einfachere Referenzen als die komplizierten Hashes der Commits.
-
-- wie wird git repo erstellt
-- wie wird gemergt
-- wie wird gebrached
-- wie wird gecloned
-- wie wird gerebased
-- interactive rebase?
-
-```
-
-```
