@@ -17,8 +17,10 @@
 - [Dein erstes Repository](./git/erstes_repository.md)
 - [Staging und Working Area](./git/staging_working_area.md)
 - [Checkout und Reset](./git/checkout_und_reset.md)
+- [Help! I fucked up](./git/help.md)
 
 - [Git im Einsatz](./git/git_im_einsatz.md)
+- [Rebase und Cherry Picking](./git/rebase_und_cherry_picking.md)
 - [Konflikte Lösen](./git/konflikte_loesen.md)
 - [Tipps und Tricks](./git/tipps_und_tricks.md)
 
