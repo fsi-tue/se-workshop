@@ -49,15 +49,15 @@ Angenommen du hast folgende Ordnerstruktur:
 
 ```bash
  +-- ~
-    |   +-- Dokumente
-    |   |   +-- Texte
-    |   |   |   +-- text1.txt
-    |   |   |   +-- text2.txt
-    |   |   +-- Bilder
-    |   |   |   +-- bild1.jpg
-    |   |   |   +-- bild2.jpg
-    |   +-- Downloads
-    |   |   +-- download1.zip
+     +-- Dokumente
+     |   +-- Texte
+     |   |   +-- text1.txt
+     |   |   +-- text2.txt
+     |   +-- Bilder
+     |   |   +-- bild1.jpg
+     |   |   +-- bild2.jpg
+     +-- Downloads
+     |   +-- download1.zip
 ```
 
 und du befindest dich in deinem Home-Verzeichnis (`~`). Wenn du nun sehen willst was sich dort befindet, kannst du den Befehl `ls` verwenden:
