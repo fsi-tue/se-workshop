@@ -20,8 +20,8 @@
 - [Help! I fucked up](./git/help.md)
 
 - [Branching und Merging](./git/branching_und_merging.md)
-- [Rebase und Cherry Picking](./git/rebase_und_cherry_picking.md)
-- [Canging History](./git/changing_history.md)
+- [Rebasing](./git/rebase.md)
+- [Changing History](./git/changing_history.md)
 - [Tipps und Tricks](./git/tipps_und_tricks.md)
 
 - [Remotes](./git/remotes.md)
