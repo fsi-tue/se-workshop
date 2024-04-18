@@ -583,7 +583,7 @@ $ git stash list
 ```
 
 Hier sehen wir das wir zwei Stashes haben. Den oberen haben wir grade erstellt. Um die Stashes unterscheiden zu können fügt git immer die Commit Message des letzten Commits hinzu. Wahlweise kann sie auch bei der Erstellung mit der Option `-m` angegeben werden (z.B. `git stash -m "Meine Nachricht"`).
-Um einen Stash kann auf einer beliebigen Branch wiederhergestellt werden, jedoch kann es bei der Anwendung zu Konfliken kommen. Wie diese gelöst werden schauen wir uns im Kapitel [Konflikte Lösen](./git/konflikte_loesen.md) an.
+Um einen Stash kann auf einer beliebigen Branch wiederhergestellt werden, jedoch kann es bei der Anwendung zu Konfliken kommen. Wie diese gelöst werden schauen wir uns im Kapitel [Branching und Merging](./git/branching_und_merging.md) an.
 
 Um unseren Stash auf den aktuellen Working Tree und Staging Area anzuwenden verwenden wir `git stash apply`. Sollten wir nicht den letzten Stash anwenden wollen müssen wir die ID mit `git stash apply stash@{1}` angeben.
 
