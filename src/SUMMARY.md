@@ -19,9 +19,9 @@
 - [Checkout und Reset](./git/checkout_und_reset.md)
 - [Help! I fucked up](./git/help.md)
 
-- [Git im Einsatz](./git/git_im_einsatz.md)
+- [Branching und Merging](./git/branching_und_merging.md)
 - [Rebase und Cherry Picking](./git/rebase_und_cherry_picking.md)
-- [Konflikte Lösen](./git/konflikte_loesen.md)
+- [Canging History](./git/changing_history.md)
 - [Tipps und Tricks](./git/tipps_und_tricks.md)
 
 - [Remotes](./git/remotes.md)
