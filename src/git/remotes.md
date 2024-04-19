@@ -230,3 +230,9 @@ $ git branch -u origin/main
 ```
 
 > Bei einem Clone wird der Upstream automatisch für den Branch gesetzt. Das heißt für ein geclontes Repository ist `git pull` und `git push` ohne weiteres für `main` möglich.
+
+## Tipp
+
+Wenn ihr in eurem Repository einen neuen Branch erstellt habt und diesen auf den Server pushen wollt, könnt ihr das mit dem bereits bekannten `git push origin <branchname>:<branchname>` machen. Danach müsst ihr nur noch den Upstream setzten und könnt mit `git pull` und `git push` arbeiten.
+
+Identisch aber deutlich komfortabler ist der Befehlt `git push -u origin <branchname>`. Dieser erstellt den Branch auf dem Server und setzt den Upstream in einem Schritt.
