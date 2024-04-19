@@ -190,8 +190,8 @@
 
     public void setCurrentConditions(String weatherDescription) {
         this.currentConditions = weatherDescription;
-        if (weatherDescription == "rainy") {
-            emailer.sendEmail("It is rainy");
+        if (weatherDescription == &quot;rainy&quot;) {
+            emailer.sendEmail(&quot;It is rainy&quot;);
         }
     }
 }
@@ -213,21 +213,21 @@ class WeatherTracker {
 
     public void setCurrentConditions(String weatherDescription) {
         this.currentConditions = weatherDescription;
-        if (weatherDescription == "rainy") {
-            notifier.alertWeatherConditions("It is rainy");
+        if (weatherDescription == &quot;rainy&quot;) {
+            notifier.alertWeatherConditions(&quot;It is rainy&quot;);
         }
     }
 }
 
 class Emailer implements Notifier {
     public void alertWeatherConditions(String weatherDescription) {
-        System.out.println("Email sent: " + weatherDescription);
+        System.out.println(&quot;Email sent: &quot; + weatherDescription);
     }
 }
 
 class SMS implements Notifier {
     public void alertWeatherConditions(String weatherDescription) {
-        System.out.println("SMS sent: " + weatherDescription);
+        System.out.println(&quot;SMS sent: &quot; + weatherDescription);
     }
 }
 </code></pre>

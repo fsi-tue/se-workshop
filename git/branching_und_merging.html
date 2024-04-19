@@ -190,7 +190,7 @@ $ git branch feature/1
 <blockquote>
 <p>Die <code>-b</code> Flag steht hierbei für <code>branch</code>.</p>
 </blockquote>
-<p>In git gilt der Grundsatz: "Branch early, branch often". Das heißt du wirst in der Regel mit vielen Branches konfrontiert sein. Diese alle über das Log zu verfolgen ist nicht immer sinnvoll. Solltest du einfach nur wissen wollen, welche Branches es gibt, kannst du das mit dem Befehl <code>git branch</code> tun.</p>
+<p>In git gilt der Grundsatz: &quot;Branch early, branch often&quot;. Das heißt du wirst in der Regel mit vielen Branches konfrontiert sein. Diese alle über das Log zu verfolgen ist nicht immer sinnvoll. Solltest du einfach nur wissen wollen, welche Branches es gibt, kannst du das mit dem Befehl <code>git branch</code> tun.</p>
 <pre><code class="language-bash">$ git branch
 &gt; * feature/1
   main
@@ -286,7 +286,7 @@ $ git checkout feature/1
 $ cat foo.txt
 &gt; Hello Bob!
 </code></pre>
-<p>Wenn wir jetzt <code>feature/1</code> in <code>main</code> mergen wollen, wird es zwangsweise zu einem Merge-Konflikt kommen, da nicht klar ist ob es "Hello Alice" oder "Hello Bob" heißen soll.</p>
+<p>Wenn wir jetzt <code>feature/1</code> in <code>main</code> mergen wollen, wird es zwangsweise zu einem Merge-Konflikt kommen, da nicht klar ist ob es &quot;Hello Alice&quot; oder &quot;Hello Bob&quot; heißen soll.</p>
 <pre><code class="language-bash">$ git checkout main
 $ git merge feature/1
 &gt; Auto-merging foo.txt
@@ -297,14 +297,14 @@ $ git merge feature/1
 <pre><code class="language-bash">$ git status
 &gt; On branch main
   You have unmerged paths.
-    (fix conflicts and run "git commit")
-    (use "git merge --abort" to abort the merge)
+    (fix conflicts and run &quot;git commit&quot;)
+    (use &quot;git merge --abort&quot; to abort the merge)
 
   Unmerged paths:
-    (use "git add &lt;file&gt;..." to mark resolution)
+    (use &quot;git add &lt;file&gt;...&quot; to mark resolution)
 	  both modified:   foo.txt
 
-  no changes added to commit (use "git add" and/or "git commit -a")
+  no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
 
 </code></pre>
 <p>Schauen wir uns mal an wie so ein Merge-Konflikt in der Datei aussieht:</p>
@@ -321,7 +321,7 @@ $ git merge feature/1
 </code></pre>
 <p>Um git mitzuteilen, dass wir den Konflikt zu unserer Zufriedenheit gelöst haben, müssen wir die Datei <code>foo.txt</code> mit <code>git add</code> der Staging Area hinzufügen und dann einen ganz normalen Commit erstellen.</p>
 <pre><code class="language-bash">$ git add foo.txt
-$ git commit -m "Merge feature/1 into main"
+$ git commit -m &quot;Merge feature/1 into main&quot;
 </code></pre>
 <blockquote>
 <p>Solltet ihr während des Merge-Prozesses feststellen, dass ihr einen Fehler gemacht habt oder noch nicht bereit für den Merge seit, könnt ihr jederzeit den Merge mit <code>git merge --abort</code> abbrechen. Damit werden alle Änderungen zurückgestzt als ob der Merge nie angefangen wurde.</p>

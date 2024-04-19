@@ -324,13 +324,13 @@ gitGraph
   commit id: &quot;656d54&quot; type: HIGHLIGHT
   commit id: &quot;de5234&quot;
 </pre>
-<p>An sich kein Problem. Der HEAD zeigt jetzt auf den Commit <code>656d54</code> und unser Working Tree ist auf dem passenden Stand gebracht. Aber warum werden wir darauf hingeweisen dass wir jetzt in einem "detached HEAD" Zustand sind? Und was ist das überhaupt?</p>
-<p>Braches zeigen immer auf den letzten Commit ihres Zweiges. Und Branches sind die einzigen Orte an denen wir neue (erreichbare) Commits erstellen können. "detached HEAD" beschreibt also den Zustand indem wir nicht mehr direkt auf einen Branch verweisen und somit auch keinen neuen Commit erstellen sollten.</p>
+<p>An sich kein Problem. Der HEAD zeigt jetzt auf den Commit <code>656d54</code> und unser Working Tree ist auf dem passenden Stand gebracht. Aber warum werden wir darauf hingeweisen dass wir jetzt in einem &quot;detached HEAD&quot; Zustand sind? Und was ist das überhaupt?</p>
+<p>Braches zeigen immer auf den letzten Commit ihres Zweiges. Und Branches sind die einzigen Orte an denen wir neue (erreichbare) Commits erstellen können. &quot;detached HEAD&quot; beschreibt also den Zustand indem wir nicht mehr direkt auf einen Branch verweisen und somit auch keinen neuen Commit erstellen sollten.</p>
 <blockquote>
-<p>‼️ Achtung: Commits sind nur über Branches erreichbar. Im "detached HEAD" können wir zwar Commits erstellen, aber sie sind nicht erreichbar. Um sie dauerhaft erreichen zu können müssen wir sie einen neuen Branch erstellen (<code>git branch &lt;branch_name&gt;</code>). Solltet ihr das vergessen wird euch git beim nächsten Checkout auf einen Branch darauf hinweisen. Falls ihr das vergesst ist es Zeit die Seite <a href="./help.html">Help! I fucked up</a> zu lesen.</p>
+<p>‼️ Achtung: Commits sind nur über Branches erreichbar. Im &quot;detached HEAD&quot; können wir zwar Commits erstellen, aber sie sind nicht erreichbar. Um sie dauerhaft erreichen zu können müssen wir sie einen neuen Branch erstellen (<code>git branch &lt;branch_name&gt;</code>). Solltet ihr das vergessen wird euch git beim nächsten Checkout auf einen Branch darauf hinweisen. Falls ihr das vergesst ist es Zeit die Seite <a href="./help.html">Help! I fucked up</a> zu lesen.</p>
 </blockquote>
 <blockquote>
-<p>Solltet ihr noch einen ältere Version von git haben, ist der Hinweis noch deutlich dramatischer und warnt deutlich agressiver, dass Commits verloren gehen können. "detached HEAD" ist aber ein normaler Zustand und kein Grund zur Panik. Wenn ihr ihn wieder verlassen wollt, könnt ihr einfach auf einen Branch wechseln. Zum Beispiel mit <code>git checkout main</code>.</p>
+<p>Solltet ihr noch einen ältere Version von git haben, ist der Hinweis noch deutlich dramatischer und warnt deutlich agressiver, dass Commits verloren gehen können. &quot;detached HEAD&quot; ist aber ein normaler Zustand und kein Grund zur Panik. Wenn ihr ihn wieder verlassen wollt, könnt ihr einfach auf einen Branch wechseln. Zum Beispiel mit <code>git checkout main</code>.</p>
 </blockquote>
 <h3 id="relative-commits"><a class="header" href="#relative-commits">Relative Commits</a></h3>
 <p>Navigation mit Commit Hashes ist nicht immer das angenehmste. Warum sollte man eine komische Buchstaben und Zahlenkombination erst im Log raussuchen und dann eingeben um einfach einen Commit zurück zu gehen. Hier kommen Relative Pfade ins Spiel.</p>
@@ -575,7 +575,7 @@ commit id: &quot;v3&quot; type: REVERSE
     Working --&gt; v3
 </pre>
 <p>In der Staging Area und im Working Tree befinden sich nun die Änderungen aller Commits die wir zusammenfassen wollen. Jetzt müssen wir nur noch einen neuen Commit erstellen.</p>
-<pre><code class="language-bash">$ git commit -m "Squashed commit"
+<pre><code class="language-bash">$ git commit -m &quot;Squashed commit&quot;
 </code></pre>
 <pre class="mermaid">gitGraph
 
@@ -592,22 +592,22 @@ commit id: &quot;v4&quot; type: HIGHLIGHT
 <p>Beispiel:</p>
 <pre><code class="language-bash">$ git status
 &gt; Changes to be committed:
-    (use "git reset HEAD &lt;file&gt;..." to unstage)
+    (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
 
 	  modified:   bar.txt
 
   Changes not staged for commit:
-    (use "git add &lt;file&gt;..." to update what will be committed)
-    (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
+    (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+    (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
 
 	  modified:   src/foo.txt
 </code></pre>
 <p>Wir wollen jetzt Branch wechseln, aber die Änderungen in <code>src/foo.txt</code> sind noch nicht commit-bereit. Mit <code>git-stash</code> können wir die Änderungen temporär speichern.</p>
 <pre><code class="language-bash">$ git stash
 &gt; Saved working directory and index state \
-   "WIP on master: 049d078 Create index file"
+   &quot;WIP on master: 049d078 Create index file&quot;
   HEAD is now at 049d078 Create index file
-  (To restore them type "git stash apply")
+  (To restore them type &quot;git stash apply&quot;)
 </code></pre>
 <p>Working Tree und Staging Area sind jetzt wieder auf dem Stand vom letzten Commit und damit bereit den Branch zu wechseln. Wir können das mit <code>git status</code> überprüfen.</p>
 <pre><code class="language-bash">$ git status
@@ -620,19 +620,19 @@ commit id: &quot;v4&quot; type: HIGHLIGHT
 &gt; stash@{0}: WIP on master: 049d078 Create index file
 &gt; stash@{1}: WIP on master: 3923d03 Revert add file size
 </code></pre>
-<p>Hier sehen wir das wir zwei Stashes haben. Den oberen haben wir grade erstellt. Um die Stashes unterscheiden zu können fügt git immer die Commit Message des letzten Commits hinzu. Wahlweise kann sie auch bei der Erstellung mit der Option <code>-m</code> angegeben werden (z.B. <code>git stash -m "Meine Nachricht"</code>).
+<p>Hier sehen wir das wir zwei Stashes haben. Den oberen haben wir grade erstellt. Um die Stashes unterscheiden zu können fügt git immer die Commit Message des letzten Commits hinzu. Wahlweise kann sie auch bei der Erstellung mit der Option <code>-m</code> angegeben werden (z.B. <code>git stash -m &quot;Meine Nachricht&quot;</code>).
 Um einen Stash kann auf einer beliebigen Branch wiederhergestellt werden, jedoch kann es bei der Anwendung zu Konfliken kommen. Wie diese gelöst werden schauen wir uns im Kapitel <a href="./git/branching_und_merging.html">Branching und Merging</a> an.</p>
 <p>Um unseren Stash auf den aktuellen Working Tree und Staging Area anzuwenden verwenden wir <code>git stash apply</code>. Sollten wir nicht den letzten Stash anwenden wollen müssen wir die ID mit <code>git stash apply stash@{1}</code> angeben.</p>
 <pre><code class="language-bash">$ git stash apply stash@{0}
 &gt; On branch master
   Changes not staged for commit:
-    (use "git add &lt;file&gt;..." to update what will be committed)
-    (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
+    (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+    (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
 
 	  modified:   bar.txt
 	  modified:   src/foo.txt
 
-  no changes added to commit (use "git add" and/or "git commit -a")
+  no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
 </code></pre>
 <p>Wenn wir den Stash nicht mehr benötigen können wir ihn mit <code>git stash drop stash@{0}</code> löschen. Für alle Stashes funktioniert das mit <code>git stash clear</code>.</p>
 

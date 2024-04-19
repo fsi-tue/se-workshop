@@ -176,16 +176,16 @@
                         <h1 id="datenmodel"><a class="header" href="#datenmodel">Datenmodel</a></h1>
 <p>Es gibt viele verschieden Ansätze für die ein VCS zu implementieren. Git verwendet ein sehr einfaches aber durchdachtes Modell, dass uns ermöglicht Features wie Branches, Kollaboration und eine Dateihistorie zu nutzten</p>
 <h1 id="snapshots--commits"><a class="header" href="#snapshots--commits">Snapshots / Commits</a></h1>
-<p>Unser Modell beinhaltet einer Sammlung von Ordnern und Datein in einem "top-level" Ordner - ein Snapshot auch <strong>Commit</strong> genannt. Von git wird eine Datei auch als <code>blob</code> bezeichnet und ist letzendlich nur eine Sammlung aus Bytes. Das Dateiformat spielt somit keine Rolle. Ein Ordner wird als <code>tree</code> bezeichnet und ordnet einem Namen einen oder mehrere <code>blob</code>s und andere <code>tree</code>s zu. Ordner können dementsprechend andere Ordner oder Datein enthalten und sind identisch vom Aufbau zu unserem Dateisystem. Zum Beispiel:</p>
+<p>Unser Modell beinhaltet einer Sammlung von Ordnern und Datein in einem &quot;top-level&quot; Ordner - ein Snapshot auch <strong>Commit</strong> genannt. Von git wird eine Datei auch als <code>blob</code> bezeichnet und ist letzendlich nur eine Sammlung aus Bytes. Das Dateiformat spielt somit keine Rolle. Ein Ordner wird als <code>tree</code> bezeichnet und ordnet einem Namen einen oder mehrere <code>blob</code>s und andere <code>tree</code>s zu. Ordner können dementsprechend andere Ordner oder Datein enthalten und sind identisch vom Aufbau zu unserem Dateisystem. Zum Beispiel:</p>
 <pre><code>&lt;root&gt; (tree)
 |
 +- beispiel (tree)
 |  |
-|  + hello.txt (blob, contents = "hello world")
+|  + hello.txt (blob, contents = &quot;hello world&quot;)
 |
-+- inhalt.txt (blob, contents = "git ist super")
++- inhalt.txt (blob, contents = &quot;git ist super&quot;)
 </code></pre>
-<p>Der top-level <code>tree</code> referenziert den <code>tree</code> "beispiel" (der wiederum einen <code>blob</code> enhält) und den <code>blob</code> "inhalt.txt".</p>
+<p>Der top-level <code>tree</code> referenziert den <code>tree</code> &quot;beispiel&quot; (der wiederum einen <code>blob</code> enhält) und den <code>blob</code> &quot;inhalt.txt&quot;.</p>
 <h1 id="snapshots-in-relation"><a class="header" href="#snapshots-in-relation">Snapshots in Relation</a></h1>
 <p><strong>Snapshots</strong> alleine bringen uns noch keinen Mehrwert. Erst wenn wir mehrere Snapshots in Relation setzten, kommen wir unserem Ziel eines VCS näher.</p>
 <h2 id="version-history-versionsgeschichte"><a class="header" href="#version-history-versionsgeschichte">Version history (Versionsgeschichte)</a></h2>
@@ -201,7 +201,7 @@
 Dann arbeiten Alice und Bob parallel an dieser:</p>
 <p>Alice in src/datei.txt:</p>
 <pre><code>fn hello_world() {
-   print("Hello World")
+   print(&quot;Hello World&quot;)
 }
 
 fn main() {
@@ -210,15 +210,15 @@ fn main() {
 </code></pre>
 <p>Bob in src/datei.txt:</p>
 <pre><code>fn hello(name: String) {
-   print("Hello" + name)
+   print(&quot;Hello&quot; + name)
 }
 
 fn main() {
-   hello("Bob")
+   hello(&quot;Bob&quot;)
 }
 </code></pre>
 <p><code>src</code>ist unser <code>top-level</code>-Ordner.
-Beide Personen schreiben an der selben Datei. Nur die Inhalte sind leicht unterschiedlich. Alice will das klassiche "Hello World" ausgegeben, während Bob lieber den eine Begrüßung mit Namen ausgeben möchte. Wir gehen davon aus dass sich nur diese Datei in dem Ordner <code>src</code> befindet. Wenn somit beide einen Commit (=Snapshot) erstellen haben diese die Form:</p>
+Beide Personen schreiben an der selben Datei. Nur die Inhalte sind leicht unterschiedlich. Alice will das klassiche &quot;Hello World&quot; ausgegeben, während Bob lieber den eine Begrüßung mit Namen ausgeben möchte. Wir gehen davon aus dass sich nur diese Datei in dem Ordner <code>src</code> befindet. Wenn somit beide einen Commit (=Snapshot) erstellen haben diese die Form:</p>
 <pre><code>src (tree)
 |
 +- datei.txt (blob, contents = ...)
@@ -261,7 +261,7 @@ Beide Personen schreiben an der selben Datei. Nur die Inhalte sind leicht unters
 <p>Unser Modell müssen wir somit erweitern. Ein Knoten / Commit in einem Baum kann immer nur ein Parent erhalten. Unser Merge-Commit o-4 hat aber zwei Parents. In der Graphentheorie nennen wir diese neue Struktur einen <strong>DAG</strong> (Directed Asyclic Graph). Es hat nur eine wichtige Eigenschaft: Es gibt keine Zyklen. Das bedeutet, wenn wir den Verbindungen (Relations / Pointern) folgen, werden wir nie wieder an den selben Knoten zurückkommen.</p>
 <p>So schön und unkompliziert das Merging in der Theorie klingt, ist es in der Praxis leider nicht immer. Auch wenn git recht intelligent mit dem Zusammenführen von Änderungen umgeht, kann es immer noch zu Konflikten kommen, die dann manuell gelöst werden müssen. Hier fokusieren wir uns erstmal auf die Theorie und lernen später wie wir mit Konflikten umgehen.</p>
 <h1 id="rebasing-branches"><a class="header" href="#rebasing-branches">Rebasing Branches</a></h1>
-<p>Das einfache Zusammenführen von Branches ist nicht die einzige Möglichkeit Änderungen von der einen Branch mit der andern zu kombinieren. Git erlaubt uns auch das einfache "anhängen" von Commits aus einem Branch an einen anderen. Der Vorgang wird als <strong>Rebase</strong> bezeichnet.</p>
+<p>Das einfache Zusammenführen von Branches ist nicht die einzige Möglichkeit Änderungen von der einen Branch mit der andern zu kombinieren. Git erlaubt uns auch das einfache &quot;anhängen&quot; von Commits aus einem Branch an einen anderen. Der Vorgang wird als <strong>Rebase</strong> bezeichnet.</p>
 <p>Wenn wir nun also die Commits von Branch <code>feature_b</code> an Branch <code>feature_a</code> anhängen wollen, verändert sich unser Commit-Graph wie folgt:</p>
 <pre><code>o-1 &lt;--- o-2 (feature_a)
   ^
@@ -278,7 +278,7 @@ o-1 &lt;--- o-2 (feature_a)
 <p><code>feature_a</code> besteht nun aus den Commits o-1 und o-2, während <code>feature_b</code> nun aus o-1, o-2 und o-3 besteht. <code>feature_a</code> verändert sich somit nicht.
 Auch hier kann es selbstverständlich zu Konflikten kommen, die manuell gelöst werden müssen. Dazu später mehr.</p>
 <h1 id="commits"><a class="header" href="#commits">Commits</a></h1>
-<p>Du hast Commits bereits als "Snapshots" deiner Datein kennengelernt, dass ist nicht falsch, aber auch nicht ganz vollständig. Zusätzlich zu dem Zustand deiner Datein, speichert ein Commit noch Metainformationen wie:</p>
+<p>Du hast Commits bereits als &quot;Snapshots&quot; deiner Datein kennengelernt, dass ist nicht falsch, aber auch nicht ganz vollständig. Zusätzlich zu dem Zustand deiner Datein, speichert ein Commit noch Metainformationen wie:</p>
 <ul>
 <li>Autor</li>
 <li>Nachricht</li>

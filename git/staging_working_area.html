@@ -174,7 +174,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="staging-und-working-area"><a class="header" href="#staging-und-working-area">Staging und Working Area</a></h1>
-<p>Bis jetzt hat unser Datenmodell sowie unser frisch erstelltes Repository noch keinen Bezug zu unseren "normalen" Dateien, so wie wir sie aus unserem Finder oder Explorer kennen. Wir kennen unseren Commit Tree und unser Dateisystem, aber wie stehen diese miteinander in Interaktion?</p>
+<p>Bis jetzt hat unser Datenmodell sowie unser frisch erstelltes Repository noch keinen Bezug zu unseren &quot;normalen&quot; Dateien, so wie wir sie aus unserem Finder oder Explorer kennen. Wir kennen unseren Commit Tree und unser Dateisystem, aber wie stehen diese miteinander in Interaktion?</p>
 <h2 id="working-area-working-tree"><a class="header" href="#working-area-working-tree">Working Area (Working Tree)</a></h2>
 <p>Das ganz normale Dateisystem in git wird auch als Working Area bezeichnet. Wie der Name bereits indikiert, ist dies der Bereich, in dem wir wie gewohnt arbeiten. Wir erstellen Datein, löschen Datein, ändern Datein, etc. Hier ist also nahezu alles gleich - mit oder ohne git.</p>
 <h2 id="staging-area"><a class="header" href="#staging-area">Staging Area</a></h2>
@@ -198,11 +198,11 @@ Wir können das sehr schön überprüfen, indem wir uns den aktuellen Status des
   No commits yet
 
   Untracked files:
-    (use "git add &lt;file&gt;..." to include in what will be committed)
+    (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
 	  config.toml
 	  src/
 
-  nothing added to commit but untracked files present (use "git add" to track)
+  nothing added to commit but untracked files present (use &quot;git add&quot; to track)
 </code></pre>
 <p>Was sehen wir hier? Es existiert der Branch <code>main</code> und unser HEAD befindet sich akutell dort. Jedoch gibt es noch keinen Commits in unserem Repository.</p>
 <p>Git zeigt uns aber schon an, dass es Datein gibt, die noch nicht getrackt - noch nie in einem Commit festgehalten - wurden</p>
@@ -229,7 +229,7 @@ Wir können das sehr schön überprüfen, indem wir uns den aktuellen Status des
   No commits yet
 
   Changes to be committed:
-    (use "git rm --cached &lt;file&gt;..." to unstage)
+    (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
 	  new file:   config.toml
 	  new file:   src/foo/bar.txt
 	  new file:   src/foo/foo.txt
@@ -246,7 +246,7 @@ In unserem Fall möchten wir alle neu erstellten Datein in den Commit packen.</p
  create mode 100644 src/foo/foo.txt
 </code></pre>
 <p>Nachdem ihr den Befehl ausgeführt habt, öffnet sich ein Editor. Hier könnt ihr eine Commit Message schreiben. Diese sollte kurz und prägnant sein und beschreiben, was ihr in diesem Commit gemacht habt. Wenn ihr den Editor schließt, wird der Commit erstellt. Solltet ihr nur eine kurze Nachricht haben können wir diese auch direkt in der Shell hinzufügen:</p>
-<pre><code class="language-bash">  $ git commit -m "Initial commit"
+<pre><code class="language-bash">  $ git commit -m &quot;Initial commit&quot;
   &gt; [main (root-commit) 3adf051] Initial commit
    3 files changed, 0 insertions(+), 0 deletions(-)
    create mode 100644 config.toml

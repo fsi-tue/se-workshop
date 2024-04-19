@@ -180,7 +180,7 @@
 <h2 id="anforderungen"><a class="header" href="#anforderungen">Anforderungen</a></h2>
 <p>Bevor es losgeht, müssen wir uns überlegen, was genau wir eigentlich schreiben wollen. Hier reicht nicht nur eine grobe Idee, sondern es sollten ganz explizit die Use-Cases festgelegt werden.</p>
 <h4 id="beispiel"><a class="header" href="#beispiel">Beispiel</a></h4>
-<p>"Wir schreiben eine App die es ermöglicht Rezepte zu verwalten."</p>
+<p>&quot;Wir schreiben eine App die es ermöglicht Rezepte zu verwalten.&quot;</p>
 <blockquote>
 <p>Das ist eine grobe Idee und sicher nicht genug um loszulegen. Arbeitet ganz explizite Use-Cases aus</p>
 </blockquote>
@@ -283,7 +283,7 @@ fn read_data(input: &amp;str) -&gt; Vec&lt;Record&gt; {
 
 // checke ob der Dateipfad existiert und eine Datei ist
 fn is_file() -&gt; bool {
-    match std::fs::metadata("file.txt") {
+    match std::fs::metadata(&quot;file.txt&quot;) {
        Ok(it) =&gt; it.is_file(),
        Err(_) =&gt; false,
     }
