@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="de" class="sidebar-visible no-js light">
+<html lang="de" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -61,40 +61,71 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item expanded affix "><a href="../einfuehrung.html">Einführung</a></li><li class="chapter-item expanded affix "><a href="../terminal.html">Terminal / Shell</a></li><li class="chapter-item expanded affix "><li class="part-title">Git</li><li class="chapter-item expanded "><a href="../git/einfuehrung.html"><strong aria-hidden="true">1.</strong> Git?!? Was ist das eigentlich?</a></li><li class="chapter-item expanded "><a href="../git/installation.html"><strong aria-hidden="true">2.</strong> Installation und Konfiguration von Git</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../git/installation_windows.html"><strong aria-hidden="true">2.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../git/installation_macos.html"><strong aria-hidden="true">2.2.</strong> MacOS</a></li><li class="chapter-item expanded "><a href="../git/installation_linux.html"><strong aria-hidden="true">2.3.</strong> Linux</a></li></ol></li><li class="chapter-item expanded "><a href="../git/how_to_git.html"><strong aria-hidden="true">3.</strong> How to git</a></li><li class="chapter-item expanded "><a href="../git/datenmodel.html"><strong aria-hidden="true">4.</strong> Das Datenmodel</a></li><li class="chapter-item expanded "><a href="../git/datenmodell_git.html"><strong aria-hidden="true">5.</strong> Datenmodell in Git</a></li><li class="chapter-item expanded "><a href="../git/erstes_repository.html"><strong aria-hidden="true">6.</strong> Dein erstes Repository</a></li><li class="chapter-item expanded "><a href="../git/staging_working_area.html"><strong aria-hidden="true">7.</strong> Staging und Working Area</a></li><li class="chapter-item expanded "><a href="../git/checkout_und_reset.html" class="active"><strong aria-hidden="true">8.</strong> Checkout und Reset</a></li><li class="chapter-item expanded "><a href="../git/help.html"><strong aria-hidden="true">9.</strong> Help! I fucked up</a></li><li class="chapter-item expanded "><a href="../git/branching_und_merging.html"><strong aria-hidden="true">10.</strong> Branching und Merging</a></li><li class="chapter-item expanded "><a href="../git/rebase.html"><strong aria-hidden="true">11.</strong> Rebasing</a></li><li class="chapter-item expanded "><a href="../git/changing_history.html"><strong aria-hidden="true">12.</strong> Changing History</a></li><li class="chapter-item expanded "><a href="../git/tipps_und_tricks.html"><strong aria-hidden="true">13.</strong> Tipps und Tricks</a></li><li class="chapter-item expanded "><a href="../git/remotes.html"><strong aria-hidden="true">14.</strong> Remotes</a></li><li class="chapter-item expanded "><a href="../git/github_workflow.html"><strong aria-hidden="true">15.</strong> Github Workflow</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../git/cheatsheet.html"><strong aria-hidden="true">16.</strong> Cheatsheet</a></li><li class="chapter-item expanded affix "><li class="part-title">Softwareentwicklung</li><li class="chapter-item expanded "><a href="../softwareentwicklung.html"><strong aria-hidden="true">17.</strong> Softwareentwicklung</a></li><li class="chapter-item expanded "><a href="../solid.html"><strong aria-hidden="true">18.</strong> SOLID</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../solid/srp.html"><strong aria-hidden="true">18.1.</strong> Single Responsibility</a></li><li class="chapter-item expanded "><a href="../solid/ocp.html"><strong aria-hidden="true">18.2.</strong> Open Closed</a></li><li class="chapter-item expanded "><a href="../solid/lsp.html"><strong aria-hidden="true">18.3.</strong> Liskov Substitution</a></li><li class="chapter-item expanded "><a href="../solid/isp.html"><strong aria-hidden="true">18.4.</strong> Interface Segregation</a></li><li class="chapter-item expanded "><a href="../solid/dip.html"><strong aria-hidden="true">18.5.</strong> Dependency Inversion</a></li></ol></li><li class="chapter-item expanded "><a href="../code_smells.html"><strong aria-hidden="true">19.</strong> Code Smells</a></li><li class="chapter-item expanded "><a href="../scrum.html"><strong aria-hidden="true">20.</strong> SCRUM</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -186,7 +217,7 @@ $ git log
 </ul>
 <p>Die Optionen kannst du Kombineren wie du willst. Ich persönlich präferenziere die Graphen Darstellung und die einzeilige Anzeige. Das gibt mir einen guten Überblick über die Branch Struktur und die Commit Historie.</p>
 <p>Damit wir auch wirlich verstehen was hier steht können stellen wir das ganze hier einmal in unseren bereit bekannten Graphen dar. Unser Head liegt aktuell auf dem letzten Commit von <code>main</code> (umrandet):</p>
-<pre><code class="language-mermaid">---
+<pre class="mermaid">---
 title:  Commit Graph
 ---
 gitGraph
@@ -206,7 +237,7 @@ gitGraph
    checkout feature/loop
    commit id: &quot;adapted for repeated echo calls&quot;
    checkout main
-</code></pre>
+</pre>
 <p>Hier haben wir der Klarheit halber die Commit Messages als Commit ID verwendet. Das sollte dir helfen zu verstehen wie die Commits in der Historie zueinander stehen. Normalerweise würden wir hier die Commit Hashes verwenden.</p>
 <blockquote>
 <p>Wollen wir nur die Commits eines bestimmten Files sehen, können wir das mit <code>git log &lt;file_name&gt;</code> tun.</p>
@@ -222,11 +253,11 @@ gitGraph
 <p>Was wir machen können, wenn das nicht der Fall ist siehst du <a href="./checkout_und_reset.html#stashing">hier</a></p>
 </blockquote>
 <p>Hast du noch unser Diagramm zu Working und Commit Tree sowie der Stashing Area im Kopf?:</p>
-<pre><code class="language-mermaid">sequenceDiagram
+<pre class="mermaid">sequenceDiagram
    Working Tree -&gt;&gt; Staging Area: git add &lt;file&gt;
    Staging Area -&gt;&gt; Commit Tree: git commit
    Commit Tree --&gt;&gt; Working Tree: git checkout
-</code></pre>
+</pre>
 <p>Hier gab es schon einen kleinen Hinweis darauf was passiert, wenn wir um Commit Tree herumwandern. Jedes Mal wenn wir uns einen vergangen Commit ansehen, wird der Inhalt des Working Tree auf den Stand des ausgewählten Commits gebracht. In der git Welt nennen wir das <code>checkout</code>.
 Diese Überschreibung unseres Working Trees ist auch der Grund warum wir immer darauf achten sollten, dass unser Working Tree sauber ist bevor wir uns in der Historie bewegen. Sollten wir ungespeicherte (nicht commited) Änderungen haben, werden diese überschrieben. Aber keine Sorge: git lässt uns nicht einfach in den Abgrund laufen. Sollten wir ungespeicherte Änderungen haben, wird uns einen wechsel verweigern bis wir einen cleanen Working Tree haben.</p>
 <blockquote>
@@ -239,7 +270,7 @@ Diese Überschreibung unseres Working Trees ist auch der Grund warum wir immer d
 </ol>
 <p>Erinnerst du dich wie Braches immer auf den aktuellsten Branch ihres Zweiges zeigen? Wenn wir auf dem Branch Commiten wir auch der Branch Pointer auf den letzen Commit verschoben. Ähnlich zum Branch ist auch der HEAD nur ein Pointer. Setzen wir den Pointer auf einen Branch und der Branch bewegt sich, wird auch der HEAD auf den neuen Commit gesetzt. Wenn hingegen der HEAD direkt auf einen Commit zeigt, bleibt er dort stehen.</p>
 <p>Lass uns erstmal den HEAD auf einen Branch setzten. Das ist der weitaus häufigere Anwendungsfall:</p>
-<pre><code class="language-mermaid">---
+<pre class="mermaid">---
 title:  Commit Graph - HEAD auf main
 ---
 gitGraph
@@ -251,10 +282,10 @@ gitGraph
    checkout main
    commit id: &quot;656d54&quot;
    commit id: &quot;de5234&quot; type: HIGHLIGHT
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git checkout feature/1
 </code></pre>
-<pre><code class="language-mermaid">---
+<pre class="mermaid">---
 title:  Commit Graph - HEAD auf feature/1
 ---
 gitGraph
@@ -266,7 +297,7 @@ gitGraph
   checkout main
   commit id: &quot;656d54&quot;
   commit id: &quot;de5234&quot;
-</code></pre>
+</pre>
 <p>Passend zu unserem HEAD wir auch immer das Working Directory auf den Stand des HEADs gebracht. Das bedeutet, dass wir jetzt die Dateien aus dem Commit <code>feature/1</code> im Working Directory haben.</p>
 <p>Was passiert wenn wir den HEAD direkt auf einen Commit setzten?</p>
 <p>Bewegen wir uns doch auf einen Commit:</p>
@@ -280,7 +311,7 @@ gitGraph
 
     HEAD is now at 656d54
 </code></pre>
-<pre><code class="language-mermaid">---
+<pre class="mermaid">---
 title:  Commit Graph - HEAD auf feature/1
 ---
 gitGraph
@@ -292,20 +323,20 @@ gitGraph
   checkout main
   commit id: &quot;656d54&quot; type: HIGHLIGHT
   commit id: &quot;de5234&quot;
-</code></pre>
-<p>An sich kein Problem. Der HEAD zeigt jetzt auf den Commit <code>656d54</code> und unser Working Tree ist auf dem passenden Stand gebracht. Aber warum werden wir darauf hingeweisen dass wir jetzt in einem &quot;detached HEAD&quot; Zustand sind? Und was ist das überhaupt?</p>
-<p>Braches zeigen immer auf den letzten Commit ihres Zweiges. Und Branches sind die einzigen Orte an denen wir neue (erreichbare) Commits erstellen können. &quot;detached HEAD&quot; beschreibt also den Zustand indem wir nicht mehr direkt auf einen Branch verweisen und somit auch keinen neuen Commit erstellen sollten.</p>
+</pre>
+<p>An sich kein Problem. Der HEAD zeigt jetzt auf den Commit <code>656d54</code> und unser Working Tree ist auf dem passenden Stand gebracht. Aber warum werden wir darauf hingeweisen dass wir jetzt in einem "detached HEAD" Zustand sind? Und was ist das überhaupt?</p>
+<p>Braches zeigen immer auf den letzten Commit ihres Zweiges. Und Branches sind die einzigen Orte an denen wir neue (erreichbare) Commits erstellen können. "detached HEAD" beschreibt also den Zustand indem wir nicht mehr direkt auf einen Branch verweisen und somit auch keinen neuen Commit erstellen sollten.</p>
 <blockquote>
-<p>‼️ Achtung: Commits sind nur über Branches erreichbar. Im &quot;detached HEAD&quot; können wir zwar Commits erstellen, aber sie sind nicht erreichbar. Um sie dauerhaft erreichen zu können müssen wir sie einen neuen Branch erstellen (<code>git branch &lt;branch_name&gt;</code>). Solltet ihr das vergessen wird euch git beim nächsten Checkout auf einen Branch darauf hinweisen. Falls ihr das vergesst ist es Zeit die Seite <a href="./help.html">Help! I fucked up</a> zu lesen.</p>
+<p>‼️ Achtung: Commits sind nur über Branches erreichbar. Im "detached HEAD" können wir zwar Commits erstellen, aber sie sind nicht erreichbar. Um sie dauerhaft erreichen zu können müssen wir sie einen neuen Branch erstellen (<code>git branch &lt;branch_name&gt;</code>). Solltet ihr das vergessen wird euch git beim nächsten Checkout auf einen Branch darauf hinweisen. Falls ihr das vergesst ist es Zeit die Seite <a href="./help.html">Help! I fucked up</a> zu lesen.</p>
 </blockquote>
 <blockquote>
-<p>Solltet ihr noch einen ältere Version von git haben, ist der Hinweis noch deutlich dramatischer und warnt deutlich agressiver, dass Commits verloren gehen können. &quot;detached HEAD&quot; ist aber ein normaler Zustand und kein Grund zur Panik. Wenn ihr ihn wieder verlassen wollt, könnt ihr einfach auf einen Branch wechseln. Zum Beispiel mit <code>git checkout main</code>.</p>
+<p>Solltet ihr noch einen ältere Version von git haben, ist der Hinweis noch deutlich dramatischer und warnt deutlich agressiver, dass Commits verloren gehen können. "detached HEAD" ist aber ein normaler Zustand und kein Grund zur Panik. Wenn ihr ihn wieder verlassen wollt, könnt ihr einfach auf einen Branch wechseln. Zum Beispiel mit <code>git checkout main</code>.</p>
 </blockquote>
 <h3 id="relative-commits"><a class="header" href="#relative-commits">Relative Commits</a></h3>
 <p>Navigation mit Commit Hashes ist nicht immer das angenehmste. Warum sollte man eine komische Buchstaben und Zahlenkombination erst im Log raussuchen und dann eingeben um einfach einen Commit zurück zu gehen. Hier kommen Relative Pfade ins Spiel.</p>
 <p>Mit <code>&lt;branch/commit&gt;~</code> bzw. <code>&lt;branch/commit&gt;~n</code> kannst du einen bzw <code>n</code>-Schritte dem Commit Graphen folgen.</p>
 <p>Schauen wir uns ein Beispiel an.</p>
-<pre><code class="language-mermaid">---
+<pre class="mermaid">---
 title:  Commit Graph - HEAD auf main
 ---
 gitGraph
@@ -319,10 +350,10 @@ gitGraph
   commit id: &quot;de5234&quot;
   merge feature/1
   commit id: &quot;a1b2c3&quot; type: HIGHLIGHT
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git checkout main~3
 </code></pre>
-<pre><code class="language-mermaid">---
+<pre class="mermaid">---
 title:  Commit Graph - HEAD auf 656d54
 ---
 gitGraph
@@ -336,9 +367,9 @@ gitGraph
   commit id: &quot;de5234&quot;
   merge feature/1
   commit id: &quot;a1b2c3&quot;
-</code></pre>
+</pre>
 <p>Aber wie kommen wir bei einem Merge Commit auf den richtigen Commit? Schließlich führt ein Merge Commit auf zwei verschiedene Commits zurück. Unser bereits bekannter <code>~</code>-Operator wählt hier immer den Hauptstrang - auf den gemergt wurde - aus. Wenn wir den anderen Zweit auswählen wollen, können wir den <code>^</code>-Operator verwenden.</p>
-<pre><code class="language-mermaid">---
+<pre class="mermaid">---
 title:  Commit Graph - HEAD auf main
 ---
 gitGraph
@@ -352,13 +383,13 @@ gitGraph
   commit id: &quot;de5234&quot;
   merge feature/1
   commit id: &quot;a1b2c3&quot; type: HIGHLIGHT
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git checkout main~1^~
 </code></pre>
 <blockquote>
 <p><code>~</code> folgt dem Hauptstrang, <code>^</code> folgt dem Nebenstrang Strang. Aber <code>^n</code> folgt nicht solange dem Hauptstrang bis es einen Nebenstrang gibt, sondern versucht den <code>n</code>-ten Elternknoten zu finden. Das spielt erst eine Rolle wenn ein merge mehr als zwei Eltern hat.</p>
 </blockquote>
-<pre><code class="language-mermaid">---
+<pre class="mermaid">---
 title:  Commit Graph - HEAD auf main
 ---
 gitGraph
@@ -372,7 +403,7 @@ gitGraph
   commit id: &quot;de5234&quot;
   merge feature/1
   commit id: &quot;a1b2c3&quot;
-</code></pre>
+</pre>
 <h1 id="reset"><a class="header" href="#reset">Reset</a></h1>
 <p>Du hast Änderungen commited die du nicht commiten wolltest? Der Staging Area zu viel hinzugefügt? Euer Softwareprojekt läuft seit deinen letzten Änderungen gar nicht mehr? Dann bist du hier richtig. Alles was du gemacht hast lässt sich auch wieder Rückgängig machen.</p>
 <p>Reset gibt es in verschiedenen Formen:</p>
@@ -384,90 +415,90 @@ gitGraph
 <p>Ähnlich zu Checkout verändert Reset den Working Tree sowie die Staging Area. Aber im Gegensatz zu Checkout scheint Reset nur den HEAD zu verändern. In Wirklichkeit verschiebt Reset nur den zugrundeliegenden Branch und damit indirekt auch den HEAD. Dieser Unterschied ist wichtig. Während wir einen Checkout durch einen anderen Checkout sehr einfach rückgängig machen können, ist das beim Reset komplizierter, da wir keine Branch mehr haben die auf die alten Commits zeigt. Sollte dir das aus Versehen passieren, lies dir die Seite <a href="./help.html">Help! I fucked up</a> durch.</p>
 <h3 id="soft-reset"><a class="header" href="#soft-reset">Soft Reset</a></h3>
 <p>Ein Soft Reset verändert nur den Branch Pointer und hat ansonsten keine Auswirkungen. Somit setzt es nur den letzten Commit Befehl zurück. Die Staging Area enthält alles was in dem Commit enthalten war. Wir schauen uns das ganze an einem Beispiel an.</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot;
 commit id: &quot;v2&quot;
 commit id: &quot;v3&quot; type: HIGHLIGHT
-</code></pre>
-<pre><code class="language-mermaid">stateDiagram-v2
+</pre>
+<pre class="mermaid">stateDiagram-v2
     HEAD --&gt; v3
     Staging --&gt; v3
     Working --&gt; v3
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git reset --soft HEAD~
 </code></pre>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot;
 commit id: &quot;v2&quot; type: HIGHLIGHT
 commit id: &quot;v3&quot; type: REVERSE
-</code></pre>
-<pre><code class="language-mermaid">stateDiagram-v2
+</pre>
+<pre class="mermaid">stateDiagram-v2
     HEAD --&gt; v2
     Staging --&gt; v3
     Working --&gt; v3
-</code></pre>
+</pre>
 <blockquote>
 <p>Alle git Befehle können auch immer mit relativen Commit Referenzen (<code>~</code> und <code>^</code>) aufgerufen werden. Grade bei Reset bietet sich das an, weil man meist nur wenige Commits zurück will. Zum Beispiel <code>git reset --soft HEAD~</code></p>
 </blockquote>
 <h3 id="mixed-reset"><a class="header" href="#mixed-reset">Mixed Reset</a></h3>
 <p>Bei einem Mixed Reset wird wie zurvor auch beim Soft Reset zunächst der HEAD auf den angegebenen Commit zurückgesetzt. Danach wird der neue HEAD in die Staging Area geladen. Somit wird der letzte Commit rückgängig gemacht und auch die Staging Area wird geleert. Alle Änderungen im Working Tree bleiben erhalten.</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot;
 commit id: &quot;v2&quot;
 commit id: &quot;v3&quot; type: HIGHLIGHT
-</code></pre>
-<pre><code class="language-mermaid">stateDiagram-v2
+</pre>
+<pre class="mermaid">stateDiagram-v2
     HEAD --&gt; v3
     Staging --&gt; v3
     Working --&gt; v3
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git reset --mixed HEAD~
 # oder
 $ git reset HEAD~
 </code></pre>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot;
 commit id: &quot;v2&quot; type: HIGHLIGHT
 commit id: &quot;v3&quot; type: REVERSE
-</code></pre>
-<pre><code class="language-mermaid">stateDiagram-v2
+</pre>
+<pre class="mermaid">stateDiagram-v2
     HEAD --&gt; v2
     Staging --&gt; v2
     Working --&gt; v3
-</code></pre>
+</pre>
 <h3 id="hard-reset"><a class="header" href="#hard-reset">Hard Reset</a></h3>
 <p>Ein Hard Reset ist die weitgehendste Form des Resets. Hier wird der HEAD auf den angegebenen Commit gesetzt und die Staging Area, sowie der Working Tree mit diesem Commit überschrieben.</p>
 <blockquote>
 <p>Achtung: Uncommitede Änderungen im Workiung Directory gehen vollständig verloren. Dies ist der einzige Befehl mit dem git Dateien unwiederbringlich löscht. Bitte gehe mit Option <code>--hard</code> vorsichtig um.</p>
 </blockquote>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot;
 commit id: &quot;v2&quot;
 commit id: &quot;v3&quot; type: HIGHLIGHT
-</code></pre>
-<pre><code class="language-mermaid">stateDiagram-v2
+</pre>
+<pre class="mermaid">stateDiagram-v2
     HEAD --&gt; v3
     Staging --&gt; v3
     Working --&gt; v3
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git reset --hard HEAD~
 </code></pre>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot;
 commit id: &quot;v2&quot; type: HIGHLIGHT
 commit id: &quot;v3&quot; type: REVERSE
-</code></pre>
-<pre><code class="language-mermaid">stateDiagram-v2
+</pre>
+<pre class="mermaid">stateDiagram-v2
     HEAD --&gt; v2
     Staging --&gt; v2
     Working --&gt; v2
-</code></pre>
+</pre>
 <p>In keinem der Fälle wird ein Commit direkt gelöscht. Wie du einen reseteten Commit wiederherstellen kannst, erfährst du <a href="./help.html">hier</a>.</p>
 <h2 id="reset-mit-dateipfad"><a class="header" href="#reset-mit-dateipfad">Reset mit Dateipfad</a></h2>
 <p>Reset kann zusätzlich zu dem Commit auch mit einem Dateipfad aufgerufen werden. Der Syntax dafür schaut wie folgt aus:</p>
@@ -479,26 +510,26 @@ commit id: &quot;v3&quot; type: REVERSE
 Wer es noch kürzer mag, kann auch das HEAD weglassen. <code>git reset &lt;file&gt;</code> hat den gleichen Effekt.</p>
 </blockquote>
 <p>In unserem Beispiel setzten mir die Datei <code>file.txt</code> auf den Stand des letzten Commits zurück.</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot;
 commit id: &quot;v2&quot;
 commit id: &quot;v3&quot; type: HIGHLIGHT
-</code></pre>
-<pre><code class="language-mermaid">stateDiagram-v2
+</pre>
+<pre class="mermaid">stateDiagram-v2
     HEAD --&gt; v3
     Staging --&gt; v3
     Working --&gt; v3
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git reset HEAD~ foo.txt
 </code></pre>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot;
 commit id: &quot;v2&quot; type: HIGHLIGHT
 commit id: &quot;v3&quot; type: REVERSE
-</code></pre>
-<pre><code class="language-mermaid">stateDiagram-v2
+</pre>
+<pre class="mermaid">stateDiagram-v2
 
     x: v3
     y: v3
@@ -507,7 +538,7 @@ commit id: &quot;v3&quot; type: REVERSE
     HEAD --&gt; y
     Staging --&gt; z
     Working --&gt; x
-</code></pre>
+</pre>
 <blockquote>
 <p>Soft Reset macht mit Dateinamen keinen Sinn, da der Pointer auf den Branch bleibt.</p>
 </blockquote>
@@ -519,38 +550,38 @@ commit id: &quot;v3&quot; type: REVERSE
 <li>Neuer Commit erstellen</li>
 </ol>
 <p>In unserem Beispiel wollen wir die letzten beiden Commits zusammenfassen.</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot;
 commit id: &quot;v2&quot;
 commit id: &quot;v3&quot; type: HIGHLIGHT
-</code></pre>
-<pre><code class="language-mermaid">stateDiagram-v2
+</pre>
+<pre class="mermaid">stateDiagram-v2
     HEAD --&gt; v3
     Staging --&gt; v3
     Working --&gt; v3
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git reset --soft HEAD~2
 </code></pre>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot; type: HIGHLIGHT
 commit id: &quot;v2&quot; type: REVERSE
 commit id: &quot;v3&quot; type: REVERSE
-</code></pre>
-<pre><code class="language-mermaid">stateDiagram-v2
+</pre>
+<pre class="mermaid">stateDiagram-v2
     HEAD --&gt; v1
     Staging --&gt; v3
     Working --&gt; v3
-</code></pre>
+</pre>
 <p>In der Staging Area und im Working Tree befinden sich nun die Änderungen aller Commits die wir zusammenfassen wollen. Jetzt müssen wir nur noch einen neuen Commit erstellen.</p>
-<pre><code class="language-bash">$ git commit -m &quot;Squashed commit&quot;
+<pre><code class="language-bash">$ git commit -m "Squashed commit"
 </code></pre>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot;
 commit id: &quot;v4&quot; type: HIGHLIGHT
-</code></pre>
+</pre>
 <p>Wir haben erfolgreich die letzten beiden Commits in einen Commit zusammengefasst.</p>
 <h1 id="stashing"><a class="header" href="#stashing">Stashing</a></h1>
 <ul>
@@ -561,22 +592,22 @@ commit id: &quot;v4&quot; type: HIGHLIGHT
 <p>Beispiel:</p>
 <pre><code class="language-bash">$ git status
 &gt; Changes to be committed:
-    (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+    (use "git reset HEAD &lt;file&gt;..." to unstage)
 
 	  modified:   bar.txt
 
   Changes not staged for commit:
-    (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
-    (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+    (use "git add &lt;file&gt;..." to update what will be committed)
+    (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
 
 	  modified:   src/foo.txt
 </code></pre>
 <p>Wir wollen jetzt Branch wechseln, aber die Änderungen in <code>src/foo.txt</code> sind noch nicht commit-bereit. Mit <code>git-stash</code> können wir die Änderungen temporär speichern.</p>
 <pre><code class="language-bash">$ git stash
 &gt; Saved working directory and index state \
-   &quot;WIP on master: 049d078 Create index file&quot;
+   "WIP on master: 049d078 Create index file"
   HEAD is now at 049d078 Create index file
-  (To restore them type &quot;git stash apply&quot;)
+  (To restore them type "git stash apply")
 </code></pre>
 <p>Working Tree und Staging Area sind jetzt wieder auf dem Stand vom letzten Commit und damit bereit den Branch zu wechseln. Wir können das mit <code>git status</code> überprüfen.</p>
 <pre><code class="language-bash">$ git status
@@ -589,19 +620,19 @@ commit id: &quot;v4&quot; type: HIGHLIGHT
 &gt; stash@{0}: WIP on master: 049d078 Create index file
 &gt; stash@{1}: WIP on master: 3923d03 Revert add file size
 </code></pre>
-<p>Hier sehen wir das wir zwei Stashes haben. Den oberen haben wir grade erstellt. Um die Stashes unterscheiden zu können fügt git immer die Commit Message des letzten Commits hinzu. Wahlweise kann sie auch bei der Erstellung mit der Option <code>-m</code> angegeben werden (z.B. <code>git stash -m &quot;Meine Nachricht&quot;</code>).
+<p>Hier sehen wir das wir zwei Stashes haben. Den oberen haben wir grade erstellt. Um die Stashes unterscheiden zu können fügt git immer die Commit Message des letzten Commits hinzu. Wahlweise kann sie auch bei der Erstellung mit der Option <code>-m</code> angegeben werden (z.B. <code>git stash -m "Meine Nachricht"</code>).
 Um einen Stash kann auf einer beliebigen Branch wiederhergestellt werden, jedoch kann es bei der Anwendung zu Konfliken kommen. Wie diese gelöst werden schauen wir uns im Kapitel <a href="./git/branching_und_merging.html">Branching und Merging</a> an.</p>
 <p>Um unseren Stash auf den aktuellen Working Tree und Staging Area anzuwenden verwenden wir <code>git stash apply</code>. Sollten wir nicht den letzten Stash anwenden wollen müssen wir die ID mit <code>git stash apply stash@{1}</code> angeben.</p>
 <pre><code class="language-bash">$ git stash apply stash@{0}
 &gt; On branch master
   Changes not staged for commit:
-    (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
-    (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+    (use "git add &lt;file&gt;..." to update what will be committed)
+    (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
 
 	  modified:   bar.txt
 	  modified:   src/foo.txt
 
-  no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+  no changes added to commit (use "git add" and/or "git commit -a")
 </code></pre>
 <p>Wenn wir den Stash nicht mehr benötigen können wir ihn mit <code>git stash drop stash@{0}</code> löschen. Für alle Stashes funktioniert das mit <code>git stash clear</code>.</p>
 
@@ -613,7 +644,7 @@ Um einen Stash kann auf einer beliebigen Branch wiederhergestellt werden, jedoch
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../git/help.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../git/help.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -627,7 +658,7 @@ Um einen Stash kann auf einer beliebigen Branch wiederhergestellt werden, jedoch
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../git/help.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../git/help.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

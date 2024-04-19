@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
-<html lang="de" class="sidebar-visible no-js light">
+<html lang="de" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Software Engineering / Teamprojekt Reference</title>
-        <meta name="robots" content="noindex" />
+        <meta name="robots" content="noindex">
 
 
         <!-- Custom HTML head -->
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -32,7 +32,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -62,40 +62,71 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item expanded affix "><a href="einfuehrung.html">Einführung</a></li><li class="chapter-item expanded affix "><a href="terminal.html">Terminal / Shell</a></li><li class="chapter-item expanded affix "><li class="part-title">Git</li><li class="chapter-item expanded "><a href="git/einfuehrung.html"><strong aria-hidden="true">1.</strong> Git?!? Was ist das eigentlich?</a></li><li class="chapter-item expanded "><a href="git/installation.html"><strong aria-hidden="true">2.</strong> Installation und Konfiguration von Git</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="git/installation_windows.html"><strong aria-hidden="true">2.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="git/installation_macos.html"><strong aria-hidden="true">2.2.</strong> MacOS</a></li><li class="chapter-item expanded "><a href="git/installation_linux.html"><strong aria-hidden="true">2.3.</strong> Linux</a></li></ol></li><li class="chapter-item expanded "><a href="git/how_to_git.html"><strong aria-hidden="true">3.</strong> How to git</a></li><li class="chapter-item expanded "><a href="git/datenmodel.html"><strong aria-hidden="true">4.</strong> Das Datenmodel</a></li><li class="chapter-item expanded "><a href="git/datenmodell_git.html"><strong aria-hidden="true">5.</strong> Datenmodell in Git</a></li><li class="chapter-item expanded "><a href="git/erstes_repository.html"><strong aria-hidden="true">6.</strong> Dein erstes Repository</a></li><li class="chapter-item expanded "><a href="git/staging_working_area.html"><strong aria-hidden="true">7.</strong> Staging und Working Area</a></li><li class="chapter-item expanded "><a href="git/checkout_und_reset.html"><strong aria-hidden="true">8.</strong> Checkout und Reset</a></li><li class="chapter-item expanded "><a href="git/help.html"><strong aria-hidden="true">9.</strong> Help! I fucked up</a></li><li class="chapter-item expanded "><a href="git/branching_und_merging.html"><strong aria-hidden="true">10.</strong> Branching und Merging</a></li><li class="chapter-item expanded "><a href="git/rebase.html"><strong aria-hidden="true">11.</strong> Rebasing</a></li><li class="chapter-item expanded "><a href="git/changing_history.html"><strong aria-hidden="true">12.</strong> Changing History</a></li><li class="chapter-item expanded "><a href="git/tipps_und_tricks.html"><strong aria-hidden="true">13.</strong> Tipps und Tricks</a></li><li class="chapter-item expanded "><a href="git/remotes.html"><strong aria-hidden="true">14.</strong> Remotes</a></li><li class="chapter-item expanded "><a href="git/github_workflow.html"><strong aria-hidden="true">15.</strong> Github Workflow</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="git/cheatsheet.html"><strong aria-hidden="true">16.</strong> Cheatsheet</a></li><li class="chapter-item expanded affix "><li class="part-title">Softwareentwicklung</li><li class="chapter-item expanded "><a href="softwareentwicklung.html"><strong aria-hidden="true">17.</strong> Softwareentwicklung</a></li><li class="chapter-item expanded "><a href="solid.html"><strong aria-hidden="true">18.</strong> SOLID</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="solid/srp.html"><strong aria-hidden="true">18.1.</strong> Single Responsibility</a></li><li class="chapter-item expanded "><a href="solid/ocp.html"><strong aria-hidden="true">18.2.</strong> Open Closed</a></li><li class="chapter-item expanded "><a href="solid/lsp.html"><strong aria-hidden="true">18.3.</strong> Liskov Substitution</a></li><li class="chapter-item expanded "><a href="solid/isp.html"><strong aria-hidden="true">18.4.</strong> Interface Segregation</a></li><li class="chapter-item expanded "><a href="solid/dip.html"><strong aria-hidden="true">18.5.</strong> Dependency Inversion</a></li></ol></li><li class="chapter-item expanded "><a href="code_smells.html"><strong aria-hidden="true">19.</strong> Code Smells</a></li><li class="chapter-item expanded "><a href="scrum.html"><strong aria-hidden="true">20.</strong> SCRUM</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -158,7 +189,7 @@ zugrundeliegenden Datenmodells, sowie die sichere Anwendung der wichtigsten Befe
 darin enthaltenen Abstraktionsmechanismen qualitativ hochwertigen Code zu schreiben. SOLID ist ein Akronym für fünf Designprinzipien, die die Erstellung von Software erleichtern und die Wartbarkeit und Erweiterbarkeit des Codes verbessern.</p>
 </li>
 <li>
-<p><strong>Code-Smells</strong>: Lerne gängige &quot;Code Smells&quot; zu erkennen und zu beheben. &quot;Code Smells&quot; sind Anzeichen im Quellcode, die möglicherweise tiefer liegende Probleme signalisieren. Identifiziert und überarbeite schlechten Code, um die Qualität und Lesbarkeit eures Projekts zu verbessern.</p>
+<p><strong>Code-Smells</strong>: Lerne gängige "Code Smells" zu erkennen und zu beheben. "Code Smells" sind Anzeichen im Quellcode, die möglicherweise tiefer liegende Probleme signalisieren. Identifiziert und überarbeite schlechten Code, um die Qualität und Lesbarkeit eures Projekts zu verbessern.</p>
 </li>
 <li>
 <p><strong>SCRUM</strong>: Lerne die grundlagen von Agilem Projektmanagement und Scrum. Die Methodik ist weitverbreitet und unterstützt Teams dabei, in iterativen Sprints effizeint und produktiv zu arbeiten.</p>
@@ -175,13 +206,13 @@ darin enthaltenen Abstraktionsmechanismen qualitativ hochwertigen Code zu schrei
 <blockquote>
 <p><strong>Terminal</strong> und <strong>Shell</strong> werden oft synonym verwndet auch wenn sie nicht ganz das gleiche sind. Das <strong>Terminal</strong> ist ein Programm, das es ermöglicht, mit einer <strong>Shell</strong> zu interagieren. Die <strong>Shell</strong> ist das eigentliche Programm, das die Befehle ausführt.</p>
 </blockquote>
-<p>In unserem Workshop liegt der Fokus auf der Bourne Again SHell, kurz &quot;bash&quot;. Sie ist eine der am weitesten verbreiteten Shells und ihre Syntax ist ähnlich zu vielen anderern Shells. Um eine Shell-Prompt zu öffnen (in der du Befehle eingeben kannst), benötigst du zunächst ein Terminal. Auf deinem Gerät ist wahrscheinlich bereits eines installiert. (Nutzte auf Windows das Programm &quot;Git Bash&quot;)</p>
+<p>In unserem Workshop liegt der Fokus auf der Bourne Again SHell, kurz "bash". Sie ist eine der am weitesten verbreiteten Shells und ihre Syntax ist ähnlich zu vielen anderern Shells. Um eine Shell-Prompt zu öffnen (in der du Befehle eingeben kannst), benötigst du zunächst ein Terminal. Auf deinem Gerät ist wahrscheinlich bereits eines installiert. (Nutzte auf Windows das Programm "Git Bash")</p>
 <h2 id="die-shell-nutzen"><a class="header" href="#die-shell-nutzen">Die Shell nutzen</a></h2>
 <p>Wenn du dein Terminal öffnest, siehst du eine <strong>prompt</strong> die so oder ähnlich aussieht:</p>
 <pre><code class="language-bash">arch:~$
 </code></pre>
-<p>&quot;arch&quot; ist der Name des Computers, &quot;~&quot; ist das <strong>cwd</strong> (current working directory) bzw. aktuelles Verzeichnis und &quot;$&quot; signalisiert, dass du als normaler Benutzer angemeldet bist. (Adminastrator hat ein &quot;#&quot;).
-Das &quot;~&quot; ist eine Abkürzung für dein Home-Verzeichnis. auf Unix-Systemen ist das <code>/home/deinBenutzername/</code> und auf Windows <code>C:\Users\deinBenutzername\</code>.</p>
+<p>"arch" ist der Name des Computers, "~" ist das <strong>cwd</strong> (current working directory) bzw. aktuelles Verzeichnis und "$" signalisiert, dass du als normaler Benutzer angemeldet bist. (Adminastrator hat ein "#").
+Das "~" ist eine Abkürzung für dein Home-Verzeichnis. auf Unix-Systemen ist das <code>/home/deinBenutzername/</code> und auf Windows <code>C:\Users\deinBenutzername\</code>.</p>
 <blockquote>
 <p>Im Laufe des Workshops werden immer wieder Befehle gezeigt, die du in deinem Terminal ausführen kannst. Sie haben immer die gleiche Form:</p>
 <pre><code class="language-bash">$ cat datei.txt
@@ -282,8 +313,8 @@ weniger verbreitet und wird in der Regel nur in speziellen Anwendungsfällen ein
 </ul>
 <h1 id="konfiguration"><a class="header" href="#konfiguration">Konfiguration</a></h1>
 <p>Die restliche Konfiguration läuft analog zu der auf Linux.</p>
-<pre><code class="language-bash">$ git config --global user.name &quot;Dein Name&quot;
-$ git config --global user.email &quot;deine@email.de&quot;
+<pre><code class="language-bash">$ git config --global user.name "Dein Name"
+$ git config --global user.email "deine@email.de"
 $ git config --global init.defaultBranch main
 $ git config --global color.ui auto
 </code></pre>
@@ -304,26 +335,26 @@ $ git config --global color.ui auto
 <h3 id="2-konfiguration"><a class="header" href="#2-konfiguration">2. Konfiguration</a></h3>
 <p>Folge nun der restlichen Konfiguartion <a href="git/./installation.html#Konfiguration">hier</a></p>
 <h3 id="tipps"><a class="header" href="#tipps">Tipps</a></h3>
-<p>Wenn ihr Windows benutzt und euch gewundert habt, warum ihr keine Dateien mit &quot;.&quot;-Präfix seht (z.B. &quot;.git&quot;, &quot;.gitconfig&quot;, etc.) bzw. mit &quot;.&quot;-Suffix (z.B. &quot;.txt&quot;, &quot;.mp4&quot;, etc.), dann könnt ihr das folgendermaßen ändern:</p>
+<p>Wenn ihr Windows benutzt und euch gewundert habt, warum ihr keine Dateien mit "."-Präfix seht (z.B. ".git", ".gitconfig", etc.) bzw. mit "."-Suffix (z.B. ".txt", ".mp4", etc.), dann könnt ihr das folgendermaßen ändern:</p>
 <ol>
 <li>
-<p>Sucht nach den &quot;Explorer-Optionen&quot; (entweder über das Suchfeld in den Einstellungen oder indem ihr mit dem Rechtsklick auf den Explorer klickt und auf &quot;Eigenschaften&quot; klickt).</p>
+<p>Sucht nach den "Explorer-Optionen" (entweder über das Suchfeld in den Einstellungen oder indem ihr mit dem Rechtsklick auf den Explorer klickt und auf "Eigenschaften" klickt).</p>
 </li>
 <li>
-<p>Klickt in dem neu geöffneten Fenster auf den Reiter &quot;Ansicht&quot;</p>
+<p>Klickt in dem neu geöffneten Fenster auf den Reiter "Ansicht"</p>
 </li>
 <li>
-<p>Deaktiviert &quot;Erweiterungen bei bekannten Dateitypen ausblenden&quot;</p>
+<p>Deaktiviert "Erweiterungen bei bekannten Dateitypen ausblenden"</p>
 </li>
 <li>
-<p>Wechselt die Option von &quot;Ausgeblendete Dateien, Ordner oder Laufwerke nicht anzeigen&quot; zu &quot;Ausgeblendete Dateien, Ordner oder Laufwerke anzeigen&quot;</p>
+<p>Wechselt die Option von "Ausgeblendete Dateien, Ordner oder Laufwerke nicht anzeigen" zu "Ausgeblendete Dateien, Ordner oder Laufwerke anzeigen"</p>
 </li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installation-auf-macos"><a class="header" href="#installation-auf-macos">Installation auf MacOS</a></h1>
 <h2 id="homebrew"><a class="header" href="#homebrew">Homebrew</a></h2>
 <p>Falls noch nicht der inoffiziellen (aber sehr verbreitete) Paketmanager <a href="https://brew.sh/">homebrew</a> auf deinem MacBook installiert ist, ist jetzt der Zeitpunkt. <code>brew</code> ermöglicht die einfache Installation von Software und wird dir noch oft in der Entwicklung auf MacOS begegnen.j</p>
 <p>Die Installation ist sehr simple. Kopiere den folgenden Befehl in dein Terminal und folgen den angezeigten Anweisungen.</p>
-<pre><code class="language-bash">$ /bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+<pre><code class="language-bash">$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 </code></pre>
 <blockquote>
 <p>Das <code>$</code> Zeichen wird verwendet um zu signalisieren, dass der folgende Befehl im Terminal auszuführen ist und ist nicht Teil des Befehls.</p>
@@ -360,16 +391,16 @@ $ git config --global color.ui auto
 <div style="break-before: page; page-break-before: always;"></div><h1 id="datenmodel"><a class="header" href="#datenmodel">Datenmodel</a></h1>
 <p>Es gibt viele verschieden Ansätze für die ein VCS zu implementieren. Git verwendet ein sehr einfaches aber durchdachtes Modell, dass uns ermöglicht Features wie Branches, Kollaboration und eine Dateihistorie zu nutzten</p>
 <h1 id="snapshots--commits"><a class="header" href="#snapshots--commits">Snapshots / Commits</a></h1>
-<p>Unser Modell beinhaltet einer Sammlung von Ordnern und Datein in einem &quot;top-level&quot; Ordner - ein Snapshot auch <strong>Commit</strong> genannt. Von git wird eine Datei auch als <code>blob</code> bezeichnet und ist letzendlich nur eine Sammlung aus Bytes. Das Dateiformat spielt somit keine Rolle. Ein Ordner wird als <code>tree</code> bezeichnet und ordnet einem Namen einen oder mehrere <code>blob</code>s und andere <code>tree</code>s zu. Ordner können dementsprechend andere Ordner oder Datein enthalten und sind identisch vom Aufbau zu unserem Dateisystem. Zum Beispiel:</p>
+<p>Unser Modell beinhaltet einer Sammlung von Ordnern und Datein in einem "top-level" Ordner - ein Snapshot auch <strong>Commit</strong> genannt. Von git wird eine Datei auch als <code>blob</code> bezeichnet und ist letzendlich nur eine Sammlung aus Bytes. Das Dateiformat spielt somit keine Rolle. Ein Ordner wird als <code>tree</code> bezeichnet und ordnet einem Namen einen oder mehrere <code>blob</code>s und andere <code>tree</code>s zu. Ordner können dementsprechend andere Ordner oder Datein enthalten und sind identisch vom Aufbau zu unserem Dateisystem. Zum Beispiel:</p>
 <pre><code>&lt;root&gt; (tree)
 |
 +- beispiel (tree)
 |  |
-|  + hello.txt (blob, contents = &quot;hello world&quot;)
+|  + hello.txt (blob, contents = "hello world")
 |
-+- inhalt.txt (blob, contents = &quot;git ist super&quot;)
++- inhalt.txt (blob, contents = "git ist super")
 </code></pre>
-<p>Der top-level <code>tree</code> referenziert den <code>tree</code> &quot;beispiel&quot; (der wiederum einen <code>blob</code> enhält) und den <code>blob</code> &quot;inhalt.txt&quot;.</p>
+<p>Der top-level <code>tree</code> referenziert den <code>tree</code> "beispiel" (der wiederum einen <code>blob</code> enhält) und den <code>blob</code> "inhalt.txt".</p>
 <h1 id="snapshots-in-relation"><a class="header" href="#snapshots-in-relation">Snapshots in Relation</a></h1>
 <p><strong>Snapshots</strong> alleine bringen uns noch keinen Mehrwert. Erst wenn wir mehrere Snapshots in Relation setzten, kommen wir unserem Ziel eines VCS näher.</p>
 <h2 id="version-history-versionsgeschichte"><a class="header" href="#version-history-versionsgeschichte">Version history (Versionsgeschichte)</a></h2>
@@ -385,7 +416,7 @@ $ git config --global color.ui auto
 Dann arbeiten Alice und Bob parallel an dieser:</p>
 <p>Alice in src/datei.txt:</p>
 <pre><code>fn hello_world() {
-   print(&quot;Hello World&quot;)
+   print("Hello World")
 }
 
 fn main() {
@@ -394,15 +425,15 @@ fn main() {
 </code></pre>
 <p>Bob in src/datei.txt:</p>
 <pre><code>fn hello(name: String) {
-   print(&quot;Hello&quot; + name)
+   print("Hello" + name)
 }
 
 fn main() {
-   hello(&quot;Bob&quot;)
+   hello("Bob")
 }
 </code></pre>
 <p><code>src</code>ist unser <code>top-level</code>-Ordner.
-Beide Personen schreiben an der selben Datei. Nur die Inhalte sind leicht unterschiedlich. Alice will das klassiche &quot;Hello World&quot; ausgegeben, während Bob lieber den eine Begrüßung mit Namen ausgeben möchte. Wir gehen davon aus dass sich nur diese Datei in dem Ordner <code>src</code> befindet. Wenn somit beide einen Commit (=Snapshot) erstellen haben diese die Form:</p>
+Beide Personen schreiben an der selben Datei. Nur die Inhalte sind leicht unterschiedlich. Alice will das klassiche "Hello World" ausgegeben, während Bob lieber den eine Begrüßung mit Namen ausgeben möchte. Wir gehen davon aus dass sich nur diese Datei in dem Ordner <code>src</code> befindet. Wenn somit beide einen Commit (=Snapshot) erstellen haben diese die Form:</p>
 <pre><code>src (tree)
 |
 +- datei.txt (blob, contents = ...)
@@ -445,7 +476,7 @@ Beide Personen schreiben an der selben Datei. Nur die Inhalte sind leicht unters
 <p>Unser Modell müssen wir somit erweitern. Ein Knoten / Commit in einem Baum kann immer nur ein Parent erhalten. Unser Merge-Commit o-4 hat aber zwei Parents. In der Graphentheorie nennen wir diese neue Struktur einen <strong>DAG</strong> (Directed Asyclic Graph). Es hat nur eine wichtige Eigenschaft: Es gibt keine Zyklen. Das bedeutet, wenn wir den Verbindungen (Relations / Pointern) folgen, werden wir nie wieder an den selben Knoten zurückkommen.</p>
 <p>So schön und unkompliziert das Merging in der Theorie klingt, ist es in der Praxis leider nicht immer. Auch wenn git recht intelligent mit dem Zusammenführen von Änderungen umgeht, kann es immer noch zu Konflikten kommen, die dann manuell gelöst werden müssen. Hier fokusieren wir uns erstmal auf die Theorie und lernen später wie wir mit Konflikten umgehen.</p>
 <h1 id="rebasing-branches"><a class="header" href="#rebasing-branches">Rebasing Branches</a></h1>
-<p>Das einfache Zusammenführen von Branches ist nicht die einzige Möglichkeit Änderungen von der einen Branch mit der andern zu kombinieren. Git erlaubt uns auch das einfache &quot;anhängen&quot; von Commits aus einem Branch an einen anderen. Der Vorgang wird als <strong>Rebase</strong> bezeichnet.</p>
+<p>Das einfache Zusammenführen von Branches ist nicht die einzige Möglichkeit Änderungen von der einen Branch mit der andern zu kombinieren. Git erlaubt uns auch das einfache "anhängen" von Commits aus einem Branch an einen anderen. Der Vorgang wird als <strong>Rebase</strong> bezeichnet.</p>
 <p>Wenn wir nun also die Commits von Branch <code>feature_b</code> an Branch <code>feature_a</code> anhängen wollen, verändert sich unser Commit-Graph wie folgt:</p>
 <pre><code>o-1 &lt;--- o-2 (feature_a)
   ^
@@ -462,7 +493,7 @@ o-1 &lt;--- o-2 (feature_a)
 <p><code>feature_a</code> besteht nun aus den Commits o-1 und o-2, während <code>feature_b</code> nun aus o-1, o-2 und o-3 besteht. <code>feature_a</code> verändert sich somit nicht.
 Auch hier kann es selbstverständlich zu Konflikten kommen, die manuell gelöst werden müssen. Dazu später mehr.</p>
 <h1 id="commits"><a class="header" href="#commits">Commits</a></h1>
-<p>Du hast Commits bereits als &quot;Snapshots&quot; deiner Datein kennengelernt, dass ist nicht falsch, aber auch nicht ganz vollständig. Zusätzlich zu dem Zustand deiner Datein, speichert ein Commit noch Metainformationen wie:</p>
+<p>Du hast Commits bereits als "Snapshots" deiner Datein kennengelernt, dass ist nicht falsch, aber auch nicht ganz vollständig. Zusätzlich zu dem Zustand deiner Datein, speichert ein Commit noch Metainformationen wie:</p>
 <ul>
 <li>Autor</li>
 <li>Nachricht</li>
@@ -565,7 +596,7 @@ Navigiere jetzt in das Verzeichnis.</p>
 <pre><code class="language-bash"> $ git clone git@github.com:leonfuss/se_workshop_example.git /pfad/zu/deinem/ordner
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="staging-und-working-area"><a class="header" href="#staging-und-working-area">Staging und Working Area</a></h1>
-<p>Bis jetzt hat unser Datenmodell sowie unser frisch erstelltes Repository noch keinen Bezug zu unseren &quot;normalen&quot; Dateien, so wie wir sie aus unserem Finder oder Explorer kennen. Wir kennen unseren Commit Tree und unser Dateisystem, aber wie stehen diese miteinander in Interaktion?</p>
+<p>Bis jetzt hat unser Datenmodell sowie unser frisch erstelltes Repository noch keinen Bezug zu unseren "normalen" Dateien, so wie wir sie aus unserem Finder oder Explorer kennen. Wir kennen unseren Commit Tree und unser Dateisystem, aber wie stehen diese miteinander in Interaktion?</p>
 <h2 id="working-area-working-tree"><a class="header" href="#working-area-working-tree">Working Area (Working Tree)</a></h2>
 <p>Das ganz normale Dateisystem in git wird auch als Working Area bezeichnet. Wie der Name bereits indikiert, ist dies der Bereich, in dem wir wie gewohnt arbeiten. Wir erstellen Datein, löschen Datein, ändern Datein, etc. Hier ist also nahezu alles gleich - mit oder ohne git.</p>
 <h2 id="staging-area"><a class="header" href="#staging-area">Staging Area</a></h2>
@@ -589,11 +620,11 @@ Wir können das sehr schön überprüfen, indem wir uns den aktuellen Status des
   No commits yet
 
   Untracked files:
-    (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+    (use "git add &lt;file&gt;..." to include in what will be committed)
 	  config.toml
 	  src/
 
-  nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+  nothing added to commit but untracked files present (use "git add" to track)
 </code></pre>
 <p>Was sehen wir hier? Es existiert der Branch <code>main</code> und unser HEAD befindet sich akutell dort. Jedoch gibt es noch keinen Commits in unserem Repository.</p>
 <p>Git zeigt uns aber schon an, dass es Datein gibt, die noch nicht getrackt - noch nie in einem Commit festgehalten - wurden</p>
@@ -620,7 +651,7 @@ Wir können das sehr schön überprüfen, indem wir uns den aktuellen Status des
   No commits yet
 
   Changes to be committed:
-    (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+    (use "git rm --cached &lt;file&gt;..." to unstage)
 	  new file:   config.toml
 	  new file:   src/foo/bar.txt
 	  new file:   src/foo/foo.txt
@@ -637,7 +668,7 @@ In unserem Fall möchten wir alle neu erstellten Datein in den Commit packen.</p
  create mode 100644 src/foo/foo.txt
 </code></pre>
 <p>Nachdem ihr den Befehl ausgeführt habt, öffnet sich ein Editor. Hier könnt ihr eine Commit Message schreiben. Diese sollte kurz und prägnant sein und beschreiben, was ihr in diesem Commit gemacht habt. Wenn ihr den Editor schließt, wird der Commit erstellt. Solltet ihr nur eine kurze Nachricht haben können wir diese auch direkt in der Shell hinzufügen:</p>
-<pre><code class="language-bash">  $ git commit -m &quot;Initial commit&quot;
+<pre><code class="language-bash">  $ git commit -m "Initial commit"
   &gt; [main (root-commit) 3adf051] Initial commit
    3 files changed, 0 insertions(+), 0 deletions(-)
    create mode 100644 config.toml
@@ -651,12 +682,12 @@ In unserem Fall möchten wir alle neu erstellten Datein in den Commit packen.</p
   nothing to commit, working tree clean
 </code></pre>
 <p>Unsere Staging Area ist leer und in unserer Working Area (working tree) gibt es keine Änderungen im Vergleich zum letzten Commit.</p>
-<pre><code class="language-mermaid">sequenceDiagram
+<pre class="mermaid">sequenceDiagram
    Working Tree -&gt;&gt; Staging Area: git add &lt;file&gt;
    Staging Area -&gt;&gt; Commit Tree: git commit
    Commit Tree --&gt;&gt; Working Tree: git checkout
    Staging Area --&gt;&gt;  Working Tree: git reset (--mixed)
-</code></pre>
+</pre>
 <p>Die ersten Schritte vom Working Tree zum Commit Tree kennen wir ja schon. Aber was passiert, wenn wir einen Fehler gemacht haben und die Datei wieder aus der Staging Area entfernen wollen? Oder wir auf unseren letzten Commit zurück wollen? Das und viels mehr schauen wir uns auf der nächsten Seite an.</p>
 <blockquote>
 <p>Was machen wir mit Datein, die wir niemals Tracken wollen. Zum Beispiel weil sie sensible Informationen enthalten oder viel zu groß sind? Dafür gibt es die <code>.gitignore</code> Datei. In dieser Datei können wir Datein oder Ordner angeben, die git vollständig ignorieren soll. Einfach die Datei im top-level Ordner des Repositories erstellen und die Datein oder Ordner angeben, die ignoriert werden sollen. Mehr dazu in der <a href="https://git-scm.com/docs/gitignore">Dokumentation</a>.</p>
@@ -705,7 +736,7 @@ $ git log
 </ul>
 <p>Die Optionen kannst du Kombineren wie du willst. Ich persönlich präferenziere die Graphen Darstellung und die einzeilige Anzeige. Das gibt mir einen guten Überblick über die Branch Struktur und die Commit Historie.</p>
 <p>Damit wir auch wirlich verstehen was hier steht können stellen wir das ganze hier einmal in unseren bereit bekannten Graphen dar. Unser Head liegt aktuell auf dem letzten Commit von <code>main</code> (umrandet):</p>
-<pre><code class="language-mermaid">---
+<pre class="mermaid">---
 title:  Commit Graph
 ---
 gitGraph
@@ -725,7 +756,7 @@ gitGraph
    checkout feature/loop
    commit id: &quot;adapted for repeated echo calls&quot;
    checkout main
-</code></pre>
+</pre>
 <p>Hier haben wir der Klarheit halber die Commit Messages als Commit ID verwendet. Das sollte dir helfen zu verstehen wie die Commits in der Historie zueinander stehen. Normalerweise würden wir hier die Commit Hashes verwenden.</p>
 <blockquote>
 <p>Wollen wir nur die Commits eines bestimmten Files sehen, können wir das mit <code>git log &lt;file_name&gt;</code> tun.</p>
@@ -741,11 +772,11 @@ gitGraph
 <p>Was wir machen können, wenn das nicht der Fall ist siehst du <a href="git/./checkout_und_reset.html#stashing">hier</a></p>
 </blockquote>
 <p>Hast du noch unser Diagramm zu Working und Commit Tree sowie der Stashing Area im Kopf?:</p>
-<pre><code class="language-mermaid">sequenceDiagram
+<pre class="mermaid">sequenceDiagram
    Working Tree -&gt;&gt; Staging Area: git add &lt;file&gt;
    Staging Area -&gt;&gt; Commit Tree: git commit
    Commit Tree --&gt;&gt; Working Tree: git checkout
-</code></pre>
+</pre>
 <p>Hier gab es schon einen kleinen Hinweis darauf was passiert, wenn wir um Commit Tree herumwandern. Jedes Mal wenn wir uns einen vergangen Commit ansehen, wird der Inhalt des Working Tree auf den Stand des ausgewählten Commits gebracht. In der git Welt nennen wir das <code>checkout</code>.
 Diese Überschreibung unseres Working Trees ist auch der Grund warum wir immer darauf achten sollten, dass unser Working Tree sauber ist bevor wir uns in der Historie bewegen. Sollten wir ungespeicherte (nicht commited) Änderungen haben, werden diese überschrieben. Aber keine Sorge: git lässt uns nicht einfach in den Abgrund laufen. Sollten wir ungespeicherte Änderungen haben, wird uns einen wechsel verweigern bis wir einen cleanen Working Tree haben.</p>
 <blockquote>
@@ -758,7 +789,7 @@ Diese Überschreibung unseres Working Trees ist auch der Grund warum wir immer d
 </ol>
 <p>Erinnerst du dich wie Braches immer auf den aktuellsten Branch ihres Zweiges zeigen? Wenn wir auf dem Branch Commiten wir auch der Branch Pointer auf den letzen Commit verschoben. Ähnlich zum Branch ist auch der HEAD nur ein Pointer. Setzen wir den Pointer auf einen Branch und der Branch bewegt sich, wird auch der HEAD auf den neuen Commit gesetzt. Wenn hingegen der HEAD direkt auf einen Commit zeigt, bleibt er dort stehen.</p>
 <p>Lass uns erstmal den HEAD auf einen Branch setzten. Das ist der weitaus häufigere Anwendungsfall:</p>
-<pre><code class="language-mermaid">---
+<pre class="mermaid">---
 title:  Commit Graph - HEAD auf main
 ---
 gitGraph
@@ -770,10 +801,10 @@ gitGraph
    checkout main
    commit id: &quot;656d54&quot;
    commit id: &quot;de5234&quot; type: HIGHLIGHT
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git checkout feature/1
 </code></pre>
-<pre><code class="language-mermaid">---
+<pre class="mermaid">---
 title:  Commit Graph - HEAD auf feature/1
 ---
 gitGraph
@@ -785,7 +816,7 @@ gitGraph
   checkout main
   commit id: &quot;656d54&quot;
   commit id: &quot;de5234&quot;
-</code></pre>
+</pre>
 <p>Passend zu unserem HEAD wir auch immer das Working Directory auf den Stand des HEADs gebracht. Das bedeutet, dass wir jetzt die Dateien aus dem Commit <code>feature/1</code> im Working Directory haben.</p>
 <p>Was passiert wenn wir den HEAD direkt auf einen Commit setzten?</p>
 <p>Bewegen wir uns doch auf einen Commit:</p>
@@ -799,7 +830,7 @@ gitGraph
 
     HEAD is now at 656d54
 </code></pre>
-<pre><code class="language-mermaid">---
+<pre class="mermaid">---
 title:  Commit Graph - HEAD auf feature/1
 ---
 gitGraph
@@ -811,20 +842,20 @@ gitGraph
   checkout main
   commit id: &quot;656d54&quot; type: HIGHLIGHT
   commit id: &quot;de5234&quot;
-</code></pre>
-<p>An sich kein Problem. Der HEAD zeigt jetzt auf den Commit <code>656d54</code> und unser Working Tree ist auf dem passenden Stand gebracht. Aber warum werden wir darauf hingeweisen dass wir jetzt in einem &quot;detached HEAD&quot; Zustand sind? Und was ist das überhaupt?</p>
-<p>Braches zeigen immer auf den letzten Commit ihres Zweiges. Und Branches sind die einzigen Orte an denen wir neue (erreichbare) Commits erstellen können. &quot;detached HEAD&quot; beschreibt also den Zustand indem wir nicht mehr direkt auf einen Branch verweisen und somit auch keinen neuen Commit erstellen sollten.</p>
+</pre>
+<p>An sich kein Problem. Der HEAD zeigt jetzt auf den Commit <code>656d54</code> und unser Working Tree ist auf dem passenden Stand gebracht. Aber warum werden wir darauf hingeweisen dass wir jetzt in einem "detached HEAD" Zustand sind? Und was ist das überhaupt?</p>
+<p>Braches zeigen immer auf den letzten Commit ihres Zweiges. Und Branches sind die einzigen Orte an denen wir neue (erreichbare) Commits erstellen können. "detached HEAD" beschreibt also den Zustand indem wir nicht mehr direkt auf einen Branch verweisen und somit auch keinen neuen Commit erstellen sollten.</p>
 <blockquote>
-<p>‼️ Achtung: Commits sind nur über Branches erreichbar. Im &quot;detached HEAD&quot; können wir zwar Commits erstellen, aber sie sind nicht erreichbar. Um sie dauerhaft erreichen zu können müssen wir sie einen neuen Branch erstellen (<code>git branch &lt;branch_name&gt;</code>). Solltet ihr das vergessen wird euch git beim nächsten Checkout auf einen Branch darauf hinweisen. Falls ihr das vergesst ist es Zeit die Seite <a href="git/./help.html">Help! I fucked up</a> zu lesen.</p>
+<p>‼️ Achtung: Commits sind nur über Branches erreichbar. Im "detached HEAD" können wir zwar Commits erstellen, aber sie sind nicht erreichbar. Um sie dauerhaft erreichen zu können müssen wir sie einen neuen Branch erstellen (<code>git branch &lt;branch_name&gt;</code>). Solltet ihr das vergessen wird euch git beim nächsten Checkout auf einen Branch darauf hinweisen. Falls ihr das vergesst ist es Zeit die Seite <a href="git/./help.html">Help! I fucked up</a> zu lesen.</p>
 </blockquote>
 <blockquote>
-<p>Solltet ihr noch einen ältere Version von git haben, ist der Hinweis noch deutlich dramatischer und warnt deutlich agressiver, dass Commits verloren gehen können. &quot;detached HEAD&quot; ist aber ein normaler Zustand und kein Grund zur Panik. Wenn ihr ihn wieder verlassen wollt, könnt ihr einfach auf einen Branch wechseln. Zum Beispiel mit <code>git checkout main</code>.</p>
+<p>Solltet ihr noch einen ältere Version von git haben, ist der Hinweis noch deutlich dramatischer und warnt deutlich agressiver, dass Commits verloren gehen können. "detached HEAD" ist aber ein normaler Zustand und kein Grund zur Panik. Wenn ihr ihn wieder verlassen wollt, könnt ihr einfach auf einen Branch wechseln. Zum Beispiel mit <code>git checkout main</code>.</p>
 </blockquote>
 <h3 id="relative-commits"><a class="header" href="#relative-commits">Relative Commits</a></h3>
 <p>Navigation mit Commit Hashes ist nicht immer das angenehmste. Warum sollte man eine komische Buchstaben und Zahlenkombination erst im Log raussuchen und dann eingeben um einfach einen Commit zurück zu gehen. Hier kommen Relative Pfade ins Spiel.</p>
 <p>Mit <code>&lt;branch/commit&gt;~</code> bzw. <code>&lt;branch/commit&gt;~n</code> kannst du einen bzw <code>n</code>-Schritte dem Commit Graphen folgen.</p>
 <p>Schauen wir uns ein Beispiel an.</p>
-<pre><code class="language-mermaid">---
+<pre class="mermaid">---
 title:  Commit Graph - HEAD auf main
 ---
 gitGraph
@@ -838,10 +869,10 @@ gitGraph
   commit id: &quot;de5234&quot;
   merge feature/1
   commit id: &quot;a1b2c3&quot; type: HIGHLIGHT
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git checkout main~3
 </code></pre>
-<pre><code class="language-mermaid">---
+<pre class="mermaid">---
 title:  Commit Graph - HEAD auf 656d54
 ---
 gitGraph
@@ -855,9 +886,9 @@ gitGraph
   commit id: &quot;de5234&quot;
   merge feature/1
   commit id: &quot;a1b2c3&quot;
-</code></pre>
+</pre>
 <p>Aber wie kommen wir bei einem Merge Commit auf den richtigen Commit? Schließlich führt ein Merge Commit auf zwei verschiedene Commits zurück. Unser bereits bekannter <code>~</code>-Operator wählt hier immer den Hauptstrang - auf den gemergt wurde - aus. Wenn wir den anderen Zweit auswählen wollen, können wir den <code>^</code>-Operator verwenden.</p>
-<pre><code class="language-mermaid">---
+<pre class="mermaid">---
 title:  Commit Graph - HEAD auf main
 ---
 gitGraph
@@ -871,13 +902,13 @@ gitGraph
   commit id: &quot;de5234&quot;
   merge feature/1
   commit id: &quot;a1b2c3&quot; type: HIGHLIGHT
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git checkout main~1^~
 </code></pre>
 <blockquote>
 <p><code>~</code> folgt dem Hauptstrang, <code>^</code> folgt dem Nebenstrang Strang. Aber <code>^n</code> folgt nicht solange dem Hauptstrang bis es einen Nebenstrang gibt, sondern versucht den <code>n</code>-ten Elternknoten zu finden. Das spielt erst eine Rolle wenn ein merge mehr als zwei Eltern hat.</p>
 </blockquote>
-<pre><code class="language-mermaid">---
+<pre class="mermaid">---
 title:  Commit Graph - HEAD auf main
 ---
 gitGraph
@@ -891,7 +922,7 @@ gitGraph
   commit id: &quot;de5234&quot;
   merge feature/1
   commit id: &quot;a1b2c3&quot;
-</code></pre>
+</pre>
 <h1 id="reset"><a class="header" href="#reset">Reset</a></h1>
 <p>Du hast Änderungen commited die du nicht commiten wolltest? Der Staging Area zu viel hinzugefügt? Euer Softwareprojekt läuft seit deinen letzten Änderungen gar nicht mehr? Dann bist du hier richtig. Alles was du gemacht hast lässt sich auch wieder Rückgängig machen.</p>
 <p>Reset gibt es in verschiedenen Formen:</p>
@@ -903,90 +934,90 @@ gitGraph
 <p>Ähnlich zu Checkout verändert Reset den Working Tree sowie die Staging Area. Aber im Gegensatz zu Checkout scheint Reset nur den HEAD zu verändern. In Wirklichkeit verschiebt Reset nur den zugrundeliegenden Branch und damit indirekt auch den HEAD. Dieser Unterschied ist wichtig. Während wir einen Checkout durch einen anderen Checkout sehr einfach rückgängig machen können, ist das beim Reset komplizierter, da wir keine Branch mehr haben die auf die alten Commits zeigt. Sollte dir das aus Versehen passieren, lies dir die Seite <a href="git/./help.html">Help! I fucked up</a> durch.</p>
 <h3 id="soft-reset"><a class="header" href="#soft-reset">Soft Reset</a></h3>
 <p>Ein Soft Reset verändert nur den Branch Pointer und hat ansonsten keine Auswirkungen. Somit setzt es nur den letzten Commit Befehl zurück. Die Staging Area enthält alles was in dem Commit enthalten war. Wir schauen uns das ganze an einem Beispiel an.</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot;
 commit id: &quot;v2&quot;
 commit id: &quot;v3&quot; type: HIGHLIGHT
-</code></pre>
-<pre><code class="language-mermaid">stateDiagram-v2
+</pre>
+<pre class="mermaid">stateDiagram-v2
     HEAD --&gt; v3
     Staging --&gt; v3
     Working --&gt; v3
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git reset --soft HEAD~
 </code></pre>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot;
 commit id: &quot;v2&quot; type: HIGHLIGHT
 commit id: &quot;v3&quot; type: REVERSE
-</code></pre>
-<pre><code class="language-mermaid">stateDiagram-v2
+</pre>
+<pre class="mermaid">stateDiagram-v2
     HEAD --&gt; v2
     Staging --&gt; v3
     Working --&gt; v3
-</code></pre>
+</pre>
 <blockquote>
 <p>Alle git Befehle können auch immer mit relativen Commit Referenzen (<code>~</code> und <code>^</code>) aufgerufen werden. Grade bei Reset bietet sich das an, weil man meist nur wenige Commits zurück will. Zum Beispiel <code>git reset --soft HEAD~</code></p>
 </blockquote>
 <h3 id="mixed-reset"><a class="header" href="#mixed-reset">Mixed Reset</a></h3>
 <p>Bei einem Mixed Reset wird wie zurvor auch beim Soft Reset zunächst der HEAD auf den angegebenen Commit zurückgesetzt. Danach wird der neue HEAD in die Staging Area geladen. Somit wird der letzte Commit rückgängig gemacht und auch die Staging Area wird geleert. Alle Änderungen im Working Tree bleiben erhalten.</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot;
 commit id: &quot;v2&quot;
 commit id: &quot;v3&quot; type: HIGHLIGHT
-</code></pre>
-<pre><code class="language-mermaid">stateDiagram-v2
+</pre>
+<pre class="mermaid">stateDiagram-v2
     HEAD --&gt; v3
     Staging --&gt; v3
     Working --&gt; v3
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git reset --mixed HEAD~
 # oder
 $ git reset HEAD~
 </code></pre>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot;
 commit id: &quot;v2&quot; type: HIGHLIGHT
 commit id: &quot;v3&quot; type: REVERSE
-</code></pre>
-<pre><code class="language-mermaid">stateDiagram-v2
+</pre>
+<pre class="mermaid">stateDiagram-v2
     HEAD --&gt; v2
     Staging --&gt; v2
     Working --&gt; v3
-</code></pre>
+</pre>
 <h3 id="hard-reset"><a class="header" href="#hard-reset">Hard Reset</a></h3>
 <p>Ein Hard Reset ist die weitgehendste Form des Resets. Hier wird der HEAD auf den angegebenen Commit gesetzt und die Staging Area, sowie der Working Tree mit diesem Commit überschrieben.</p>
 <blockquote>
 <p>Achtung: Uncommitede Änderungen im Workiung Directory gehen vollständig verloren. Dies ist der einzige Befehl mit dem git Dateien unwiederbringlich löscht. Bitte gehe mit Option <code>--hard</code> vorsichtig um.</p>
 </blockquote>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot;
 commit id: &quot;v2&quot;
 commit id: &quot;v3&quot; type: HIGHLIGHT
-</code></pre>
-<pre><code class="language-mermaid">stateDiagram-v2
+</pre>
+<pre class="mermaid">stateDiagram-v2
     HEAD --&gt; v3
     Staging --&gt; v3
     Working --&gt; v3
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git reset --hard HEAD~
 </code></pre>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot;
 commit id: &quot;v2&quot; type: HIGHLIGHT
 commit id: &quot;v3&quot; type: REVERSE
-</code></pre>
-<pre><code class="language-mermaid">stateDiagram-v2
+</pre>
+<pre class="mermaid">stateDiagram-v2
     HEAD --&gt; v2
     Staging --&gt; v2
     Working --&gt; v2
-</code></pre>
+</pre>
 <p>In keinem der Fälle wird ein Commit direkt gelöscht. Wie du einen reseteten Commit wiederherstellen kannst, erfährst du <a href="git/./help.html">hier</a>.</p>
 <h2 id="reset-mit-dateipfad"><a class="header" href="#reset-mit-dateipfad">Reset mit Dateipfad</a></h2>
 <p>Reset kann zusätzlich zu dem Commit auch mit einem Dateipfad aufgerufen werden. Der Syntax dafür schaut wie folgt aus:</p>
@@ -998,26 +1029,26 @@ commit id: &quot;v3&quot; type: REVERSE
 Wer es noch kürzer mag, kann auch das HEAD weglassen. <code>git reset &lt;file&gt;</code> hat den gleichen Effekt.</p>
 </blockquote>
 <p>In unserem Beispiel setzten mir die Datei <code>file.txt</code> auf den Stand des letzten Commits zurück.</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot;
 commit id: &quot;v2&quot;
 commit id: &quot;v3&quot; type: HIGHLIGHT
-</code></pre>
-<pre><code class="language-mermaid">stateDiagram-v2
+</pre>
+<pre class="mermaid">stateDiagram-v2
     HEAD --&gt; v3
     Staging --&gt; v3
     Working --&gt; v3
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git reset HEAD~ foo.txt
 </code></pre>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot;
 commit id: &quot;v2&quot; type: HIGHLIGHT
 commit id: &quot;v3&quot; type: REVERSE
-</code></pre>
-<pre><code class="language-mermaid">stateDiagram-v2
+</pre>
+<pre class="mermaid">stateDiagram-v2
 
     x: v3
     y: v3
@@ -1026,7 +1057,7 @@ commit id: &quot;v3&quot; type: REVERSE
     HEAD --&gt; y
     Staging --&gt; z
     Working --&gt; x
-</code></pre>
+</pre>
 <blockquote>
 <p>Soft Reset macht mit Dateinamen keinen Sinn, da der Pointer auf den Branch bleibt.</p>
 </blockquote>
@@ -1038,38 +1069,38 @@ commit id: &quot;v3&quot; type: REVERSE
 <li>Neuer Commit erstellen</li>
 </ol>
 <p>In unserem Beispiel wollen wir die letzten beiden Commits zusammenfassen.</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot;
 commit id: &quot;v2&quot;
 commit id: &quot;v3&quot; type: HIGHLIGHT
-</code></pre>
-<pre><code class="language-mermaid">stateDiagram-v2
+</pre>
+<pre class="mermaid">stateDiagram-v2
     HEAD --&gt; v3
     Staging --&gt; v3
     Working --&gt; v3
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git reset --soft HEAD~2
 </code></pre>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot; type: HIGHLIGHT
 commit id: &quot;v2&quot; type: REVERSE
 commit id: &quot;v3&quot; type: REVERSE
-</code></pre>
-<pre><code class="language-mermaid">stateDiagram-v2
+</pre>
+<pre class="mermaid">stateDiagram-v2
     HEAD --&gt; v1
     Staging --&gt; v3
     Working --&gt; v3
-</code></pre>
+</pre>
 <p>In der Staging Area und im Working Tree befinden sich nun die Änderungen aller Commits die wir zusammenfassen wollen. Jetzt müssen wir nur noch einen neuen Commit erstellen.</p>
-<pre><code class="language-bash">$ git commit -m &quot;Squashed commit&quot;
+<pre><code class="language-bash">$ git commit -m "Squashed commit"
 </code></pre>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;v1&quot;
 commit id: &quot;v4&quot; type: HIGHLIGHT
-</code></pre>
+</pre>
 <p>Wir haben erfolgreich die letzten beiden Commits in einen Commit zusammengefasst.</p>
 <h1 id="stashing"><a class="header" href="#stashing">Stashing</a></h1>
 <ul>
@@ -1080,22 +1111,22 @@ commit id: &quot;v4&quot; type: HIGHLIGHT
 <p>Beispiel:</p>
 <pre><code class="language-bash">$ git status
 &gt; Changes to be committed:
-    (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+    (use "git reset HEAD &lt;file&gt;..." to unstage)
 
 	  modified:   bar.txt
 
   Changes not staged for commit:
-    (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
-    (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+    (use "git add &lt;file&gt;..." to update what will be committed)
+    (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
 
 	  modified:   src/foo.txt
 </code></pre>
 <p>Wir wollen jetzt Branch wechseln, aber die Änderungen in <code>src/foo.txt</code> sind noch nicht commit-bereit. Mit <code>git-stash</code> können wir die Änderungen temporär speichern.</p>
 <pre><code class="language-bash">$ git stash
 &gt; Saved working directory and index state \
-   &quot;WIP on master: 049d078 Create index file&quot;
+   "WIP on master: 049d078 Create index file"
   HEAD is now at 049d078 Create index file
-  (To restore them type &quot;git stash apply&quot;)
+  (To restore them type "git stash apply")
 </code></pre>
 <p>Working Tree und Staging Area sind jetzt wieder auf dem Stand vom letzten Commit und damit bereit den Branch zu wechseln. Wir können das mit <code>git status</code> überprüfen.</p>
 <pre><code class="language-bash">$ git status
@@ -1108,19 +1139,19 @@ commit id: &quot;v4&quot; type: HIGHLIGHT
 &gt; stash@{0}: WIP on master: 049d078 Create index file
 &gt; stash@{1}: WIP on master: 3923d03 Revert add file size
 </code></pre>
-<p>Hier sehen wir das wir zwei Stashes haben. Den oberen haben wir grade erstellt. Um die Stashes unterscheiden zu können fügt git immer die Commit Message des letzten Commits hinzu. Wahlweise kann sie auch bei der Erstellung mit der Option <code>-m</code> angegeben werden (z.B. <code>git stash -m &quot;Meine Nachricht&quot;</code>).
+<p>Hier sehen wir das wir zwei Stashes haben. Den oberen haben wir grade erstellt. Um die Stashes unterscheiden zu können fügt git immer die Commit Message des letzten Commits hinzu. Wahlweise kann sie auch bei der Erstellung mit der Option <code>-m</code> angegeben werden (z.B. <code>git stash -m "Meine Nachricht"</code>).
 Um einen Stash kann auf einer beliebigen Branch wiederhergestellt werden, jedoch kann es bei der Anwendung zu Konfliken kommen. Wie diese gelöst werden schauen wir uns im Kapitel <a href="git/./git/branching_und_merging.html">Branching und Merging</a> an.</p>
 <p>Um unseren Stash auf den aktuellen Working Tree und Staging Area anzuwenden verwenden wir <code>git stash apply</code>. Sollten wir nicht den letzten Stash anwenden wollen müssen wir die ID mit <code>git stash apply stash@{1}</code> angeben.</p>
 <pre><code class="language-bash">$ git stash apply stash@{0}
 &gt; On branch master
   Changes not staged for commit:
-    (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
-    (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+    (use "git add &lt;file&gt;..." to update what will be committed)
+    (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
 
 	  modified:   bar.txt
 	  modified:   src/foo.txt
 
-  no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+  no changes added to commit (use "git add" and/or "git commit -a")
 </code></pre>
 <p>Wenn wir den Stash nicht mehr benötigen können wir ihn mit <code>git stash drop stash@{0}</code> löschen. Für alle Stashes funktioniert das mit <code>git stash clear</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="help-i-fucked-up"><a class="header" href="#help-i-fucked-up">Help! I fucked up</a></h1>
@@ -1169,7 +1200,7 @@ $ git branch feature/1
 <blockquote>
 <p>Die <code>-b</code> Flag steht hierbei für <code>branch</code>.</p>
 </blockquote>
-<p>In git gilt der Grundsatz: &quot;Branch early, branch often&quot;. Das heißt du wirst in der Regel mit vielen Branches konfrontiert sein. Diese alle über das Log zu verfolgen ist nicht immer sinnvoll. Solltest du einfach nur wissen wollen, welche Branches es gibt, kannst du das mit dem Befehl <code>git branch</code> tun.</p>
+<p>In git gilt der Grundsatz: "Branch early, branch often". Das heißt du wirst in der Regel mit vielen Branches konfrontiert sein. Diese alle über das Log zu verfolgen ist nicht immer sinnvoll. Solltest du einfach nur wissen wollen, welche Branches es gibt, kannst du das mit dem Befehl <code>git branch</code> tun.</p>
 <pre><code class="language-bash">$ git branch
 &gt; * feature/1
   main
@@ -1189,27 +1220,27 @@ $ git branch feature/1
 </blockquote>
 <p>In git mergen wir mit dem Befehl <code>git merge &lt;quell_branch&gt;</code> der Zielbranch ist dabei immer der Branch auf dem sich grade HEAD befindet.</p>
 <p>Schauen wir uns das denkbar einfachste Beispiel an:</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
   commit id: &quot;ae3f3d&quot; type: HIGHLIGHT
   branch feature/1
   commit id: &quot;9ac33d&quot;
   checkout main
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git merge feature/1
 </code></pre>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;ae3f3d&quot;
 branch feature/1
 commit id: &quot;9ac33d&quot;
 checkout main
 merge feature/1 type: HIGHLIGHT id: &quot;b3f3d3&quot;
-</code></pre>
+</pre>
 <p>Alle Änderungen von <code>feature/1</code> wurden auf <code>main</code> übernommen. Auf <code>feature/1</code> hat sich nichts verändert. Es befinden sich dort nur die Commits, die es auch schon vorher gab.</p>
 <h2 id="fast-forward-merges"><a class="header" href="#fast-forward-merges">Fast-Forward Merges</a></h2>
 <p>Sollten wir jetzt auf <code>main</code> ein paar Commits hinzufügen und dann <code>main</code> in <code>feature/1</code> mergen (andersherum als vorhin), wird interessanter Weise kein neuer Merge-Commit erstellt.</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;ae3f3d&quot;
 branch feature/1
@@ -1218,11 +1249,11 @@ checkout main
 merge feature/1  id: &quot;b3f3d3&quot;
 commit id: &quot;3f3f3f&quot;
 commit id: &quot;52acd8&quot; type: HIGHLIGHT
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git checkout feature/1
 $ git merge main
 </code></pre>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;ae3f3d&quot;
 branch feature/1
@@ -1233,7 +1264,7 @@ commit id: &quot;3f3f3f&quot;
 commit id: &quot;52acd8&quot;
 checkout feature/1
 merge main type: HIGHLIGHT
-</code></pre>
+</pre>
 <p>Unser aktueller HEAD ist kein neuer Commit (kein Hash), sondern stattdessen wir der Pointer von feature/1 einfach auf den letzten Commit von <code>main</code> gesetzt. Git erkennt, dass es keine Änderungen auf <code>feature/1</code> gibt, die nicht auch auf <code>main</code> sind und somit <code>main</code> und <code>feature/1</code> identisch sind. Ein solcher Merge wird als Fast-Forward Merge bezeichnet.</p>
 <blockquote>
 <p>Fast Forwad Merges garantieren einen konfliktfreien Merge. Das bedeutet, dass es keine Merge-Konflikte geben kann.</p>
@@ -1241,14 +1272,14 @@ merge main type: HIGHLIGHT
 <h1 id="merge-conflicts"><a class="header" href="#merge-conflicts">Merge Conflicts</a></h1>
 <p>Im starken Kontrast zu Fast-Forward Merges stehen Merge Konflikte. Diese entstehen, wenn Änderungen auf zwei Branches gemacht wurden, die sich gegenseitig widersprechen. Git ist dann nicht mehr in der Lage automatisch beide Dateien zusammenzuführen und ein manueller Eingriff ist erforderlich.</p>
 <p>Unser Commit Tree schaut aktuell wie folgt aus.</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;ae3f3d&quot;
 branch feature/1
 commit id: &quot;9ac33d&quot;
 checkout main
 commit id: &quot;782ca2&quot; type: HIGHLIGHT
-</code></pre>
+</pre>
 <p>Im ersten Commit (<code>ae3f3d</code>) haben wir die Datei foo.txt mit dem Inhalt <code>Hello World</code> erstellt. Im zweiten Commit (<code>9ac33d</code>, feature/1) haben wir die Datei foo.txt auf <code>Hello Alice!</code> geändert. Und auf <code>main</code> haben wir die Datei foo.txt auf <code>Hello Bob!</code> geändert.</p>
 <pre><code class="language-bash"># == Ursprünglich ==
 $ git checkout ae3f3d
@@ -1265,7 +1296,7 @@ $ git checkout feature/1
 $ cat foo.txt
 &gt; Hello Bob!
 </code></pre>
-<p>Wenn wir jetzt <code>feature/1</code> in <code>main</code> mergen wollen, wird es zwangsweise zu einem Merge-Konflikt kommen, da nicht klar ist ob es &quot;Hello Alice&quot; oder &quot;Hello Bob&quot; heißen soll.</p>
+<p>Wenn wir jetzt <code>feature/1</code> in <code>main</code> mergen wollen, wird es zwangsweise zu einem Merge-Konflikt kommen, da nicht klar ist ob es "Hello Alice" oder "Hello Bob" heißen soll.</p>
 <pre><code class="language-bash">$ git checkout main
 $ git merge feature/1
 &gt; Auto-merging foo.txt
@@ -1276,14 +1307,14 @@ $ git merge feature/1
 <pre><code class="language-bash">$ git status
 &gt; On branch main
   You have unmerged paths.
-    (fix conflicts and run &quot;git commit&quot;)
-    (use &quot;git merge --abort&quot; to abort the merge)
+    (fix conflicts and run "git commit")
+    (use "git merge --abort" to abort the merge)
 
   Unmerged paths:
-    (use &quot;git add &lt;file&gt;...&quot; to mark resolution)
+    (use "git add &lt;file&gt;..." to mark resolution)
 	  both modified:   foo.txt
 
-  no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+  no changes added to commit (use "git add" and/or "git commit -a")
 
 </code></pre>
 <p>Schauen wir uns mal an wie so ein Merge-Konflikt in der Datei aussieht:</p>
@@ -1300,13 +1331,13 @@ $ git merge feature/1
 </code></pre>
 <p>Um git mitzuteilen, dass wir den Konflikt zu unserer Zufriedenheit gelöst haben, müssen wir die Datei <code>foo.txt</code> mit <code>git add</code> der Staging Area hinzufügen und dann einen ganz normalen Commit erstellen.</p>
 <pre><code class="language-bash">$ git add foo.txt
-$ git commit -m &quot;Merge feature/1 into main&quot;
+$ git commit -m "Merge feature/1 into main"
 </code></pre>
 <blockquote>
 <p>Solltet ihr während des Merge-Prozesses feststellen, dass ihr einen Fehler gemacht habt oder noch nicht bereit für den Merge seit, könnt ihr jederzeit den Merge mit <code>git merge --abort</code> abbrechen. Damit werden alle Änderungen zurückgestzt als ob der Merge nie angefangen wurde.</p>
 </blockquote>
 <p>Unser Commit Tree sieht jetzt wie ein normaler Merge aus:</p>
-<pre><code class="language-mermaid">
+<pre class="mermaid">
 gitGraph
 
 commit id: &quot;ae3f3d&quot;
@@ -1315,7 +1346,7 @@ commit id: &quot;9ac33d&quot;
 checkout main
 commit id: &quot;782ca2&quot;
 merge feature/1 id: &quot;ac3e12&quot; type: HIGHLIGHT
-</code></pre>
+</pre>
 <p>Egal welche Art von Konflikt ihr in git habt, die Lösung folgt immer dem gleichen Schema:</p>
 <ol>
 <li>Konflikt in der Datei beheben und speichern</li>
@@ -1333,7 +1364,7 @@ merge feature/1 id: &quot;ac3e12&quot; type: HIGHLIGHT
 <div style="break-before: page; page-break-before: always;"></div><h1 id="rebasing"><a class="header" href="#rebasing">Rebasing</a></h1>
 <p>Merging ist der einfachste Weg Änderungen von einen auf einen anderen Branch zu überführen. Jedoch gibt es in Git noch eine weitere Möglichkeit: Rebasing.
 Im Gegensatz zum Merging werden beim Rebasing alle Commits des Quellbranches auf den Zielbranch übertragen. Es wird also kein einziger Merge-Commit erstellt, sondern die Commits mitsamt deren Änderungen werden von Quellbranch auf an den Zielbranch angehängt.</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
   commit id: &quot;A&quot;
   branch feature/1
   commit id: &quot;B&quot;
@@ -1341,25 +1372,25 @@ Im Gegensatz zum Merging werden beim Rebasing alle Commits des Quellbranches auf
   commit id: &quot;C&quot; type: HIGHLIGHT
   checkout feature/1
   commit id: &quot;D&quot;
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git checkout feature/1 # wir wählen immer den Branch aus, den wir verschieben wollen
 $ git rebase main
 # oder
 $ git rebase main feature/1
 </code></pre>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
   commit id: &quot;A&quot;
   commit id: &quot;C&quot;
   branch feature/1
   commit id: &quot;B'&quot;
   commit id: &quot;D'&quot; type: HIGHLIGHT
-</code></pre>
+</pre>
 <p>Achte insbesondere auf die Commit-IDs. Der Commit <code>B</code> wurde nicht einfach nur verschoben sondern neu auf <code>C</code> angewendet. Die Meta-Daten, aber nicht der Inhalt haben sich verändert. Das bedeutet, dass der Commit <code>B</code> eine neue Commit-ID <code>B'</code> bekommt. Nachdem <code>B</code> erfolgreich angewendet wurde, wird <code>D</code>auf <code>B'</code> angewendet und erhält die neue Commit-ID <code>D'</code>.</p>
 <p>Sollten wir wir main auf dem gleichen zusammengeführten Stand, wie <code>feature/1</code> haben wollen, können wir dies mit dem bereits bekannten Fast-Forward-Merge erreichen.</p>
 <pre><code class="language-bash">$ git checkout main
 $ git merge feature/1
 </code></pre>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
   commit id: &quot;A&quot;
   commit id: &quot;C&quot;
   branch feature/1
@@ -1367,7 +1398,7 @@ $ git merge feature/1
   commit id: &quot;D'&quot;
   checkout main
   merge feature/1 type: HIGHLIGHT
-</code></pre>
+</pre>
 <h2 id="rebase-konflikte"><a class="header" href="#rebase-konflikte">Rebase Konflikte</a></h2>
 <p>Wie auch beim Merging kann es beim Rebasing zu Konflikten kommen. Wie wir diese lösen können, hast du schon beim Merging gelernt. Nach Beheben und hinzufügen zur Staging Area, fahren wir mit <code>git rebase --continue</code> fort.</p>
 <p>Wir sehen, dass wir keine neuen Commits erstellen (Es fehlt das <code>git commit</code> vom Merging). Stattdessen schreiben wir bereits vorhandene Commits um.</p>
@@ -1420,7 +1451,7 @@ pick a3b02e7 Add license
 # r, reword &lt;commit&gt; = use commit, but edit the commit message
 # e, edit &lt;commit&gt; = use commit, but stop for amending
 # s, squash &lt;commit&gt; = use commit, but meld into previous commit
-# f, fixup &lt;commit&gt; = like &quot;squash&quot;, but discard this commit's log message
+# f, fixup &lt;commit&gt; = like "squash", but discard this commit's log message
 # x, exec &lt;command&gt; = run command (the rest of the line) using shell
 # b, break = stop here (continue rebase later with 'git rebase --continue')
 # d, drop &lt;commit&gt; = remove commit
@@ -1519,7 +1550,7 @@ $ git config --global alias.graph 'log --oneline --graph'
 <p>Zusätzlich hat unser Repository zwei Branches: <code>main</code> und <code>origin/main</code>. Der Branch <code>main</code> ist unser lokaler Branch und <code>origin/main</code> ist ein Remote Branch, der den Stand des Branches <code>main</code> auf dem Server wiederspiegelt.
 Nach einem <code>git clone</code> sind beide Branches auf dem gleichen Stand.</p>
 <p>Client:</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
   commit id: &quot; &quot;
   branch origin/main
   commit id: &quot;A &quot;
@@ -1528,14 +1559,14 @@ Nach einem <code>git clone</code> sind beide Branches auf dem gleichen Stand.</p
 
   checkout main
   merge origin/main
-</code></pre>
+</pre>
 <p>Server:</p>
-<pre><code class="language-mermaid">%%{init: { 'gitGraph': { 'mainBranchName': 'origin/main' }} }%%
+<pre class="mermaid">%%{init: { 'gitGraph': { 'mainBranchName': 'origin/main' }} }%%
 gitGraph
   commit id: &quot;A&quot;
   commit id: &quot;B&quot;
   commit id: &quot;C&quot;
-</code></pre>
+</pre>
 <p>Soweit so einfach. Da Server und Client nicht immer auf dem gleichen Stand sind, kann es passieren, dass beide schnell auseinander driften. Wenn der Server einen neuen Commit bekommt wird unser Remote Branch <code>origin/main</code> nicht automatisch aktualisiert. Das müssen wir manuell mit <code>git fetch</code> machen.</p>
 <p>Wenn der Server einen neuen Commit bekommt und wir <code>git fetch</code> ausführen sieht danach unser Repository so aus:</p>
 <pre><code class="language-bash">$ git fetch origin main:main
@@ -1544,7 +1575,7 @@ gitGraph
 <p><code>origin main:main</code> ist ein bischen viel auf einmal. <code>origin</code> ist der Name der Verknüpfung auf die wir uns beziehen. Das erste <code>main</code> ist der Name des Branches auf dem Server den wir fetchen wollen und das zweite <code>main</code> ist der Name des Branches in unserem lokalen Repository in dem wir den Branch speichern wollen.</p>
 </blockquote>
 <p>Client:</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
   commit id: &quot; &quot;
   branch origin/main
   commit id: &quot;A &quot;
@@ -1555,22 +1586,22 @@ gitGraph
   merge origin/main
   checkout origin/main
   commit id: &quot;D&quot;
-</code></pre>
+</pre>
 <p>Server:</p>
-<pre><code class="language-mermaid">%%{init: { 'gitGraph': { 'mainBranchName': 'origin/main' }} }%%
+<pre class="mermaid">%%{init: { 'gitGraph': { 'mainBranchName': 'origin/main' }} }%%
 gitGraph
   commit id: &quot;A&quot;
   commit id: &quot;B&quot;
   commit id: &quot;C&quot;
   commit id: &quot;D&quot;
-</code></pre>
+</pre>
 <p>Auf main selber sind die Änderungen noch nicht angekommen. Das müssen wir manuell machen. Dafür gibt es zwei Möglichkeiten: Das klassische <code>git merge</code> oder das etwas komplexere <code>git rebase</code>. Beide Methoden kennst du bereits.
 Wir entscheiden uns hier für das einfache <code>git merge</code></p>
 <pre><code class="language-bash">$ git checkout main
 $ git merge origin/main
 </code></pre>
 <p>Client:</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
   commit id: &quot; &quot;
   branch origin/main
   commit id: &quot;A &quot;
@@ -1583,15 +1614,15 @@ $ git merge origin/main
   commit id: &quot;D&quot;
   checkout main
   merge origin/main
-</code></pre>
+</pre>
 <p>Server:</p>
-<pre><code class="language-mermaid">%%{init: { 'gitGraph': { 'mainBranchName': 'origin/main' }} }%%
+<pre class="mermaid">%%{init: { 'gitGraph': { 'mainBranchName': 'origin/main' }} }%%
 gitGraph
   commit id: &quot;A&quot;
   commit id: &quot;B&quot;
   commit id: &quot;C&quot;
   commit id: &quot;D&quot;
-</code></pre>
+</pre>
 <p>Da dieser Vorgang sehr häufig vorkommt git bietet git eine Abkürzung an: <code>git pull</code>. <code>git pull</code> führt <code>git fetch</code> und <code>git merge</code> in einem Schritt aus.</p>
 <pre><code class="language-bash">$ git pull origin main:main
 </code></pre>
@@ -1603,7 +1634,7 @@ gitGraph
 <pre><code class="language-bash">$ git commit
 </code></pre>
 <p>Client:</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
   commit id: &quot; &quot;
   branch origin/main
   commit id: &quot;A &quot;
@@ -1617,15 +1648,15 @@ gitGraph
   checkout main
   merge origin/main
   commit id: &quot;E&quot;
-</code></pre>
+</pre>
 <p>Server:</p>
-<pre><code class="language-mermaid">%%{init: { 'gitGraph': { 'mainBranchName': 'origin/main' }} }%%
+<pre class="mermaid">%%{init: { 'gitGraph': { 'mainBranchName': 'origin/main' }} }%%
 gitGraph
   commit id: &quot;A&quot;
   commit id: &quot;B&quot;
   commit id: &quot;C&quot;
   commit id: &quot;D&quot;
-</code></pre>
+</pre>
 <p>Wollen wir diesen Commit auf den Server übertragen, müssen wir zunächst sicherstellen, dass wir auf dem neusten Stand vom Server sind. Sollte das nicht der Fall sein, müssen wir erst einen <code>git pull</code> durchführen. Damit wird sichergestellt, dass wir beim Pushen keine Konflikte verursachen und ein Fast-Forward-Merge auf dem Server durchgeführt werden kann.</p>
 <pre><code class="language-bash">$ git pull origin main:main
 &gt; Already up to date.
@@ -1636,7 +1667,7 @@ $ git push origin main:main
 </blockquote>
 <p>Der Push-Vorgang setzt zunächst den Remote Branch auf den Stand unseres lokalen Branches und übertragt dann seine Änderungen auf den Server.</p>
 <p>Client:</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
   commit id: &quot; &quot;
   branch origin/main
   commit id: &quot;A &quot;
@@ -1652,16 +1683,16 @@ $ git push origin main:main
   commit id: &quot;E&quot;
   checkout origin/main
   merge main
-</code></pre>
+</pre>
 <p>Server:</p>
-<pre><code class="language-mermaid">%%{init: { 'gitGraph': { 'mainBranchName': 'origin/main' }} }%%
+<pre class="mermaid">%%{init: { 'gitGraph': { 'mainBranchName': 'origin/main' }} }%%
 gitGraph
   commit id: &quot;A&quot;
   commit id: &quot;B&quot;
   commit id: &quot;C&quot;
   commit id: &quot;D&quot;
   commit id: &quot;E&quot;
-</code></pre>
+</pre>
 <h1 id="upstreams"><a class="header" href="#upstreams">Upstreams</a></h1>
 <p>Das ganze Prozedere mit <code>origin main:main</code> ist ein wenig umständlich. Deshalb lässt sich dies auch einmalig für einen Branch festlegen und danach einfach ein <code>git pull</code> bzw. <code>git push</code> ausführen. Wir checken dafür zunächst den gewünschten Branch aus und setzen den Upstream mit <code>git branch --set-upstream-to=&lt;remote&gt;/branch</code>.</p>
 <p>Für den Branch <code>main</code> auf dem Server sieht das so aus:</p>
@@ -1704,7 +1735,7 @@ $ git branch -u origin/main
 <li>Ihr habt eine klare Vorstellung, was ihr implementieren oder ändern wollt. Die Aufgabe sollte in sich geschlossen sein und nicht zu groß.</li>
 </ol>
 <blockquote>
-<p>&quot;nicht zu groß&quot; ist ein sehr subjektiver Begriff. Aber für euer Teamprojekt könnt ihr euch an einer groben Faustregel orientieren: Wenn ihr vorraussichtlich mehr als 4-5 Stunden braucht um die Aufgabe zu erledigen, ist sie vermutlich zu groß. Hier solltet ihr sie in deutlich fassbare Aufgaben unterteilen.</p>
+<p>"nicht zu groß" ist ein sehr subjektiver Begriff. Aber für euer Teamprojekt könnt ihr euch an einer groben Faustregel orientieren: Wenn ihr vorraussichtlich mehr als 4-5 Stunden braucht um die Aufgabe zu erledigen, ist sie vermutlich zu groß. Hier solltet ihr sie in deutlich fassbare Aufgaben unterteilen.</p>
 </blockquote>
 <ol start="2">
 <li>
@@ -1737,7 +1768,7 @@ $ git branch -u origin/main
 <h2 id="anforderungen"><a class="header" href="#anforderungen">Anforderungen</a></h2>
 <p>Bevor es losgeht, müssen wir uns überlegen, was genau wir eigentlich schreiben wollen. Hier reicht nicht nur eine grobe Idee, sondern es sollten ganz explizit die Use-Cases festgelegt werden.</p>
 <h4 id="beispiel"><a class="header" href="#beispiel">Beispiel</a></h4>
-<p>&quot;Wir schreiben eine App die es ermöglicht Rezepte zu verwalten.&quot;</p>
+<p>"Wir schreiben eine App die es ermöglicht Rezepte zu verwalten."</p>
 <blockquote>
 <p>Das ist eine grobe Idee und sicher nicht genug um loszulegen. Arbeitet ganz explizite Use-Cases aus</p>
 </blockquote>
@@ -1771,10 +1802,10 @@ $ git branch -u origin/main
 <p>Grade in größeren Softwareprojekten folgt die Architektur oft der Organisationsstruktur der Teams. Dies ist zwar nicht immer optimal im Sinner der Software. Einfaches parallels Arbeiten ist aber meistens wichtiger.</p>
 </blockquote>
 <p>Zum Design bieten sich meist UML-Klassendiagramme-Diagramme (eher objektorientiert) oder Flowchart-Diagramme (eher funktional) zur Visualisierung an. Das kann zum Beispiel für einen lexer so aussehen:</p>
-<pre><code class="language-mermaid">flowchart LR
+<pre class="mermaid">flowchart LR
  id1{input}--&gt;id2[tokenize by whitespace] --&gt; id3[filter keywords] --&gt; id4[desugar] --&gt; id6{output}
  id3 --| add keywords to index |--&gt; id5[[Keyword-Index]] --&gt; id6
-</code></pre>
+</pre>
 <h2 id="implementierung"><a class="header" href="#implementierung">Implementierung</a></h2>
 <p>Nachdem die Anforderungen und die Architektur festgelegt sind, kann es an die Implementierung gehen. Die gorben Züge des Projekts sollten soweit feststehen, dass möglichst wenig böse Überraschungen warten.</p>
 <p>Tendenziell gibt es zwei Arten Software zu implementieren:</p>
@@ -1840,7 +1871,7 @@ fn read_data(input: &amp;str) -&gt; Vec&lt;Record&gt; {
 
 // checke ob der Dateipfad existiert und eine Datei ist
 fn is_file() -&gt; bool {
-    match std::fs::metadata(&quot;file.txt&quot;) {
+    match std::fs::metadata("file.txt") {
        Ok(it) =&gt; it.is_file(),
        Err(_) =&gt; false,
     }
@@ -1988,7 +2019,7 @@ class FileUserSaver implements UserSaver {
 
     @Override
     public void turnOnEngine() {
-        throw new AssertionError(&quot;There is no engine!&quot;);
+        throw new AssertionError("There is no engine!");
     }
 
     @Override
@@ -2030,7 +2061,7 @@ class Car implements Vehicle {
 
     @Override
     public void fly() {
-        throw new UnsupportedOperationException(&quot;This vehicle cannot fly.&quot;);
+        throw new UnsupportedOperationException("This vehicle cannot fly.");
     }
 }
 </code></pre>
@@ -2107,8 +2138,8 @@ class Airplane implements Engine, Drivable, Flyable {
 
     public void setCurrentConditions(String weatherDescription) {
         this.currentConditions = weatherDescription;
-        if (weatherDescription == &quot;rainy&quot;) {
-            emailer.sendEmail(&quot;It is rainy&quot;);
+        if (weatherDescription == "rainy") {
+            emailer.sendEmail("It is rainy");
         }
     }
 }
@@ -2130,21 +2161,21 @@ class WeatherTracker {
 
     public void setCurrentConditions(String weatherDescription) {
         this.currentConditions = weatherDescription;
-        if (weatherDescription == &quot;rainy&quot;) {
-            notifier.alertWeatherConditions(&quot;It is rainy&quot;);
+        if (weatherDescription == "rainy") {
+            notifier.alertWeatherConditions("It is rainy");
         }
     }
 }
 
 class Emailer implements Notifier {
     public void alertWeatherConditions(String weatherDescription) {
-        System.out.println(&quot;Email sent: &quot; + weatherDescription);
+        System.out.println("Email sent: " + weatherDescription);
     }
 }
 
 class SMS implements Notifier {
     public void alertWeatherConditions(String weatherDescription) {
-        System.out.println(&quot;SMS sent: &quot; + weatherDescription);
+        System.out.println("SMS sent: " + weatherDescription);
     }
 }
 </code></pre>
@@ -2182,7 +2213,7 @@ class SMS implements Notifier {
 <blockquote>
 <p>Im Teamprojekt werdet ihr vermutlich nicht alle Rollen aus SCRUM besetzen können. Der PO wird vermutlich euer Teamleiter sein, der Scrum Master könnte ein Teammitglied sein, das sich um die Organisation kümmert aber trotzdem noch als Entwickler fundiert. Der Rest des Teams sind die Entwickler.</p>
 </blockquote>
-<pre><code class="language-mermaid">graph TD
+<pre class="mermaid">graph TD
     A(Produkt-Backlog erstellen) --&gt;|Priorisierung durch PO| B(Sprint-Planung)
     B --&gt; C{Sprint startet}
     C --&gt;|Täglich| D(Tägliches SCRUM-Meeting)
@@ -2191,7 +2222,7 @@ class SMS implements Notifier {
     F --&gt; G(Sprint-Retrospektive)
     G --&gt; H{Feedback &amp; Verbesserung}
     H --&gt; A
-</code></pre>
+</pre>
 
                     </main>
 

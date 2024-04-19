@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="de" class="sidebar-visible no-js light">
+<html lang="de" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -61,40 +61,71 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item expanded affix "><a href="../einfuehrung.html">Einführung</a></li><li class="chapter-item expanded affix "><a href="../terminal.html">Terminal / Shell</a></li><li class="chapter-item expanded affix "><li class="part-title">Git</li><li class="chapter-item expanded "><a href="../git/einfuehrung.html"><strong aria-hidden="true">1.</strong> Git?!? Was ist das eigentlich?</a></li><li class="chapter-item expanded "><a href="../git/installation.html"><strong aria-hidden="true">2.</strong> Installation und Konfiguration von Git</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../git/installation_windows.html"><strong aria-hidden="true">2.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../git/installation_macos.html"><strong aria-hidden="true">2.2.</strong> MacOS</a></li><li class="chapter-item expanded "><a href="../git/installation_linux.html"><strong aria-hidden="true">2.3.</strong> Linux</a></li></ol></li><li class="chapter-item expanded "><a href="../git/how_to_git.html"><strong aria-hidden="true">3.</strong> How to git</a></li><li class="chapter-item expanded "><a href="../git/datenmodel.html"><strong aria-hidden="true">4.</strong> Das Datenmodel</a></li><li class="chapter-item expanded "><a href="../git/datenmodell_git.html"><strong aria-hidden="true">5.</strong> Datenmodell in Git</a></li><li class="chapter-item expanded "><a href="../git/erstes_repository.html"><strong aria-hidden="true">6.</strong> Dein erstes Repository</a></li><li class="chapter-item expanded "><a href="../git/staging_working_area.html"><strong aria-hidden="true">7.</strong> Staging und Working Area</a></li><li class="chapter-item expanded "><a href="../git/checkout_und_reset.html"><strong aria-hidden="true">8.</strong> Checkout und Reset</a></li><li class="chapter-item expanded "><a href="../git/help.html"><strong aria-hidden="true">9.</strong> Help! I fucked up</a></li><li class="chapter-item expanded "><a href="../git/branching_und_merging.html" class="active"><strong aria-hidden="true">10.</strong> Branching und Merging</a></li><li class="chapter-item expanded "><a href="../git/rebase.html"><strong aria-hidden="true">11.</strong> Rebasing</a></li><li class="chapter-item expanded "><a href="../git/changing_history.html"><strong aria-hidden="true">12.</strong> Changing History</a></li><li class="chapter-item expanded "><a href="../git/tipps_und_tricks.html"><strong aria-hidden="true">13.</strong> Tipps und Tricks</a></li><li class="chapter-item expanded "><a href="../git/remotes.html"><strong aria-hidden="true">14.</strong> Remotes</a></li><li class="chapter-item expanded "><a href="../git/github_workflow.html"><strong aria-hidden="true">15.</strong> Github Workflow</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../git/cheatsheet.html"><strong aria-hidden="true">16.</strong> Cheatsheet</a></li><li class="chapter-item expanded affix "><li class="part-title">Softwareentwicklung</li><li class="chapter-item expanded "><a href="../softwareentwicklung.html"><strong aria-hidden="true">17.</strong> Softwareentwicklung</a></li><li class="chapter-item expanded "><a href="../solid.html"><strong aria-hidden="true">18.</strong> SOLID</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../solid/srp.html"><strong aria-hidden="true">18.1.</strong> Single Responsibility</a></li><li class="chapter-item expanded "><a href="../solid/ocp.html"><strong aria-hidden="true">18.2.</strong> Open Closed</a></li><li class="chapter-item expanded "><a href="../solid/lsp.html"><strong aria-hidden="true">18.3.</strong> Liskov Substitution</a></li><li class="chapter-item expanded "><a href="../solid/isp.html"><strong aria-hidden="true">18.4.</strong> Interface Segregation</a></li><li class="chapter-item expanded "><a href="../solid/dip.html"><strong aria-hidden="true">18.5.</strong> Dependency Inversion</a></li></ol></li><li class="chapter-item expanded "><a href="../code_smells.html"><strong aria-hidden="true">19.</strong> Code Smells</a></li><li class="chapter-item expanded "><a href="../scrum.html"><strong aria-hidden="true">20.</strong> SCRUM</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -159,7 +190,7 @@ $ git branch feature/1
 <blockquote>
 <p>Die <code>-b</code> Flag steht hierbei für <code>branch</code>.</p>
 </blockquote>
-<p>In git gilt der Grundsatz: &quot;Branch early, branch often&quot;. Das heißt du wirst in der Regel mit vielen Branches konfrontiert sein. Diese alle über das Log zu verfolgen ist nicht immer sinnvoll. Solltest du einfach nur wissen wollen, welche Branches es gibt, kannst du das mit dem Befehl <code>git branch</code> tun.</p>
+<p>In git gilt der Grundsatz: "Branch early, branch often". Das heißt du wirst in der Regel mit vielen Branches konfrontiert sein. Diese alle über das Log zu verfolgen ist nicht immer sinnvoll. Solltest du einfach nur wissen wollen, welche Branches es gibt, kannst du das mit dem Befehl <code>git branch</code> tun.</p>
 <pre><code class="language-bash">$ git branch
 &gt; * feature/1
   main
@@ -179,27 +210,27 @@ $ git branch feature/1
 </blockquote>
 <p>In git mergen wir mit dem Befehl <code>git merge &lt;quell_branch&gt;</code> der Zielbranch ist dabei immer der Branch auf dem sich grade HEAD befindet.</p>
 <p>Schauen wir uns das denkbar einfachste Beispiel an:</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
   commit id: &quot;ae3f3d&quot; type: HIGHLIGHT
   branch feature/1
   commit id: &quot;9ac33d&quot;
   checkout main
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git merge feature/1
 </code></pre>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;ae3f3d&quot;
 branch feature/1
 commit id: &quot;9ac33d&quot;
 checkout main
 merge feature/1 type: HIGHLIGHT id: &quot;b3f3d3&quot;
-</code></pre>
+</pre>
 <p>Alle Änderungen von <code>feature/1</code> wurden auf <code>main</code> übernommen. Auf <code>feature/1</code> hat sich nichts verändert. Es befinden sich dort nur die Commits, die es auch schon vorher gab.</p>
 <h2 id="fast-forward-merges"><a class="header" href="#fast-forward-merges">Fast-Forward Merges</a></h2>
 <p>Sollten wir jetzt auf <code>main</code> ein paar Commits hinzufügen und dann <code>main</code> in <code>feature/1</code> mergen (andersherum als vorhin), wird interessanter Weise kein neuer Merge-Commit erstellt.</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;ae3f3d&quot;
 branch feature/1
@@ -208,11 +239,11 @@ checkout main
 merge feature/1  id: &quot;b3f3d3&quot;
 commit id: &quot;3f3f3f&quot;
 commit id: &quot;52acd8&quot; type: HIGHLIGHT
-</code></pre>
+</pre>
 <pre><code class="language-bash">$ git checkout feature/1
 $ git merge main
 </code></pre>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;ae3f3d&quot;
 branch feature/1
@@ -223,7 +254,7 @@ commit id: &quot;3f3f3f&quot;
 commit id: &quot;52acd8&quot;
 checkout feature/1
 merge main type: HIGHLIGHT
-</code></pre>
+</pre>
 <p>Unser aktueller HEAD ist kein neuer Commit (kein Hash), sondern stattdessen wir der Pointer von feature/1 einfach auf den letzten Commit von <code>main</code> gesetzt. Git erkennt, dass es keine Änderungen auf <code>feature/1</code> gibt, die nicht auch auf <code>main</code> sind und somit <code>main</code> und <code>feature/1</code> identisch sind. Ein solcher Merge wird als Fast-Forward Merge bezeichnet.</p>
 <blockquote>
 <p>Fast Forwad Merges garantieren einen konfliktfreien Merge. Das bedeutet, dass es keine Merge-Konflikte geben kann.</p>
@@ -231,14 +262,14 @@ merge main type: HIGHLIGHT
 <h1 id="merge-conflicts"><a class="header" href="#merge-conflicts">Merge Conflicts</a></h1>
 <p>Im starken Kontrast zu Fast-Forward Merges stehen Merge Konflikte. Diese entstehen, wenn Änderungen auf zwei Branches gemacht wurden, die sich gegenseitig widersprechen. Git ist dann nicht mehr in der Lage automatisch beide Dateien zusammenzuführen und ein manueller Eingriff ist erforderlich.</p>
 <p>Unser Commit Tree schaut aktuell wie folgt aus.</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
 
 commit id: &quot;ae3f3d&quot;
 branch feature/1
 commit id: &quot;9ac33d&quot;
 checkout main
 commit id: &quot;782ca2&quot; type: HIGHLIGHT
-</code></pre>
+</pre>
 <p>Im ersten Commit (<code>ae3f3d</code>) haben wir die Datei foo.txt mit dem Inhalt <code>Hello World</code> erstellt. Im zweiten Commit (<code>9ac33d</code>, feature/1) haben wir die Datei foo.txt auf <code>Hello Alice!</code> geändert. Und auf <code>main</code> haben wir die Datei foo.txt auf <code>Hello Bob!</code> geändert.</p>
 <pre><code class="language-bash"># == Ursprünglich ==
 $ git checkout ae3f3d
@@ -255,7 +286,7 @@ $ git checkout feature/1
 $ cat foo.txt
 &gt; Hello Bob!
 </code></pre>
-<p>Wenn wir jetzt <code>feature/1</code> in <code>main</code> mergen wollen, wird es zwangsweise zu einem Merge-Konflikt kommen, da nicht klar ist ob es &quot;Hello Alice&quot; oder &quot;Hello Bob&quot; heißen soll.</p>
+<p>Wenn wir jetzt <code>feature/1</code> in <code>main</code> mergen wollen, wird es zwangsweise zu einem Merge-Konflikt kommen, da nicht klar ist ob es "Hello Alice" oder "Hello Bob" heißen soll.</p>
 <pre><code class="language-bash">$ git checkout main
 $ git merge feature/1
 &gt; Auto-merging foo.txt
@@ -266,14 +297,14 @@ $ git merge feature/1
 <pre><code class="language-bash">$ git status
 &gt; On branch main
   You have unmerged paths.
-    (fix conflicts and run &quot;git commit&quot;)
-    (use &quot;git merge --abort&quot; to abort the merge)
+    (fix conflicts and run "git commit")
+    (use "git merge --abort" to abort the merge)
 
   Unmerged paths:
-    (use &quot;git add &lt;file&gt;...&quot; to mark resolution)
+    (use "git add &lt;file&gt;..." to mark resolution)
 	  both modified:   foo.txt
 
-  no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+  no changes added to commit (use "git add" and/or "git commit -a")
 
 </code></pre>
 <p>Schauen wir uns mal an wie so ein Merge-Konflikt in der Datei aussieht:</p>
@@ -290,13 +321,13 @@ $ git merge feature/1
 </code></pre>
 <p>Um git mitzuteilen, dass wir den Konflikt zu unserer Zufriedenheit gelöst haben, müssen wir die Datei <code>foo.txt</code> mit <code>git add</code> der Staging Area hinzufügen und dann einen ganz normalen Commit erstellen.</p>
 <pre><code class="language-bash">$ git add foo.txt
-$ git commit -m &quot;Merge feature/1 into main&quot;
+$ git commit -m "Merge feature/1 into main"
 </code></pre>
 <blockquote>
 <p>Solltet ihr während des Merge-Prozesses feststellen, dass ihr einen Fehler gemacht habt oder noch nicht bereit für den Merge seit, könnt ihr jederzeit den Merge mit <code>git merge --abort</code> abbrechen. Damit werden alle Änderungen zurückgestzt als ob der Merge nie angefangen wurde.</p>
 </blockquote>
 <p>Unser Commit Tree sieht jetzt wie ein normaler Merge aus:</p>
-<pre><code class="language-mermaid">
+<pre class="mermaid">
 gitGraph
 
 commit id: &quot;ae3f3d&quot;
@@ -305,7 +336,7 @@ commit id: &quot;9ac33d&quot;
 checkout main
 commit id: &quot;782ca2&quot;
 merge feature/1 id: &quot;ac3e12&quot; type: HIGHLIGHT
-</code></pre>
+</pre>
 <p>Egal welche Art von Konflikt ihr in git habt, die Lösung folgt immer dem gleichen Schema:</p>
 <ol>
 <li>Konflikt in der Datei beheben und speichern</li>
@@ -329,7 +360,7 @@ merge feature/1 id: &quot;ac3e12&quot; type: HIGHLIGHT
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../git/rebase.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../git/rebase.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -343,7 +374,7 @@ merge feature/1 id: &quot;ac3e12&quot; type: HIGHLIGHT
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../git/rebase.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../git/rebase.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

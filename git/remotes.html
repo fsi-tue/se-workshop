@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="de" class="sidebar-visible no-js light">
+<html lang="de" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -61,40 +61,71 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item expanded affix "><a href="../einfuehrung.html">Einführung</a></li><li class="chapter-item expanded affix "><a href="../terminal.html">Terminal / Shell</a></li><li class="chapter-item expanded affix "><li class="part-title">Git</li><li class="chapter-item expanded "><a href="../git/einfuehrung.html"><strong aria-hidden="true">1.</strong> Git?!? Was ist das eigentlich?</a></li><li class="chapter-item expanded "><a href="../git/installation.html"><strong aria-hidden="true">2.</strong> Installation und Konfiguration von Git</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../git/installation_windows.html"><strong aria-hidden="true">2.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../git/installation_macos.html"><strong aria-hidden="true">2.2.</strong> MacOS</a></li><li class="chapter-item expanded "><a href="../git/installation_linux.html"><strong aria-hidden="true">2.3.</strong> Linux</a></li></ol></li><li class="chapter-item expanded "><a href="../git/how_to_git.html"><strong aria-hidden="true">3.</strong> How to git</a></li><li class="chapter-item expanded "><a href="../git/datenmodel.html"><strong aria-hidden="true">4.</strong> Das Datenmodel</a></li><li class="chapter-item expanded "><a href="../git/datenmodell_git.html"><strong aria-hidden="true">5.</strong> Datenmodell in Git</a></li><li class="chapter-item expanded "><a href="../git/erstes_repository.html"><strong aria-hidden="true">6.</strong> Dein erstes Repository</a></li><li class="chapter-item expanded "><a href="../git/staging_working_area.html"><strong aria-hidden="true">7.</strong> Staging und Working Area</a></li><li class="chapter-item expanded "><a href="../git/checkout_und_reset.html"><strong aria-hidden="true">8.</strong> Checkout und Reset</a></li><li class="chapter-item expanded "><a href="../git/help.html"><strong aria-hidden="true">9.</strong> Help! I fucked up</a></li><li class="chapter-item expanded "><a href="../git/branching_und_merging.html"><strong aria-hidden="true">10.</strong> Branching und Merging</a></li><li class="chapter-item expanded "><a href="../git/rebase.html"><strong aria-hidden="true">11.</strong> Rebasing</a></li><li class="chapter-item expanded "><a href="../git/changing_history.html"><strong aria-hidden="true">12.</strong> Changing History</a></li><li class="chapter-item expanded "><a href="../git/tipps_und_tricks.html"><strong aria-hidden="true">13.</strong> Tipps und Tricks</a></li><li class="chapter-item expanded "><a href="../git/remotes.html" class="active"><strong aria-hidden="true">14.</strong> Remotes</a></li><li class="chapter-item expanded "><a href="../git/github_workflow.html"><strong aria-hidden="true">15.</strong> Github Workflow</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../git/cheatsheet.html"><strong aria-hidden="true">16.</strong> Cheatsheet</a></li><li class="chapter-item expanded affix "><li class="part-title">Softwareentwicklung</li><li class="chapter-item expanded "><a href="../softwareentwicklung.html"><strong aria-hidden="true">17.</strong> Softwareentwicklung</a></li><li class="chapter-item expanded "><a href="../solid.html"><strong aria-hidden="true">18.</strong> SOLID</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../solid/srp.html"><strong aria-hidden="true">18.1.</strong> Single Responsibility</a></li><li class="chapter-item expanded "><a href="../solid/ocp.html"><strong aria-hidden="true">18.2.</strong> Open Closed</a></li><li class="chapter-item expanded "><a href="../solid/lsp.html"><strong aria-hidden="true">18.3.</strong> Liskov Substitution</a></li><li class="chapter-item expanded "><a href="../solid/isp.html"><strong aria-hidden="true">18.4.</strong> Interface Segregation</a></li><li class="chapter-item expanded "><a href="../solid/dip.html"><strong aria-hidden="true">18.5.</strong> Dependency Inversion</a></li></ol></li><li class="chapter-item expanded "><a href="../code_smells.html"><strong aria-hidden="true">19.</strong> Code Smells</a></li><li class="chapter-item expanded "><a href="../scrum.html"><strong aria-hidden="true">20.</strong> SCRUM</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -160,7 +191,7 @@
 <p>Zusätzlich hat unser Repository zwei Branches: <code>main</code> und <code>origin/main</code>. Der Branch <code>main</code> ist unser lokaler Branch und <code>origin/main</code> ist ein Remote Branch, der den Stand des Branches <code>main</code> auf dem Server wiederspiegelt.
 Nach einem <code>git clone</code> sind beide Branches auf dem gleichen Stand.</p>
 <p>Client:</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
   commit id: &quot; &quot;
   branch origin/main
   commit id: &quot;A &quot;
@@ -169,14 +200,14 @@ Nach einem <code>git clone</code> sind beide Branches auf dem gleichen Stand.</p
 
   checkout main
   merge origin/main
-</code></pre>
+</pre>
 <p>Server:</p>
-<pre><code class="language-mermaid">%%{init: { 'gitGraph': { 'mainBranchName': 'origin/main' }} }%%
+<pre class="mermaid">%%{init: { 'gitGraph': { 'mainBranchName': 'origin/main' }} }%%
 gitGraph
   commit id: &quot;A&quot;
   commit id: &quot;B&quot;
   commit id: &quot;C&quot;
-</code></pre>
+</pre>
 <p>Soweit so einfach. Da Server und Client nicht immer auf dem gleichen Stand sind, kann es passieren, dass beide schnell auseinander driften. Wenn der Server einen neuen Commit bekommt wird unser Remote Branch <code>origin/main</code> nicht automatisch aktualisiert. Das müssen wir manuell mit <code>git fetch</code> machen.</p>
 <p>Wenn der Server einen neuen Commit bekommt und wir <code>git fetch</code> ausführen sieht danach unser Repository so aus:</p>
 <pre><code class="language-bash">$ git fetch origin main:main
@@ -185,7 +216,7 @@ gitGraph
 <p><code>origin main:main</code> ist ein bischen viel auf einmal. <code>origin</code> ist der Name der Verknüpfung auf die wir uns beziehen. Das erste <code>main</code> ist der Name des Branches auf dem Server den wir fetchen wollen und das zweite <code>main</code> ist der Name des Branches in unserem lokalen Repository in dem wir den Branch speichern wollen.</p>
 </blockquote>
 <p>Client:</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
   commit id: &quot; &quot;
   branch origin/main
   commit id: &quot;A &quot;
@@ -196,22 +227,22 @@ gitGraph
   merge origin/main
   checkout origin/main
   commit id: &quot;D&quot;
-</code></pre>
+</pre>
 <p>Server:</p>
-<pre><code class="language-mermaid">%%{init: { 'gitGraph': { 'mainBranchName': 'origin/main' }} }%%
+<pre class="mermaid">%%{init: { 'gitGraph': { 'mainBranchName': 'origin/main' }} }%%
 gitGraph
   commit id: &quot;A&quot;
   commit id: &quot;B&quot;
   commit id: &quot;C&quot;
   commit id: &quot;D&quot;
-</code></pre>
+</pre>
 <p>Auf main selber sind die Änderungen noch nicht angekommen. Das müssen wir manuell machen. Dafür gibt es zwei Möglichkeiten: Das klassische <code>git merge</code> oder das etwas komplexere <code>git rebase</code>. Beide Methoden kennst du bereits.
 Wir entscheiden uns hier für das einfache <code>git merge</code></p>
 <pre><code class="language-bash">$ git checkout main
 $ git merge origin/main
 </code></pre>
 <p>Client:</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
   commit id: &quot; &quot;
   branch origin/main
   commit id: &quot;A &quot;
@@ -224,15 +255,15 @@ $ git merge origin/main
   commit id: &quot;D&quot;
   checkout main
   merge origin/main
-</code></pre>
+</pre>
 <p>Server:</p>
-<pre><code class="language-mermaid">%%{init: { 'gitGraph': { 'mainBranchName': 'origin/main' }} }%%
+<pre class="mermaid">%%{init: { 'gitGraph': { 'mainBranchName': 'origin/main' }} }%%
 gitGraph
   commit id: &quot;A&quot;
   commit id: &quot;B&quot;
   commit id: &quot;C&quot;
   commit id: &quot;D&quot;
-</code></pre>
+</pre>
 <p>Da dieser Vorgang sehr häufig vorkommt git bietet git eine Abkürzung an: <code>git pull</code>. <code>git pull</code> führt <code>git fetch</code> und <code>git merge</code> in einem Schritt aus.</p>
 <pre><code class="language-bash">$ git pull origin main:main
 </code></pre>
@@ -244,7 +275,7 @@ gitGraph
 <pre><code class="language-bash">$ git commit
 </code></pre>
 <p>Client:</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
   commit id: &quot; &quot;
   branch origin/main
   commit id: &quot;A &quot;
@@ -258,15 +289,15 @@ gitGraph
   checkout main
   merge origin/main
   commit id: &quot;E&quot;
-</code></pre>
+</pre>
 <p>Server:</p>
-<pre><code class="language-mermaid">%%{init: { 'gitGraph': { 'mainBranchName': 'origin/main' }} }%%
+<pre class="mermaid">%%{init: { 'gitGraph': { 'mainBranchName': 'origin/main' }} }%%
 gitGraph
   commit id: &quot;A&quot;
   commit id: &quot;B&quot;
   commit id: &quot;C&quot;
   commit id: &quot;D&quot;
-</code></pre>
+</pre>
 <p>Wollen wir diesen Commit auf den Server übertragen, müssen wir zunächst sicherstellen, dass wir auf dem neusten Stand vom Server sind. Sollte das nicht der Fall sein, müssen wir erst einen <code>git pull</code> durchführen. Damit wird sichergestellt, dass wir beim Pushen keine Konflikte verursachen und ein Fast-Forward-Merge auf dem Server durchgeführt werden kann.</p>
 <pre><code class="language-bash">$ git pull origin main:main
 &gt; Already up to date.
@@ -277,7 +308,7 @@ $ git push origin main:main
 </blockquote>
 <p>Der Push-Vorgang setzt zunächst den Remote Branch auf den Stand unseres lokalen Branches und übertragt dann seine Änderungen auf den Server.</p>
 <p>Client:</p>
-<pre><code class="language-mermaid">gitGraph
+<pre class="mermaid">gitGraph
   commit id: &quot; &quot;
   branch origin/main
   commit id: &quot;A &quot;
@@ -293,16 +324,16 @@ $ git push origin main:main
   commit id: &quot;E&quot;
   checkout origin/main
   merge main
-</code></pre>
+</pre>
 <p>Server:</p>
-<pre><code class="language-mermaid">%%{init: { 'gitGraph': { 'mainBranchName': 'origin/main' }} }%%
+<pre class="mermaid">%%{init: { 'gitGraph': { 'mainBranchName': 'origin/main' }} }%%
 gitGraph
   commit id: &quot;A&quot;
   commit id: &quot;B&quot;
   commit id: &quot;C&quot;
   commit id: &quot;D&quot;
   commit id: &quot;E&quot;
-</code></pre>
+</pre>
 <h1 id="upstreams"><a class="header" href="#upstreams">Upstreams</a></h1>
 <p>Das ganze Prozedere mit <code>origin main:main</code> ist ein wenig umständlich. Deshalb lässt sich dies auch einmalig für einen Branch festlegen und danach einfach ein <code>git pull</code> bzw. <code>git push</code> ausführen. Wir checken dafür zunächst den gewünschten Branch aus und setzen den Upstream mit <code>git branch --set-upstream-to=&lt;remote&gt;/branch</code>.</p>
 <p>Für den Branch <code>main</code> auf dem Server sieht das so aus:</p>
@@ -327,7 +358,7 @@ $ git branch -u origin/main
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../git/github_workflow.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../git/github_workflow.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -341,7 +372,7 @@ $ git branch -u origin/main
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../git/github_workflow.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../git/github_workflow.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

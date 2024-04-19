@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="de" class="sidebar-visible no-js light">
+<html lang="de" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -61,40 +61,71 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item expanded affix "><a href="../einfuehrung.html">Einführung</a></li><li class="chapter-item expanded affix "><a href="../terminal.html">Terminal / Shell</a></li><li class="chapter-item expanded affix "><li class="part-title">Git</li><li class="chapter-item expanded "><a href="../git/einfuehrung.html"><strong aria-hidden="true">1.</strong> Git?!? Was ist das eigentlich?</a></li><li class="chapter-item expanded "><a href="../git/installation.html"><strong aria-hidden="true">2.</strong> Installation und Konfiguration von Git</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../git/installation_windows.html"><strong aria-hidden="true">2.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../git/installation_macos.html"><strong aria-hidden="true">2.2.</strong> MacOS</a></li><li class="chapter-item expanded "><a href="../git/installation_linux.html"><strong aria-hidden="true">2.3.</strong> Linux</a></li></ol></li><li class="chapter-item expanded "><a href="../git/how_to_git.html"><strong aria-hidden="true">3.</strong> How to git</a></li><li class="chapter-item expanded "><a href="../git/datenmodel.html" class="active"><strong aria-hidden="true">4.</strong> Das Datenmodel</a></li><li class="chapter-item expanded "><a href="../git/datenmodell_git.html"><strong aria-hidden="true">5.</strong> Datenmodell in Git</a></li><li class="chapter-item expanded "><a href="../git/erstes_repository.html"><strong aria-hidden="true">6.</strong> Dein erstes Repository</a></li><li class="chapter-item expanded "><a href="../git/staging_working_area.html"><strong aria-hidden="true">7.</strong> Staging und Working Area</a></li><li class="chapter-item expanded "><a href="../git/checkout_und_reset.html"><strong aria-hidden="true">8.</strong> Checkout und Reset</a></li><li class="chapter-item expanded "><a href="../git/help.html"><strong aria-hidden="true">9.</strong> Help! I fucked up</a></li><li class="chapter-item expanded "><a href="../git/branching_und_merging.html"><strong aria-hidden="true">10.</strong> Branching und Merging</a></li><li class="chapter-item expanded "><a href="../git/rebase.html"><strong aria-hidden="true">11.</strong> Rebasing</a></li><li class="chapter-item expanded "><a href="../git/changing_history.html"><strong aria-hidden="true">12.</strong> Changing History</a></li><li class="chapter-item expanded "><a href="../git/tipps_und_tricks.html"><strong aria-hidden="true">13.</strong> Tipps und Tricks</a></li><li class="chapter-item expanded "><a href="../git/remotes.html"><strong aria-hidden="true">14.</strong> Remotes</a></li><li class="chapter-item expanded "><a href="../git/github_workflow.html"><strong aria-hidden="true">15.</strong> Github Workflow</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../git/cheatsheet.html"><strong aria-hidden="true">16.</strong> Cheatsheet</a></li><li class="chapter-item expanded affix "><li class="part-title">Softwareentwicklung</li><li class="chapter-item expanded "><a href="../softwareentwicklung.html"><strong aria-hidden="true">17.</strong> Softwareentwicklung</a></li><li class="chapter-item expanded "><a href="../solid.html"><strong aria-hidden="true">18.</strong> SOLID</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../solid/srp.html"><strong aria-hidden="true">18.1.</strong> Single Responsibility</a></li><li class="chapter-item expanded "><a href="../solid/ocp.html"><strong aria-hidden="true">18.2.</strong> Open Closed</a></li><li class="chapter-item expanded "><a href="../solid/lsp.html"><strong aria-hidden="true">18.3.</strong> Liskov Substitution</a></li><li class="chapter-item expanded "><a href="../solid/isp.html"><strong aria-hidden="true">18.4.</strong> Interface Segregation</a></li><li class="chapter-item expanded "><a href="../solid/dip.html"><strong aria-hidden="true">18.5.</strong> Dependency Inversion</a></li></ol></li><li class="chapter-item expanded "><a href="../code_smells.html"><strong aria-hidden="true">19.</strong> Code Smells</a></li><li class="chapter-item expanded "><a href="../scrum.html"><strong aria-hidden="true">20.</strong> SCRUM</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -145,16 +176,16 @@
                         <h1 id="datenmodel"><a class="header" href="#datenmodel">Datenmodel</a></h1>
 <p>Es gibt viele verschieden Ansätze für die ein VCS zu implementieren. Git verwendet ein sehr einfaches aber durchdachtes Modell, dass uns ermöglicht Features wie Branches, Kollaboration und eine Dateihistorie zu nutzten</p>
 <h1 id="snapshots--commits"><a class="header" href="#snapshots--commits">Snapshots / Commits</a></h1>
-<p>Unser Modell beinhaltet einer Sammlung von Ordnern und Datein in einem &quot;top-level&quot; Ordner - ein Snapshot auch <strong>Commit</strong> genannt. Von git wird eine Datei auch als <code>blob</code> bezeichnet und ist letzendlich nur eine Sammlung aus Bytes. Das Dateiformat spielt somit keine Rolle. Ein Ordner wird als <code>tree</code> bezeichnet und ordnet einem Namen einen oder mehrere <code>blob</code>s und andere <code>tree</code>s zu. Ordner können dementsprechend andere Ordner oder Datein enthalten und sind identisch vom Aufbau zu unserem Dateisystem. Zum Beispiel:</p>
+<p>Unser Modell beinhaltet einer Sammlung von Ordnern und Datein in einem "top-level" Ordner - ein Snapshot auch <strong>Commit</strong> genannt. Von git wird eine Datei auch als <code>blob</code> bezeichnet und ist letzendlich nur eine Sammlung aus Bytes. Das Dateiformat spielt somit keine Rolle. Ein Ordner wird als <code>tree</code> bezeichnet und ordnet einem Namen einen oder mehrere <code>blob</code>s und andere <code>tree</code>s zu. Ordner können dementsprechend andere Ordner oder Datein enthalten und sind identisch vom Aufbau zu unserem Dateisystem. Zum Beispiel:</p>
 <pre><code>&lt;root&gt; (tree)
 |
 +- beispiel (tree)
 |  |
-|  + hello.txt (blob, contents = &quot;hello world&quot;)
+|  + hello.txt (blob, contents = "hello world")
 |
-+- inhalt.txt (blob, contents = &quot;git ist super&quot;)
++- inhalt.txt (blob, contents = "git ist super")
 </code></pre>
-<p>Der top-level <code>tree</code> referenziert den <code>tree</code> &quot;beispiel&quot; (der wiederum einen <code>blob</code> enhält) und den <code>blob</code> &quot;inhalt.txt&quot;.</p>
+<p>Der top-level <code>tree</code> referenziert den <code>tree</code> "beispiel" (der wiederum einen <code>blob</code> enhält) und den <code>blob</code> "inhalt.txt".</p>
 <h1 id="snapshots-in-relation"><a class="header" href="#snapshots-in-relation">Snapshots in Relation</a></h1>
 <p><strong>Snapshots</strong> alleine bringen uns noch keinen Mehrwert. Erst wenn wir mehrere Snapshots in Relation setzten, kommen wir unserem Ziel eines VCS näher.</p>
 <h2 id="version-history-versionsgeschichte"><a class="header" href="#version-history-versionsgeschichte">Version history (Versionsgeschichte)</a></h2>
@@ -170,7 +201,7 @@
 Dann arbeiten Alice und Bob parallel an dieser:</p>
 <p>Alice in src/datei.txt:</p>
 <pre><code>fn hello_world() {
-   print(&quot;Hello World&quot;)
+   print("Hello World")
 }
 
 fn main() {
@@ -179,15 +210,15 @@ fn main() {
 </code></pre>
 <p>Bob in src/datei.txt:</p>
 <pre><code>fn hello(name: String) {
-   print(&quot;Hello&quot; + name)
+   print("Hello" + name)
 }
 
 fn main() {
-   hello(&quot;Bob&quot;)
+   hello("Bob")
 }
 </code></pre>
 <p><code>src</code>ist unser <code>top-level</code>-Ordner.
-Beide Personen schreiben an der selben Datei. Nur die Inhalte sind leicht unterschiedlich. Alice will das klassiche &quot;Hello World&quot; ausgegeben, während Bob lieber den eine Begrüßung mit Namen ausgeben möchte. Wir gehen davon aus dass sich nur diese Datei in dem Ordner <code>src</code> befindet. Wenn somit beide einen Commit (=Snapshot) erstellen haben diese die Form:</p>
+Beide Personen schreiben an der selben Datei. Nur die Inhalte sind leicht unterschiedlich. Alice will das klassiche "Hello World" ausgegeben, während Bob lieber den eine Begrüßung mit Namen ausgeben möchte. Wir gehen davon aus dass sich nur diese Datei in dem Ordner <code>src</code> befindet. Wenn somit beide einen Commit (=Snapshot) erstellen haben diese die Form:</p>
 <pre><code>src (tree)
 |
 +- datei.txt (blob, contents = ...)
@@ -230,7 +261,7 @@ Beide Personen schreiben an der selben Datei. Nur die Inhalte sind leicht unters
 <p>Unser Modell müssen wir somit erweitern. Ein Knoten / Commit in einem Baum kann immer nur ein Parent erhalten. Unser Merge-Commit o-4 hat aber zwei Parents. In der Graphentheorie nennen wir diese neue Struktur einen <strong>DAG</strong> (Directed Asyclic Graph). Es hat nur eine wichtige Eigenschaft: Es gibt keine Zyklen. Das bedeutet, wenn wir den Verbindungen (Relations / Pointern) folgen, werden wir nie wieder an den selben Knoten zurückkommen.</p>
 <p>So schön und unkompliziert das Merging in der Theorie klingt, ist es in der Praxis leider nicht immer. Auch wenn git recht intelligent mit dem Zusammenführen von Änderungen umgeht, kann es immer noch zu Konflikten kommen, die dann manuell gelöst werden müssen. Hier fokusieren wir uns erstmal auf die Theorie und lernen später wie wir mit Konflikten umgehen.</p>
 <h1 id="rebasing-branches"><a class="header" href="#rebasing-branches">Rebasing Branches</a></h1>
-<p>Das einfache Zusammenführen von Branches ist nicht die einzige Möglichkeit Änderungen von der einen Branch mit der andern zu kombinieren. Git erlaubt uns auch das einfache &quot;anhängen&quot; von Commits aus einem Branch an einen anderen. Der Vorgang wird als <strong>Rebase</strong> bezeichnet.</p>
+<p>Das einfache Zusammenführen von Branches ist nicht die einzige Möglichkeit Änderungen von der einen Branch mit der andern zu kombinieren. Git erlaubt uns auch das einfache "anhängen" von Commits aus einem Branch an einen anderen. Der Vorgang wird als <strong>Rebase</strong> bezeichnet.</p>
 <p>Wenn wir nun also die Commits von Branch <code>feature_b</code> an Branch <code>feature_a</code> anhängen wollen, verändert sich unser Commit-Graph wie folgt:</p>
 <pre><code>o-1 &lt;--- o-2 (feature_a)
   ^
@@ -247,7 +278,7 @@ o-1 &lt;--- o-2 (feature_a)
 <p><code>feature_a</code> besteht nun aus den Commits o-1 und o-2, während <code>feature_b</code> nun aus o-1, o-2 und o-3 besteht. <code>feature_a</code> verändert sich somit nicht.
 Auch hier kann es selbstverständlich zu Konflikten kommen, die manuell gelöst werden müssen. Dazu später mehr.</p>
 <h1 id="commits"><a class="header" href="#commits">Commits</a></h1>
-<p>Du hast Commits bereits als &quot;Snapshots&quot; deiner Datein kennengelernt, dass ist nicht falsch, aber auch nicht ganz vollständig. Zusätzlich zu dem Zustand deiner Datein, speichert ein Commit noch Metainformationen wie:</p>
+<p>Du hast Commits bereits als "Snapshots" deiner Datein kennengelernt, dass ist nicht falsch, aber auch nicht ganz vollständig. Zusätzlich zu dem Zustand deiner Datein, speichert ein Commit noch Metainformationen wie:</p>
 <ul>
 <li>Autor</li>
 <li>Nachricht</li>
@@ -266,7 +297,7 @@ Auch hier kann es selbstverständlich zu Konflikten kommen, die manuell gelöst 
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../git/datenmodell_git.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../git/datenmodell_git.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -280,7 +311,7 @@ Auch hier kann es selbstverständlich zu Konflikten kommen, die manuell gelöst 
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../git/datenmodell_git.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../git/datenmodell_git.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
