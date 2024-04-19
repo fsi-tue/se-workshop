@@ -25,6 +25,7 @@
 - [Tipps und Tricks](./git/tipps_und_tricks.md)
 
 - [Remotes](./git/remotes.md)
+- [Github Workflow](./git/github_workflow.md)
 
 ---
 
@@ -33,3 +34,11 @@
 # Softwareentwicklung
 
 - [Softwareentwicklung](./softwareentwicklung.md)
+- [SOLID](./solid.md)
+  - [Single Responsibility](./solid/srp.md)
+  - [Open Closed](./solid/ocp.md)
+  - [Liskov Substitution](./solid/lsp.md)
+  - [Interface Segregation](./solid/isp.md)
+  - [Dependency Inversion](./solid/dip.md)
+- [Code Smells](./code_smells.md)
+- [SCRUM](./scrum.md)
