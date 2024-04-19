@@ -1,0 +1,304 @@
+<!DOCTYPE HTML>
+<html lang="de" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Changing History - Software Engineering / Teamprojekt Reference</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../einfuehrung.html">Einführung</a></li><li class="chapter-item expanded affix "><a href="../terminal.html">Terminal / Shell</a></li><li class="chapter-item expanded affix "><li class="part-title">Git</li><li class="chapter-item expanded "><a href="../git/einfuehrung.html"><strong aria-hidden="true">1.</strong> Git?!? Was ist das eigentlich?</a></li><li class="chapter-item expanded "><a href="../git/installation.html"><strong aria-hidden="true">2.</strong> Installation und Konfiguration von Git</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../git/installation_windows.html"><strong aria-hidden="true">2.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../git/installation_macos.html"><strong aria-hidden="true">2.2.</strong> MacOS</a></li><li class="chapter-item expanded "><a href="../git/installation_linux.html"><strong aria-hidden="true">2.3.</strong> Linux</a></li></ol></li><li class="chapter-item expanded "><a href="../git/how_to_git.html"><strong aria-hidden="true">3.</strong> How to git</a></li><li class="chapter-item expanded "><a href="../git/datenmodel.html"><strong aria-hidden="true">4.</strong> Das Datenmodel</a></li><li class="chapter-item expanded "><a href="../git/datenmodell_git.html"><strong aria-hidden="true">5.</strong> Datenmodell in Git</a></li><li class="chapter-item expanded "><a href="../git/erstes_repository.html"><strong aria-hidden="true">6.</strong> Dein erstes Repository</a></li><li class="chapter-item expanded "><a href="../git/staging_working_area.html"><strong aria-hidden="true">7.</strong> Staging und Working Area</a></li><li class="chapter-item expanded "><a href="../git/checkout_und_reset.html"><strong aria-hidden="true">8.</strong> Checkout und Reset</a></li><li class="chapter-item expanded "><a href="../git/help.html"><strong aria-hidden="true">9.</strong> Help! I fucked up</a></li><li class="chapter-item expanded "><a href="../git/branching_und_merging.html"><strong aria-hidden="true">10.</strong> Branching und Merging</a></li><li class="chapter-item expanded "><a href="../git/rebase.html"><strong aria-hidden="true">11.</strong> Rebasing</a></li><li class="chapter-item expanded "><a href="../git/changing_history.html" class="active"><strong aria-hidden="true">12.</strong> Changing History</a></li><li class="chapter-item expanded "><a href="../git/tipps_und_tricks.html"><strong aria-hidden="true">13.</strong> Tipps und Tricks</a></li><li class="chapter-item expanded "><a href="../git/remotes.html"><strong aria-hidden="true">14.</strong> Remotes</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../git/cheatsheet.html"><strong aria-hidden="true">15.</strong> Cheatsheet</a></li><li class="chapter-item expanded affix "><li class="part-title">Softwareentwicklung</li><li class="chapter-item expanded "><a href="../softwareentwicklung.html"><strong aria-hidden="true">16.</strong> Softwareentwicklung</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Software Engineering / Teamprojekt Reference</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="changing-history"><a class="header" href="#changing-history">Changing History</a></h1>
+<p>Sei es um die Historie besser nachvollziebar zu machen oder um Fehler zu korrigieren, es gibt immer wieder Situationen in denen wir die Historie ändern wollen.</p>
+<h2 id="verändern-des-letzten-commits"><a class="header" href="#verändern-des-letzten-commits">Verändern des letzten Commits</a></h2>
+<p>Ein Komma vergessen, vergessen die Datei zu formatieren oder einfach eine falsche Commit-Message geschrieben? Kein Problem wir können den letzten Commit ohne Probleme ändern. Eine Möglichkeit das zu erreichen haben wir uns bereits im Kapitel Resets angeschaut. Hierbei müssen wir aber immer die Commit-Message komplett neu schreiben.</p>
+<pre><code class="language-bash">   $ git reset --soft HEAD~
+   # alle notwenigen Änderungen vornehmen und der Staging Area hinzufügen
+   $ git commit
+</code></pre>
+<p>Grade wenn wir nur kleine Änderungen an der Commit Message vornehmen oder die Commit Message gleich bleiben soll, ist gibt es komfortablere Möglichkeiten.
+Mit <code>git commit --amend</code> können wir den letzten Commit bearbeiten.</p>
+<ol>
+<li>Füge alle Änderungen am letzten Commit der Staging Area hinzu.</li>
+<li>
+<pre><code class="language-bash">$ git commit --amend
+</code></pre>
+</li>
+<li>Der Editor öffnet sich und wir können die Commit-Message bearbeiten.</li>
+<li>Speichern und schließen</li>
+</ol>
+<h2 id="interaktive-rebase"><a class="header" href="#interaktive-rebase">Interaktive Rebase</a></h2>
+<h3 id="bearbeiten-von-älteren-commits"><a class="header" href="#bearbeiten-von-älteren-commits">Bearbeiten von älteren Commits</a></h3>
+<p>Wollen wir mehrere Commits oder Commits weiter aus der Vergangenheit bearbeiten müssen wir zu einem komplexeren Tool greifen. Interaktives Rebasing
+Eine abgespekte Form davon haben wir schon als normales Rebasing kennengelernt. Im Gegensatz zum normalen Rebasing, können wir hier aber die Reihenfolge der Commits ändern, Commits zusammenfassen oder auch Commits komplett löschen.</p>
+<p>In unserem Beispiel wollen wir die letzten 3 Commits bearbeiten.</p>
+<pre><code class="language-bash">  $ git rebase -i HEAD~3
+</code></pre>
+<blockquote>
+<p>Wie bei jedem git Befehlt können wir wahlweise auch direkt den Commit-Hash angeben.</p>
+</blockquote>
+<p>Sobald wir den Command ausführen öffnet sich ein Editor mit einer Liste der letzten 3 Commits.</p>
+<pre><code class="language-bash">pick 5c32ae1 Change my name a bit
+pick 8723ace Update README formatting and hello world
+pick a3b02e7 Add license
+
+# Rebase 710f0f8..a5f4a0d onto 710f0f8
+#
+# Commands:
+# p, pick &lt;commit&gt; = use commit
+# r, reword &lt;commit&gt; = use commit, but edit the commit message
+# e, edit &lt;commit&gt; = use commit, but stop for amending
+# s, squash &lt;commit&gt; = use commit, but meld into previous commit
+# f, fixup &lt;commit&gt; = like &quot;squash&quot;, but discard this commit's log message
+# x, exec &lt;command&gt; = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with 'git rebase --continue')
+# d, drop &lt;commit&gt; = remove commit
+# l, label &lt;label&gt; = label current HEAD with a name
+# t, reset &lt;label&gt; = reset HEAD to a label
+# m, merge [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [# &lt;oneline&gt;]
+# .       create a merge commit using the original merge commit's
+# .       message (or the oneline, if no original merge commit was
+# .       specified). Use -c &lt;commit&gt; to reword the commit message.
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+# Note that empty commits are commented out
+</code></pre>
+<p>Die Commits werden in inverser Reihenfolge zum Log angezeigt. Mit log würde die Reihenfolge wie folgt ausschauen:</p>
+<pre><code class="language-bash">$ git log --oneline
+a3b02e7 Add license
+8723ace Update README formatting and hello world
+5c32ae1 Change my name a bit
+...
+</code></pre>
+<p>Der Editor vom interaktiven Rebase zeigt nicht die Vergangenheit unserere Commits, sondern ist vielmehr ein Skript, das von oben nach unten von git ausgeführt wird. Um eine Änderung an einem Commit vorzunehmen, müssen wir das skript ändern, sodass es anhält und auf unsere Eingabe wartet. Um das zu erreichen, müssen wir das <code>pick</code> durch ein <code>edit</code> ersetzten.</p>
+<pre><code class="language-bash">edit 5c32ae1 Change my name a bit
+pick 8723ace Update README formatting and hello world
+pick a3b02e7 Add license
+</code></pre>
+<p>Wenn wir jetzt die Datei speichern und den Editor schließen. Erhalten wir folgende ausgabe.</p>
+<pre><code class="language-bash">$ git rebase -i HEAD~3
+&gt; Stopped at f7f3f6d... Change my name a bit
+  You can amend the commit now, with
+
+       git commit --amend
+
+  Once you're satisfied with your changes, run
+
+       git rebase --continue
+</code></pre>
+<p>Wir können jetzt unsere Änderungen stagen und wenn wir glücklich sind den Commit mit <code>git commit --amend</code> abschließen. Hier ist dann auch nochmal die Änderung der Commit-Message möglich. Wenn du fertig bist, kannst du den Rebase mit <code>git rebase --continue</code> fortsetzten.</p>
+<p>Da wir ansonsten alles auf <code>pick</code> gelassen haben, wird der Rest der Commits einfach angewendet.</p>
+<blockquote>
+<p>Grade bei größeren Rebases kann es zu Konflikten kommen. Diese müssen dann wie bereits gelern händisch gelöst werden.</p>
+</blockquote>
+<blockquote>
+<p>💡 Auch beim interaktiven Rebase gilt: Commits können nicht verändert werden. Was wir hier eigentlich machen ist das erstellen von neuen Commits, die die alten ersetzen.</p>
+</blockquote>
+<h3 id="umstellen-von-commits"><a class="header" href="#umstellen-von-commits">Umstellen von Commits</a></h3>
+<p>Du hast den Eindruck, dass die Reihenfolge von Commits fürs Verständnis nicht optional ist? Mit unserem Rebase ist das ein Katzensprung. Wie bei einem normalen Skript können wir die Reihenfolge der Befehle einfach ändern und die Reihenfolge der Commits ändert sich dementsprechend. Was als erstes kommt, wird auch als erstes angewendet.</p>
+<h3 id="squashen-von-commits"><a class="header" href="#squashen-von-commits">Squashen von Commits</a></h3>
+<p>Mit <code>git reset</code> haben wir schon eine Möglichkeit gesehen, wie wir Commits zusammenfassen können. Leider ging das dabei nur mit den letzten Commits bzw. bringt einen enormen Aufwand mit sich ältere Commits zusammenzufassen. Mit dem interaktiven Rebase ist das ganz schnell und elegant erledigt.</p>
+<p>Hier nochmal unser Anfangszustand:</p>
+<pre><code class="language-bash">pick 5c32ae1 Change my name a bit
+pick 8723ace Update README formatting and hello world
+pick a3b02e7 Add license
+</code></pre>
+<p>Wie unten im Editor in der hilfreichen Zusammenfassung beschrieben, können wir mit <code>squash</code> Commits zusammenfassen. Wichtig ist hierbei, dass wir der mit dem <code>squash</code> annotierte Commit mit dem Commit darüber zusammengefasst wird. In unserem Beispiel wollen wir die ersten beiden Commits zusammenfassen:</p>
+<pre><code class="language-bash">pick 5c32ae1 Change my name a bit
+squash 8723ace Update README formatting and hello world
+pick a3b02e7 Add license
+</code></pre>
+<p>Nachdem wir den Editor schließen, öffnet sich ein weiterer Editor, in dem wir die Commit-Message für den neuen (gesquashten) Commit eingeben können. Wenn wir fertig sind, speichern und schließen wir den Editor.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../git/rebase.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../git/tipps_und_tricks.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../git/rebase.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../git/tipps_und_tricks.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../mermaid.min.js"></script>
+        <script src="../mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>

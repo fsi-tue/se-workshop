@@ -1,0 +1,313 @@
+<!DOCTYPE HTML>
+<html lang="de" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Das Datenmodel - Software Engineering / Teamprojekt Reference</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../einfuehrung.html">Einführung</a></li><li class="chapter-item expanded affix "><a href="../terminal.html">Terminal / Shell</a></li><li class="chapter-item expanded affix "><li class="part-title">Git</li><li class="chapter-item expanded "><a href="../git/einfuehrung.html"><strong aria-hidden="true">1.</strong> Git?!? Was ist das eigentlich?</a></li><li class="chapter-item expanded "><a href="../git/installation.html"><strong aria-hidden="true">2.</strong> Installation und Konfiguration von Git</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../git/installation_windows.html"><strong aria-hidden="true">2.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="../git/installation_macos.html"><strong aria-hidden="true">2.2.</strong> MacOS</a></li><li class="chapter-item expanded "><a href="../git/installation_linux.html"><strong aria-hidden="true">2.3.</strong> Linux</a></li></ol></li><li class="chapter-item expanded "><a href="../git/how_to_git.html"><strong aria-hidden="true">3.</strong> How to git</a></li><li class="chapter-item expanded "><a href="../git/datenmodel.html" class="active"><strong aria-hidden="true">4.</strong> Das Datenmodel</a></li><li class="chapter-item expanded "><a href="../git/datenmodell_git.html"><strong aria-hidden="true">5.</strong> Datenmodell in Git</a></li><li class="chapter-item expanded "><a href="../git/erstes_repository.html"><strong aria-hidden="true">6.</strong> Dein erstes Repository</a></li><li class="chapter-item expanded "><a href="../git/staging_working_area.html"><strong aria-hidden="true">7.</strong> Staging und Working Area</a></li><li class="chapter-item expanded "><a href="../git/checkout_und_reset.html"><strong aria-hidden="true">8.</strong> Checkout und Reset</a></li><li class="chapter-item expanded "><a href="../git/help.html"><strong aria-hidden="true">9.</strong> Help! I fucked up</a></li><li class="chapter-item expanded "><a href="../git/branching_und_merging.html"><strong aria-hidden="true">10.</strong> Branching und Merging</a></li><li class="chapter-item expanded "><a href="../git/rebase.html"><strong aria-hidden="true">11.</strong> Rebasing</a></li><li class="chapter-item expanded "><a href="../git/changing_history.html"><strong aria-hidden="true">12.</strong> Changing History</a></li><li class="chapter-item expanded "><a href="../git/tipps_und_tricks.html"><strong aria-hidden="true">13.</strong> Tipps und Tricks</a></li><li class="chapter-item expanded "><a href="../git/remotes.html"><strong aria-hidden="true">14.</strong> Remotes</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../git/cheatsheet.html"><strong aria-hidden="true">15.</strong> Cheatsheet</a></li><li class="chapter-item expanded affix "><li class="part-title">Softwareentwicklung</li><li class="chapter-item expanded "><a href="../softwareentwicklung.html"><strong aria-hidden="true">16.</strong> Softwareentwicklung</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Software Engineering / Teamprojekt Reference</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="datenmodel"><a class="header" href="#datenmodel">Datenmodel</a></h1>
+<p>Es gibt viele verschieden Ansätze für die ein VCS zu implementieren. Git verwendet ein sehr einfaches aber durchdachtes Modell, dass uns ermöglicht Features wie Branches, Kollaboration und eine Dateihistorie zu nutzten</p>
+<h1 id="snapshots--commits"><a class="header" href="#snapshots--commits">Snapshots / Commits</a></h1>
+<p>Unser Modell beinhaltet einer Sammlung von Ordnern und Datein in einem &quot;top-level&quot; Ordner - ein Snapshot auch <strong>Commit</strong> genannt. Von git wird eine Datei auch als <code>blob</code> bezeichnet und ist letzendlich nur eine Sammlung aus Bytes. Das Dateiformat spielt somit keine Rolle. Ein Ordner wird als <code>tree</code> bezeichnet und ordnet einem Namen einen oder mehrere <code>blob</code>s und andere <code>tree</code>s zu. Ordner können dementsprechend andere Ordner oder Datein enthalten und sind identisch vom Aufbau zu unserem Dateisystem. Zum Beispiel:</p>
+<pre><code>&lt;root&gt; (tree)
+|
++- beispiel (tree)
+|  |
+|  + hello.txt (blob, contents = &quot;hello world&quot;)
+|
++- inhalt.txt (blob, contents = &quot;git ist super&quot;)
+</code></pre>
+<p>Der top-level <code>tree</code> referenziert den <code>tree</code> &quot;beispiel&quot; (der wiederum einen <code>blob</code> enhält) und den <code>blob</code> &quot;inhalt.txt&quot;.</p>
+<h1 id="snapshots-in-relation"><a class="header" href="#snapshots-in-relation">Snapshots in Relation</a></h1>
+<p><strong>Snapshots</strong> alleine bringen uns noch keinen Mehrwert. Erst wenn wir mehrere Snapshots in Relation setzten, kommen wir unserem Ziel eines VCS näher.</p>
+<h2 id="version-history-versionsgeschichte"><a class="header" href="#version-history-versionsgeschichte">Version history (Versionsgeschichte)</a></h2>
+<p>Widmen wir uns zuerst der wichtigsten Annforderung an unser Modell - der Versionsgeschichte. Zu jedem Zeitpunkt wollen wir Änderungen an unseren Dateinen nachverfolgen und falls nötig Rückgängig machen können. Das einfachste Modell ist die zeitliche Anneinanderreihung unserer Snapshots. Wir erhalten Modell mit einer rein linearen Relation.</p>
+<pre><code>o &lt;--- o &lt;--- o &lt;--- o &lt;--- o
+</code></pre>
+<p>Jedes <code>o</code> symbolisiert hier einen Snapshot und jeder <code>&lt;---</code> eine Parent-Child-Relation. Das Child zeigt hierbei immer auf den Parent.</p>
+<p>Sollten wir nun eine Änderung vorgenommen haben, die wir Rückgängig machen wollen. Suchen wir vom letzten (rechten) Snapshot in den Parent Snapshots (von rechts nach links), bis wir einem Snapshot gefunden haben, der unsere Datei im gewünschten Zustand enthält. Den Inhalt können wir kopieren und in unserem aktuellen Snapshot einfügen.</p>
+<p>Eine Version History ist somit möglich.</p>
+<h2 id="branches"><a class="header" href="#branches">Branches</a></h2>
+<p>Softwareprojekte werden selten in Isolation geschrieben. Während Person A an dem einen Feature arbeitet, schreibt Person B vielleicht an einem anderen. Dies bringt Probleme mit sich, die wir in unserem aktuellen Modell nicht lösen können. Schauen wir uns ein Beispiel an:</p>
+<p>Am Angang haben wir einen Commit (Snapshot) der leeren Datei src/datei.txt.
+Dann arbeiten Alice und Bob parallel an dieser:</p>
+<p>Alice in src/datei.txt:</p>
+<pre><code>fn hello_world() {
+   print(&quot;Hello World&quot;)
+}
+
+fn main() {
+   hello_world()
+}
+</code></pre>
+<p>Bob in src/datei.txt:</p>
+<pre><code>fn hello(name: String) {
+   print(&quot;Hello&quot; + name)
+}
+
+fn main() {
+   hello(&quot;Bob&quot;)
+}
+</code></pre>
+<p><code>src</code>ist unser <code>top-level</code>-Ordner.
+Beide Personen schreiben an der selben Datei. Nur die Inhalte sind leicht unterschiedlich. Alice will das klassiche &quot;Hello World&quot; ausgegeben, während Bob lieber den eine Begrüßung mit Namen ausgeben möchte. Wir gehen davon aus dass sich nur diese Datei in dem Ordner <code>src</code> befindet. Wenn somit beide einen Commit (=Snapshot) erstellen haben diese die Form:</p>
+<pre><code>src (tree)
+|
++- datei.txt (blob, contents = ...)
+</code></pre>
+<p>Aber wie sollen wir beide in Relation setzten? Unser bisheriges Modell hat sich an die zeitliche Reihenfolge gehalten. Der Commit mit der leeren Datei kommt somit zuerst, aber was ist mit den anderen beiden? Wenn Bob nach Alice seine Commit erstellt, wird Alice ihre Arbeit überschrieben. Wenn Alice nach Bob commited ist es genau anders herum. Paralleles Arbeiten ist somit noch nicht möglich.</p>
+<h3 id="paralleles-modell"><a class="header" href="#paralleles-modell">Paralleles Modell</a></h3>
+<p>Die Zeit war bis jetzt unsere x-Achse und wenn wir eine sinnvolle Version History behalten wollen, sollten wir das auch nicht ändern. Alice und Bob arbeiten aber parallel an ihren Features. Wir wollen also wenn möglich eine zeitlich äquivalente Einordnung von beiden Commits. Warum nicht einfach übereinander?</p>
+<pre><code>o &lt;--- o (Alice)
+  ^
+   \
+    -- o (Bob)
+</code></pre>
+<p>Der erste Commit bleibt unverändert. Alice und Bobs Commits werden aber nicht mehr in eine Parent-Child Relation gebracht, sondern sind vielmehr in einer Sibling Relation. Beide haben als Parent den gleichen ersten Commit.</p>
+<p>Die Struktur unseres Modells ändert sich also von einer reinen linearen Aneinanderreihung zu einem <strong>Baum</strong>. Paralleles Arbeiten wird somit möglich und Alice und Bob kommen sich nicht mehr in die Quere. Diese unterschiedlichen Stränge werden in git als <strong>Branches</strong> bezeichnet.</p>
+<blockquote>
+<p>Wen du schon Algorithmen gehört hast, wird dir das bekannt vorkommen. Falls nicht ist auch nicht schlimm. Ein <strong>Baum</strong> besteht aus lauter <strong>Knoten</strong> (hier: Commits) die genau einen <strong>Parent</strong> haben. Ein <strong>Knoten</strong> kann aber mehrere <strong>Kinder</strong> haben. Also wie ein Baum in der Natur, nur dass wir ihn meistens um 90° oder 180° gedreht darstellen.</p>
+</blockquote>
+<p>Aktuell haben wir unsere <strong>Branches</strong> nach den Namen der Personen benannt, aber in der Praxis benennen wir sie nach den Features an denen wir arbeiten. Also lass uns die Namen ändern:</p>
+<pre><code>o-1 &lt;--- o-2 (feature_a)
+  ^
+   \
+    -- o-3 (feature_b)
+</code></pre>
+<p>Damit wir einfacher Commits referenzieren können, haben wir ihnen eine Nummer gegeben. Die Reihenfolge der Nummern spielt dabei keine Rolle, sondern ist nur zur Unterscheidung gedacht. Git verwendet statt Nummern Hashes mehr dazu aber später.</p>
+<p>Aus Perspektive von Branch <code>feature_a</code> existieren nur zwei Commits o-1 und o-2. Von Branch <code>feature_b</code> existier Commit o-1 und o-3.</p>
+<blockquote>
+<p>‼️ Commits können nur existieren, wenn sie von einem Branch direkt oder indirekt referenziert werden. Ein Commit der von keinem Branch referenziert wird, wird von git als <strong>unreachable</strong> bezeichnet und nach einer gewissen Zeit gelöscht.</p>
+</blockquote>
+<blockquote>
+<p>Branch Namen müssen eindeutig sein und dürfen keine Leerzeichen enthalten. Die Namen müssen keinen Konventionen folgen, es ist aber ratsam sich auf eine gemeinsame Konvention im Team zu einigen.</p>
+</blockquote>
+<h1 id="merging-branches"><a class="header" href="#merging-branches">Merging Branches</a></h1>
+<p>Wir haben nun zwei Branches die parallel an ihren Features arbeiten. Aber wie können wir den Fortschritt von beiden zusammenführen? Warum nicht einfach die Commits und damit auch Änderungen von beiden Branches in einen Commit zusammenfassen?</p>
+<pre><code>o-1 &lt;--- o-2 &lt;--- o-4 (feature_a, feature_b)
+  ^              /
+   \            /
+    -- o-3 &lt;---
+</code></pre>
+<p>Hier erstellen wir einen neuen Commit (o-4) der zwei Parents besitzt: o-2 und o-3. Dieser Commit enthält somit die Änderungen von beiden Branches. Diese Möglichkeit Branches zusammenzuführen wird in git als <strong>Merge</strong> bezeichnet.</p>
+<p>Unser Modell müssen wir somit erweitern. Ein Knoten / Commit in einem Baum kann immer nur ein Parent erhalten. Unser Merge-Commit o-4 hat aber zwei Parents. In der Graphentheorie nennen wir diese neue Struktur einen <strong>DAG</strong> (Directed Asyclic Graph). Es hat nur eine wichtige Eigenschaft: Es gibt keine Zyklen. Das bedeutet, wenn wir den Verbindungen (Relations / Pointern) folgen, werden wir nie wieder an den selben Knoten zurückkommen.</p>
+<p>So schön und unkompliziert das Merging in der Theorie klingt, ist es in der Praxis leider nicht immer. Auch wenn git recht intelligent mit dem Zusammenführen von Änderungen umgeht, kann es immer noch zu Konflikten kommen, die dann manuell gelöst werden müssen. Hier fokusieren wir uns erstmal auf die Theorie und lernen später wie wir mit Konflikten umgehen.</p>
+<h1 id="rebasing-branches"><a class="header" href="#rebasing-branches">Rebasing Branches</a></h1>
+<p>Das einfache Zusammenführen von Branches ist nicht die einzige Möglichkeit Änderungen von der einen Branch mit der andern zu kombinieren. Git erlaubt uns auch das einfache &quot;anhängen&quot; von Commits aus einem Branch an einen anderen. Der Vorgang wird als <strong>Rebase</strong> bezeichnet.</p>
+<p>Wenn wir nun also die Commits von Branch <code>feature_b</code> an Branch <code>feature_a</code> anhängen wollen, verändert sich unser Commit-Graph wie folgt:</p>
+<pre><code>o-1 &lt;--- o-2 (feature_a)
+  ^
+   \
+    -- o-3 (feature_b)
+
+== (rebase feature_a feature_b) ==
+
+o-1 &lt;--- o-2 (feature_a)
+           ^
+            \
+             -- o-3 (feature_b)
+</code></pre>
+<p><code>feature_a</code> besteht nun aus den Commits o-1 und o-2, während <code>feature_b</code> nun aus o-1, o-2 und o-3 besteht. <code>feature_a</code> verändert sich somit nicht.
+Auch hier kann es selbstverständlich zu Konflikten kommen, die manuell gelöst werden müssen. Dazu später mehr.</p>
+<h1 id="commits"><a class="header" href="#commits">Commits</a></h1>
+<p>Du hast Commits bereits als &quot;Snapshots&quot; deiner Datein kennengelernt, dass ist nicht falsch, aber auch nicht ganz vollständig. Zusätzlich zu dem Zustand deiner Datein, speichert ein Commit noch Metainformationen wie:</p>
+<ul>
+<li>Autor</li>
+<li>Nachricht</li>
+<li>Zeitstempel</li>
+</ul>
+<p>Commits sind immutable. Das bedeutet, dass Änderungen an alten Commits immer zwangsweise einen neuen Commit erstellen. Ohne diese Eigenschaft hätten wir keine klar nachfolziehbare Version History.</p>
+<blockquote>
+<p>Jedes Mal den vollständingen Datei-Tree zu speichern ist nicht nur ineffizient, sondern auch unnötig. Um das zu verhindern, werden gleiche Dateien und Verzeichnissse nur einmal gespeichert und sind dann von mehreren Commits referenzierbar. Eine einfache Implementierung dieser Optimierung ist durch die Immutablilty der Commits möglich.</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../git/how_to_git.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../git/datenmodell_git.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../git/how_to_git.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../git/datenmodell_git.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../mermaid.min.js"></script>
+        <script src="../mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>

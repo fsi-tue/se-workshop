@@ -1,0 +1,272 @@
+<!DOCTYPE HTML>
+<html lang="de" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Terminal / Shell - Software Engineering / Teamprojekt Reference</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="einfuehrung.html">Einführung</a></li><li class="chapter-item expanded affix "><a href="terminal.html" class="active">Terminal / Shell</a></li><li class="chapter-item expanded affix "><li class="part-title">Git</li><li class="chapter-item expanded "><a href="git/einfuehrung.html"><strong aria-hidden="true">1.</strong> Git?!? Was ist das eigentlich?</a></li><li class="chapter-item expanded "><a href="git/installation.html"><strong aria-hidden="true">2.</strong> Installation und Konfiguration von Git</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="git/installation_windows.html"><strong aria-hidden="true">2.1.</strong> Windows</a></li><li class="chapter-item expanded "><a href="git/installation_macos.html"><strong aria-hidden="true">2.2.</strong> MacOS</a></li><li class="chapter-item expanded "><a href="git/installation_linux.html"><strong aria-hidden="true">2.3.</strong> Linux</a></li></ol></li><li class="chapter-item expanded "><a href="git/how_to_git.html"><strong aria-hidden="true">3.</strong> How to git</a></li><li class="chapter-item expanded "><a href="git/datenmodel.html"><strong aria-hidden="true">4.</strong> Das Datenmodel</a></li><li class="chapter-item expanded "><a href="git/datenmodell_git.html"><strong aria-hidden="true">5.</strong> Datenmodell in Git</a></li><li class="chapter-item expanded "><a href="git/erstes_repository.html"><strong aria-hidden="true">6.</strong> Dein erstes Repository</a></li><li class="chapter-item expanded "><a href="git/staging_working_area.html"><strong aria-hidden="true">7.</strong> Staging und Working Area</a></li><li class="chapter-item expanded "><a href="git/checkout_und_reset.html"><strong aria-hidden="true">8.</strong> Checkout und Reset</a></li><li class="chapter-item expanded "><a href="git/help.html"><strong aria-hidden="true">9.</strong> Help! I fucked up</a></li><li class="chapter-item expanded "><a href="git/branching_und_merging.html"><strong aria-hidden="true">10.</strong> Branching und Merging</a></li><li class="chapter-item expanded "><a href="git/rebase.html"><strong aria-hidden="true">11.</strong> Rebasing</a></li><li class="chapter-item expanded "><a href="git/changing_history.html"><strong aria-hidden="true">12.</strong> Changing History</a></li><li class="chapter-item expanded "><a href="git/tipps_und_tricks.html"><strong aria-hidden="true">13.</strong> Tipps und Tricks</a></li><li class="chapter-item expanded "><a href="git/remotes.html"><strong aria-hidden="true">14.</strong> Remotes</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="git/cheatsheet.html"><strong aria-hidden="true">15.</strong> Cheatsheet</a></li><li class="chapter-item expanded affix "><li class="part-title">Softwareentwicklung</li><li class="chapter-item expanded "><a href="softwareentwicklung.html"><strong aria-hidden="true">16.</strong> Softwareentwicklung</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Software Engineering / Teamprojekt Reference</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="terminal--shell"><a class="header" href="#terminal--shell">Terminal / Shell</a></h1>
+<blockquote>
+<p>💡Wenn du dich schon mit dem Terminal bzw. einer Shell auskennst kannst du diese Seiter überspringen.</p>
+</blockquote>
+<h2 id="was-ist-das-terminal"><a class="header" href="#was-ist-das-terminal">Was ist das Terminal?</a></h2>
+<p>Computer haben heutzutage eine Vielzahl von Möglichkeiten bedient zu werden. Sei es über die grafische Benutzeroberfläche, Sprachsteuerung oder sogar AR/VR. Diese sind für 80% der Anwendungsfälle großartig, aber sie sind oft in ihren Möglichkeiten grundlegend eingeschränkt. Man kann nichts tun, was nicht vorher programmiert wurde. Grade in der Softwareentwicklung stoßen wir hier an die Grenzen des Möglichen. Um die Möglichkeiten des Computers voll ausschöpfen zu können, müssen wir zurück zu den Anfängen des Computers und eine Textschnittstelle verwenden: Das Terminal.</p>
+<blockquote>
+<p><strong>Terminal</strong> und <strong>Shell</strong> werden oft synonym verwndet auch wenn sie nicht ganz das gleiche sind. Das <strong>Terminal</strong> ist ein Programm, das es ermöglicht, mit einer <strong>Shell</strong> zu interagieren. Die <strong>Shell</strong> ist das eigentliche Programm, das die Befehle ausführt.</p>
+</blockquote>
+<p>In unserem Workshop liegt der Fokus auf der Bourne Again SHell, kurz &quot;bash&quot;. Sie ist eine der am weitesten verbreiteten Shells und ihre Syntax ist ähnlich zu vielen anderern Shells. Um eine Shell-Prompt zu öffnen (in der du Befehle eingeben kannst), benötigst du zunächst ein Terminal. Auf deinem Gerät ist wahrscheinlich bereits eines installiert. (Nutzte auf Windows das Programm &quot;Git Bash&quot;)</p>
+<h2 id="die-shell-nutzen"><a class="header" href="#die-shell-nutzen">Die Shell nutzen</a></h2>
+<p>Wenn du dein Terminal öffnest, siehst du eine <strong>prompt</strong> die so oder ähnlich aussieht:</p>
+<pre><code class="language-bash">arch:~$
+</code></pre>
+<p>&quot;arch&quot; ist der Name des Computers, &quot;~&quot; ist das <strong>cwd</strong> (current working directory) bzw. aktuelles Verzeichnis und &quot;$&quot; signalisiert, dass du als normaler Benutzer angemeldet bist. (Adminastrator hat ein &quot;#&quot;).
+Das &quot;~&quot; ist eine Abkürzung für dein Home-Verzeichnis. auf Unix-Systemen ist das <code>/home/deinBenutzername/</code> und auf Windows <code>C:\Users\deinBenutzername\</code>.</p>
+<blockquote>
+<p>Im Laufe des Workshops werden immer wieder Befehle gezeigt, die du in deinem Terminal ausführen kannst. Sie haben immer die gleiche Form:</p>
+<pre><code class="language-bash">$ cat datei.txt
+&gt; Ich bin der Inhalt der Datei!
+</code></pre>
+<p>Wenn du den Befehl bei dir ausführen möchtest, must du das <code>$</code> nicht mit eingeben. Es wird nur verwendet um zu zeigen, dass es sich um einen Befehl in der Shell handelt. Hinter dem <code>&gt;</code> steht die Ausgabe des Befehls. In diesem Fall der Inhalt der Datei <code>datei.txt</code>.</p>
+</blockquote>
+<p>Aber woher weiß das Terminal welches Programm es ausführen soll, wenn du den Behelt <code>cat</code> eingibst? Ähnlich zu Programmiersprachen hat auch die Shell ein <strong>Environment</strong>, das Kontext für die Ausführung von Befehlen bereitstellt. In diesem Environment gibt es eine <strong>PATH</strong>-Variable, die eine Liste von Verzeichnissen enthält, in denen die Shell nach Programmen suchen soll. Wenn du also den Befehl <code>cat</code> eingibst, sucht die Shell in den Verzeichnissen, die in der PATH-Variable aufgelistet sind, nach einer Datei namens <code>cat</code> und führt sie aus. Solltest du Probleme haben ein Programm im Terminal auszuführen, auch wenn du dir sicher bist, dass es installiert ist, wurde meistens das Verzeichnis, in dem das Programm liegt, nicht zur PATH-Variable hinzugefügt.</p>
+<p>Du kannst die PATH und sämtliche anderen Environment-Variablen mit folgendem Befehlt anzeigen lassen:</p>
+<pre><code class="language-bash">  $ echo $PATH
+  &gt; /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+</code></pre>
+<p>Die Ausgabe schaut bei euch vermutlich ähnlich aus.</p>
+<h3 id="navigation-im-terminal"><a class="header" href="#navigation-im-terminal">Navigation im Terminal</a></h3>
+<p>Die Shell liegen die Identischen Verzeichnisse, die auch im Finder / Explorer zu finden sind, zugrunde. Navigation zwischen den einzelnen Verzeichnissen funktioniert über die Befehle <code>cd</code> (change directory) und <code>ls</code> (list). Mit <code>cd</code> kannst du in ein anderes Verzeichnis wechseln und mit <code>ls</code> kannst du dir den Inhalt eines Verzeichnisses anzeigen lassen.</p>
+<p>Angenommen du hast folgende Ordnerstruktur:</p>
+<pre><code class="language-bash"> +-- ~
+     +-- Dokumente
+     |   +-- Texte
+     |   |   +-- text1.txt
+     |   |   +-- text2.txt
+     |   +-- Bilder
+     |   |   +-- bild1.jpg
+     |   |   +-- bild2.jpg
+     +-- Downloads
+     |   +-- download1.zip
+</code></pre>
+<p>und du befindest dich in deinem Home-Verzeichnis (<code>~</code>). Wenn du nun sehen willst was sich dort befindet, kannst du den Befehl <code>ls</code> verwenden:</p>
+<pre><code class="language-bash">~$ ls
+&gt; Dokumente Downloads
+</code></pre>
+<p>Wenn du hinter <code>ls</code> einen Pfad angibst, wird der Inhalt dieses Verzeichnisses angezeigt. So kannst du zum Beipiel den Ordner Texte anzeigen lassen:</p>
+<pre><code class="language-bash">~$ ls Dokumente/Texte
+&gt; text1.txt text2.txt
+</code></pre>
+<p>Um in andere Ordner zu wechseln wir der Beffehl <code>cd</code> verwendet. Wenn du in den Ordner Texte wechseln möchtest, gibst du folgendes ein:</p>
+<pre><code class="language-bash">~$ cd Dokumente/Texte
+~/Dokumente/Texte$ ls
+&gt; text1.txt text2.txt
+</code></pre>
+<h3 id="absolute-und-relative-pfade"><a class="header" href="#absolute-und-relative-pfade">Absolute und relative Pfade</a></h3>
+<p>In unseren vorherigen Beispielen haben wir alle Pfade <strong>relativ</strong> zu deinem aktuellen Verzeichnis angegeben. Das heißt, dass der Bezugspunkt immer dein aktuelles Verzeichnis ist. Es gibt aber auch <strong>absolute</strong> Pfade, die immer von der Wurzel des Dateisystems ausgehen. Auf Unix-Systemen ist das <code>/</code> und auf Windows <code>C:\</code>. Wenn du also in deinem Home-Verzeichnis bist und in den Ordner Texte wechseln möchtest, kannst du auch den absoluten Pfad angeben:</p>
+<pre><code class="language-bash">~$ cd /home/deinBenutzername/Dokumente/Texte
+</code></pre>
+<blockquote>
+<p>Um den absoluten Pfad zu deinem aktuellen Verzeichnis zu sehen, kannst du den Befehl <code>pwd</code> (print working directory) verwenden.</p>
+</blockquote>
+<p>Um mit einem relativ zu deinem aktuellen Ordner nach oben zu gehen, kann der Pfad <code>..</code> verwendet werden.</p>
+<pre><code class="language-bash">~/Dokumente/Texte$ cd ..
+~/Dokumente$
+</code></pre>
+<p><code>..</code> kann auch in Kombination mit dem bereits bekannten relativen Pfad Syntax verwendet werden. Ein wechsel von <code>Dokumente</code> zu <code>Downloads</code> wird somit recht einfach.</p>
+<pre><code class="language-bash">~/Dokumente$ cd ../Downloads
+~/Downloads$
+</code></pre>
+<h3 id="skripte"><a class="header" href="#skripte">Skripte</a></h3>
+<p>Wir werden in unserem Workshop nicht näher darauf eingehen, jedoch ist es wichtig wenigstens den Begriff zu kennen.</p>
+<p>Hinter dem recht unscheinbaren bereits bekannten Shell-Syntax versteckt sich eine Shell-Sprache die viele Features einer vollständigen Programmiersprache beinhaltet. So existieren Schleifen, if-Bedingungen, etc. Bündlet man mehrere Shell-Befehle spricht man von einem Shell-Skript. Diese ermöglichen leichte reproduzierbarkeit von komplizierteren Tätigkeiten und ein einfaches Teilen von Befehlen mit anderen Personen.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="einfuehrung.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="git/einfuehrung.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="einfuehrung.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="git/einfuehrung.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="mermaid.min.js"></script>
+        <script src="mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>
