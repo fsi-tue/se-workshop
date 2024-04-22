@@ -173,8 +173,82 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="cheatsheet"><a class="header" href="#cheatsheet">Cheatsheet</a></h1>
-
+                        <h1 id="git-cheatsheet"><a class="header" href="#git-cheatsheet">Git Cheatsheet</a></h1>
+<h2 id="einen-Überblick-verschaffen"><a class="header" href="#einen-Überblick-verschaffen">Einen Überblick verschaffen</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><code>git status</code></td><td>Zeigt den aktuellen Stand des HEAD pointers, den Stand der Staging Area sowie Änderungen am Working Tree</td></tr>
+<tr><td><code>git log</code></td><td>Zeigt die letzten Commits die von unserem aktuellen HEAD erreichbar sind</td></tr>
+<tr><td><code>git log --oneline --graph --all</code></td><td>Zeigt den Commit Graph aller Commits von allen Branches an</td></tr>
+</tbody></table>
+</div>
+<h2 id="checkout"><a class="header" href="#checkout">Checkout</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><code>git checkout &lt;branch&gt;</code></td><td>Wechselt auf den angegebenen Branch.</td></tr>
+<tr><td><code>git checkout &lt;commit&gt;</code></td><td>Wechselt auf den angegebenen Commit. Du befindest dich danach im &quot;detached HEAD&quot; modus. (Erstelle und) Wechsle auf einen Branch, bevor du einen Commit erstellst</td></tr>
+</tbody></table>
+</div>
+<h2 id="staging-area"><a class="header" href="#staging-area">Staging Area</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><code>git add &lt;file_name&gt;</code></td><td>Fügt die angegebene Datei der Staging Area hinzu.</td></tr>
+<tr><td><code>git reset &lt;file_name&gt;</code></td><td>Überschreibt die Staging Area mit dem letzten Commit. Das hat den Effekt, dass die Datei wieder aus der Staging Area entfernt wird. Der Working Tree bleibt davon unberührt.</td></tr>
+</tbody></table>
+</div>
+<h2 id="commit"><a class="header" href="#commit">Commit</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><code>git commit</code></td><td>Erstellt einen neuen Commit.</td></tr>
+<tr><td><code>git commit -m &quot;Text&quot;</code></td><td>Erstellt einen neuen Commit mit einer Nachricht</td></tr>
+</tbody></table>
+</div>
+<h2 id="branches"><a class="header" href="#branches">Branches</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><code>git branch</code></td><td>Zeigt alle Branches an.</td></tr>
+<tr><td><code>git branch &lt;name&gt;</code></td><td>Erstellt einen neuen Branch am aktuellen HEAD pointer.</td></tr>
+<tr><td><code>git branch -m &lt;alter_name&gt; &lt;name&gt;</code></td><td>Ändert den Namen des angegebenen Branches.</td></tr>
+</tbody></table>
+</div>
+<h2 id="merging"><a class="header" href="#merging">Merging</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><code>git merge &lt;branch&gt;</code></td><td>Merged den angegebenen Branch in den aktuellen Branch.</td></tr>
+<tr><td><code>git merge --abort</code></td><td>Bricht den Merge nach einem Konflikt ab und stellt den vorherigen Stand wieder her. Solltest du einen Merge abschließen wollen, muss nur ein neuer Commit nach dem Lösen des Konflikts erstellt werden.</td></tr>
+</tbody></table>
+</div>
+<h2 id="rebasing"><a class="header" href="#rebasing">Rebasing</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><code>git rebase &lt;branch&gt;</code></td><td>Rebasen des aktuellen Branches auf den angegebenen Branch.</td></tr>
+<tr><td><code>git rebase --abort</code></td><td>Bricht den Rebase nach einem Konflikt ab und stellt den vorherigen Stand wieder her.</td></tr>
+<tr><td><code>git rebase --continue</code></td><td>Führt den Rebase nach dem Lösen eines Konflikts fort.</td></tr>
+</tbody></table>
+</div>
+<h2 id="reset"><a class="header" href="#reset">Reset</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><code>git reset --soft &lt;commit&gt;</code></td><td>Setzt den HEAD pointer auf den angegebenen Commit. Die Staging Area und der Working Tree bleiben unberührt.</td></tr>
+<tr><td><code>git reset --mixed &lt;commit&gt;</code></td><td>Setzt den HEAD pointer auf den angegebenen Commit. Die Staging Area wird zurückgesetzt. Der Working Tree bleibt unberührt.</td></tr>
+<tr><td><code>git reset --hard &lt;commit&gt;</code></td><td>Setzt den HEAD pointer auf den angegebenen Commit. Die Staging Area und der Working Tree werden zurückgesetzt. Nicht Commitete Änderungen im Working Tree gehen verloren</td></tr>
+</tbody></table>
+</div>
+<h2 id="reflog"><a class="header" href="#reflog">Reflog</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><code>git reflog</code></td><td>Zeigt die Historie aller HEAD Änderungen an. Nützlich um nach Commits ohne Branches wiederzufinden</td></tr>
+</tbody></table>
+</div>
+<h2 id="remotes"><a class="header" href="#remotes">Remotes</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><code>git remote</code></td><td>Zeigt alle Remotes an, die in diesem Repository konfiguriert sind.</td></tr>
+<tr><td><code>git remote add &lt;name&gt; &lt;url&gt;</code></td><td>Fügt ein neues Remote Repository hinzu.</td></tr>
+<tr><td><code>git remote remove &lt;name&gt;</code></td><td>Entfernt das angegebene Remote Repository.</td></tr>
+<tr><td><code>git remote show &lt;name&gt;</code></td><td>Zeigt Informationen über das angegebene Remote Repository an.</td></tr>
+</tbody></table>
+</div>
+<h2 id="arbeiten-mit-remotes"><a class="header" href="#arbeiten-mit-remotes">Arbeiten mit Remotes</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>Beschreibung</th></tr></thead><tbody>
+<tr><td><code>git fetch &lt;remote&gt;</code></td><td>Lädt alle Änderungen aus dem angegebenen Remote Repository herunter, ohne sie zu mergen.</td></tr>
+<tr><td><code>git pull &lt;remote&gt; &lt;branch&gt;</code></td><td>Lädt alle Änderungen aus dem angegebenen Remote Repository herunter und merged sie in den aktuellen Branch.</td></tr>
+<tr><td><code>git push &lt;remote&gt; &lt;branch&gt;</code></td><td>Lädt alle Änderungen aus dem aktuellen Branch in das angegebene Remote Repository hoch.</td></tr>
+<tr><td><code>git branch --set-upstream-to=&lt;remote&gt;/&lt;branch&gt;</code></td><td>Setzt den Upstream Branch für den aktuellen Branch.</td></tr>
+<tr><td><code>git push -u &lt;remote&gt; &lt;branch&gt;</code></td><td>Lädt alle Änderungen aus dem aktuellen Branch in das angegebene Remote Repository hoch und setzt den Upstream Branch.</td></tr>
+<tr><td><code>git pull --rebase &lt;remote&gt; &lt;branch&gt;</code></td><td>Lädt alle Änderungen aus dem angegebenen Remote Repository herunter, merged sie in den aktuellen Branch und setzt den Upstream Branch</td></tr>
+</tbody></table>
+</div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
