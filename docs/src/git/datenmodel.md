@@ -4,7 +4,7 @@ Es gibt viele verschieden Ansätze für die ein VCS zu implementieren. Git verwe
 
 # Snapshots / Commits
 
-Unser Modell beinhaltet einer Sammlung von Ordnern und Datein in einem "top-level" Ordner - ein Snapshot auch **Commit** genannt. Von git wird eine Datei auch als `blob` bezeichnet und ist letzendlich nur eine Sammlung aus Bytes. Das Dateiformat spielt somit keine Rolle. Ein Ordner wird als `tree` bezeichnet und ordnet einem Namen einen oder mehrere `blob`s und andere `tree`s zu. Ordner können dementsprechend andere Ordner oder Datein enthalten und sind identisch vom Aufbau zu unserem Dateisystem. Zum Beispiel:
+Unser Modell beinhaltet einer Sammlung von Ordnern und Datein in einem "top-level" Ordner - ein Snapshot - auch **Commit** genannt. Von git wird eine Datei auch als `blob` bezeichnet und ist letzendlich nur eine Sammlung aus Bytes. Das Dateiformat spielt somit keine Rolle. Ein Ordner wird als `tree` bezeichnet und ordnet einem Namen einen oder mehrere `blob`s und andere `tree`s zu. Ordner können dementsprechend andere Ordner oder Datein enthalten und sind identisch vom Aufbau zu unserem Dateisystem. Zum Beispiel:
 
 ```
 <root> (tree)
