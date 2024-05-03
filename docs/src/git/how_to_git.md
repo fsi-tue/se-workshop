@@ -4,4 +4,4 @@ Git wird oftmals als ein unschönes aber leider notwendiges Tool zur Kollaborati
 
 ![Meme](./git_meme.png)
 
-Ziel unseres Workshops ist es, dass dir diese Situation nicht passiert. Du wirst nicht nur Shell-Befehle lernen, sondern vielmehr die zugrundeliegenden Mechanismen verstehen. Wenn du die inneren Mechansimen verstehst wird auch das Interface einfacher und deutlich intuitiver zu verstehen werden.
+Ziel unseres Workshops ist es, dass dir diese Situation nicht passiert. Du wirst nicht nur Shell-Befehle lernen, sondern vielmehr die zugrundeliegenden Mechanismen verstehen. Wenn du die inneren Mechansimen verstanden hast, wird auch das Interface einfacher und deutlich intuitiver zu verwenden.
