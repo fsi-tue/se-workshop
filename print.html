@@ -391,7 +391,7 @@ $ git config --global color.ui auto
 <div style="break-before: page; page-break-before: always;"></div><h1 id="datenmodel"><a class="header" href="#datenmodel">Datenmodel</a></h1>
 <p>Es gibt viele verschieden Ansätze für die ein VCS zu implementieren. Git verwendet ein sehr einfaches aber durchdachtes Modell, dass uns ermöglicht Features wie Branches, Kollaboration und eine Dateihistorie zu nutzten</p>
 <h1 id="snapshots--commits"><a class="header" href="#snapshots--commits">Snapshots / Commits</a></h1>
-<p>Unser Modell beinhaltet einer Sammlung von Ordnern und Datein in einem &quot;top-level&quot; Ordner - ein Snapshot auch <strong>Commit</strong> genannt. Von git wird eine Datei auch als <code>blob</code> bezeichnet und ist letzendlich nur eine Sammlung aus Bytes. Das Dateiformat spielt somit keine Rolle. Ein Ordner wird als <code>tree</code> bezeichnet und ordnet einem Namen einen oder mehrere <code>blob</code>s und andere <code>tree</code>s zu. Ordner können dementsprechend andere Ordner oder Datein enthalten und sind identisch vom Aufbau zu unserem Dateisystem. Zum Beispiel:</p>
+<p>Unser Modell beinhaltet einer Sammlung von Ordnern und Datein in einem &quot;top-level&quot; Ordner - ein Snapshot - auch <strong>Commit</strong> genannt. Von git wird eine Datei auch als <code>blob</code> bezeichnet und ist letzendlich nur eine Sammlung aus Bytes. Das Dateiformat spielt somit keine Rolle. Ein Ordner wird als <code>tree</code> bezeichnet und ordnet einem Namen einen oder mehrere <code>blob</code>s und andere <code>tree</code>s zu. Ordner können dementsprechend andere Ordner oder Datein enthalten und sind identisch vom Aufbau zu unserem Dateisystem. Zum Beispiel:</p>
 <pre><code>&lt;root&gt; (tree)
 |
 +- beispiel (tree)
